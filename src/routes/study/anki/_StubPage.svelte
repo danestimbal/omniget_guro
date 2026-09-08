@@ -11,7 +11,7 @@
 </script>
 
 <section class="study-page">
-  <PageHero {title} subtitle="Em construção" />
+  <PageHero {title} subtitle="Under construction" />
 
   <div class="card">
     <div class="card-body">
@@ -25,7 +25,7 @@
       {/if}
     </div>
     <footer class="card-foot">
-      <a class="back-link" href="/study/anki">← Voltar ao painel</a>
+      <a class="back-link" href="/study/anki">← Back to dashboard</a>
     </footer>
   </div>
 </section>

@@ -94,7 +94,7 @@
           type="button"
           class="x"
           onclick={onClose}
-          aria-label="Fechar"
+          aria-label="Close"
         >×</button>
       </header>
 

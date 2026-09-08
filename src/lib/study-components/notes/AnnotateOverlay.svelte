@@ -92,7 +92,7 @@
     <button
       type="button"
       class="close-btn"
-      aria-label="Fechar"
+      aria-label="Close"
       title="Fechar (Esc)"
       onclick={() => {
         void flushSave();

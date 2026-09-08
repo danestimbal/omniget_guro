@@ -380,7 +380,7 @@
           onclick={saveEdit}
           disabled={editBusy}
         >
-          {editBusy ? "Salvando…" : "Salvar"}
+          {editBusy ? "Saving…" : "Save"}
         </button>
       </div>
     </div>

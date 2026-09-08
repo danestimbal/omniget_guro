@@ -126,7 +126,7 @@
           onclick={saveExternal}
           disabled={busy || !urlDraft.trim()}
         >
-          {busy ? "Salvando…" : "Salvar"}
+          {busy ? "Saving…" : "Save"}
         </button>
       </footer>
     </div>

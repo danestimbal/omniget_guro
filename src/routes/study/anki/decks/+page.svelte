@@ -407,7 +407,7 @@
   message={pendingDelete
     ? `"${pendingDelete.name}" e todos os subdecks serão removidos. Cards retornarão ao deck pai (Default se na raiz). Esta ação não pode ser desfeita.`
     : ""}
-  confirmLabel="Excluir"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={confirmDelete}
 />
@@ -591,7 +591,7 @@
           onclick={saveConfig}
           disabled={configBusy || !configData}
         >
-          {configBusy ? "Salvando…" : "Salvar"}
+          {configBusy ? "Saving…" : "Save"}
         </button>
       </div>
     </div>

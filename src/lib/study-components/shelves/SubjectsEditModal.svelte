@@ -95,13 +95,13 @@
     <button
       type="button"
       class="backdrop-btn"
-      aria-label="Fechar"
+      aria-label="Close"
       onclick={onClose}
     ></button>
     <div class="modal" role="document">
       <header class="head">
         <h2>Matérias do curso</h2>
-        <button type="button" class="close" onclick={onClose} aria-label="Fechar">×</button>
+        <button type="button" class="close" onclick={onClose} aria-label="Close">×</button>
       </header>
       <div class="body">
         {#if loading}
@@ -141,7 +141,7 @@
           disabled={!dirty || saving}
           onclick={save}
         >
-          {saving ? "Salvando…" : "Salvar"}
+          {saving ? "Saving…" : "Save"}
         </button>
       </footer>
     </div>

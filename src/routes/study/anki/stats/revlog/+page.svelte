@@ -272,7 +272,7 @@
         onclick={run}
         disabled={loading}
       >
-        {loading ? "Buscando…" : "Buscar"}
+        {loading ? "Buscando…" : "Search"}
       </button>
     </div>
   </div>

@@ -143,7 +143,7 @@
           <span class="artist">{track.user.username}</span>
         </div>
       </div>
-      <button type="button" class="close" onclick={onClose} aria-label="Fechar">×</button>
+      <button type="button" class="close" onclick={onClose} aria-label="Close">×</button>
     </header>
 
     <section class="section">

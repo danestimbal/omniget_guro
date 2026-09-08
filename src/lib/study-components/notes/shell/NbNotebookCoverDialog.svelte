@@ -88,7 +88,7 @@
     >
       <header>
         <h3>Capa de {current?.name ?? "notebook"}</h3>
-        <button type="button" class="x" onclick={onClose} aria-label="Fechar">×</button>
+        <button type="button" class="x" onclick={onClose} aria-label="Close">×</button>
       </header>
 
       <p class="hint">

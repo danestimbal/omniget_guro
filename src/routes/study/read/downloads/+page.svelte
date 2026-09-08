@@ -224,7 +224,7 @@
   <PageHero
     title="Downloads de livros"
     subtitle={loading
-      ? "Carregando…"
+      ? "Loading…"
       : counts.active > 0
         ? counts.active === 1
           ? "1 ativo"
@@ -344,7 +344,7 @@
                 onclick={() => cancel(d)}
                 disabled={acting === d.id}
               >
-                {acting === d.id ? "…" : "Cancelar"}
+                {acting === d.id ? "…" : "Cancel"}
               </button>
             {/if}
             <button

@@ -46,7 +46,7 @@
       pending = p;
       hydrateForm(i.provider);
     } catch (e: any) {
-      error = typeof e === "string" ? e : (e?.message ?? "Erro");
+      error = typeof e === "string" ? e : (e?.message ?? "Error");
     } finally {
       loading = false;
     }
@@ -97,7 +97,7 @@
       showToast("info", "Provedor salvo");
       await load();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       busy = false;
     }
@@ -108,9 +108,9 @@
     busy = true;
     try {
       await ankiSyncProviderTest(buildConfig());
-      showToast("info", "Conexão OK");
+      showToast("info", "Connection OK");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Falhou"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Failed"));
     } finally {
       busy = false;
     }
@@ -126,14 +126,14 @@
       showToast(outcome.action === "no_provider" ? "error" : "info", outcome.message);
       await load();
     } catch (e: any) {
-      error = typeof e === "string" ? e : (e?.message ?? "Erro");
+      error = typeof e === "string" ? e : (e?.message ?? "Error");
     } finally {
       busy = false;
     }
   }
 
   function fmtDate(secs: number): string {
-    if (!secs) return "nunca";
+    if (!secs) return "never";
     return new Date(secs * 1000).toLocaleString();
   }
 
@@ -147,10 +147,10 @@
 
 <div class="sync-page">
   <header class="page-head">
-    <h1>Sincronização</h1>
+    <h1>Sync</h1>
     <p class="muted">
-      Sync por <strong>arquivos</strong>: collection.anki2 + media via WebDAV, pasta local ou backup .colpkg.
-      Não usa servidor AnkiWeb.
+      File-based sync: collection.anki2 + media via WebDAV, a local folder or a .colpkg backup.
+      Does not use the AnkiWeb server.
     </p>
   </header>
 
@@ -159,22 +159,22 @@
   {:else if error}
     <AnkiCard variant="ghost" padding="m">
       <p class="error">{error}</p>
-      <AnkiButton onclick={load} variant="primary">Tentar novamente</AnkiButton>
+      <AnkiButton onclick={load} variant="primary">Try again</AnkiButton>
     </AnkiCard>
   {:else}
     <section class="status-row">
       <AnkiCard padding="m" variant={info && info.kind !== "none" ? "highlight" : "default"}>
         <div class="status-grid">
           <div>
-            <span class="kpi-tag">Provedor ativo</span>
+            <span class="kpi-tag">Active provider</span>
             <strong class="kpi">{info?.display ?? "—"}</strong>
           </div>
           <div>
-            <span class="kpi-tag">Último sync</span>
+            <span class="kpi-tag">Last sync</span>
             <strong class="kpi">{info ? fmtDate(info.last_sync_secs) : "—"}</strong>
           </div>
           <div>
-            <span class="kpi-tag">Mudanças locais</span>
+            <span class="kpi-tag">Local changes</span>
             <strong class="kpi">{pending?.total ?? 0}</strong>
           </div>
         </div>
@@ -185,7 +185,7 @@
             disabled={busy || !info || info.kind === "none"}
             onclick={run}
           >
-            {busy ? "Sincronizando…" : "☁️ Sincronizar agora"}
+            {busy ? "Syncing…" : "☁️ Sync now"}
           </AnkiButton>
         </div>
       </AnkiCard>
@@ -193,7 +193,7 @@
 
     {#if lastOutcome}
       <AnkiCard padding="m" variant="ghost">
-        <h3 class="card-h">Resultado</h3>
+        <h3 class="card-h">Result</h3>
         <div class="outcome">
           <span class="ank-pill ank-pill--info">{lastOutcome.action}</span>
           <p class="outcome-msg">{lastOutcome.message}</p>
@@ -205,10 +205,10 @@
     {/if}
 
     <section class="provider-section">
-      <h2>Configurar provedor</h2>
+      <h2>Configure provider</h2>
       <div class="provider-tabs" role="tablist">
         <button class="ptab" class:active={chosen === "local_folder"} onclick={() => (chosen = "local_folder")}>
-          📁 Pasta local
+          📁 Local folder
         </button>
         <button class="ptab" class:active={chosen === "webdav"} onclick={() => (chosen = "webdav")}>
           ☁️ WebDAV
@@ -221,46 +221,46 @@
       <AnkiCard padding="m">
         {#if chosen === "local_folder"}
           <p class="hint">
-            Use uma pasta sincronizada por Dropbox/Google Drive/iCloud Drive. O GuroHub escreve
+            Use a folder synced by Dropbox/Google Drive/iCloud Drive. GuroHub writes
             <code>collection.anki2</code> + <code>media.zip</code> + <code>manifest.json</code>.
           </p>
           <label class="field">
-            <span>Caminho da pasta</span>
+            <span>Folder path</span>
             <input class="input" type="text" placeholder="C:\Users\you\Dropbox\anki" bind:value={folderPath} />
           </label>
         {:else if chosen === "webdav"}
           <p class="hint">
-            Compatível com Nextcloud, ownCloud, Synology, Apache mod_dav. Use HTTPS sempre que possível.
+            Compatible with Nextcloud, ownCloud, Synology, Apache mod_dav. Use HTTPS whenever possible.
           </p>
           <label class="field">
             <span>URL</span>
-            <input class="input" type="url" placeholder="https://nuvem.exemplo.com/remote.php/dav/files/me/anki/" bind:value={webdavUrl} />
+            <input class="input" type="url" placeholder="https://cloud.example.com/remote.php/dav/files/me/anki/" bind:value={webdavUrl} />
           </label>
           <label class="field">
-            <span>Usuário</span>
+            <span>Username</span>
             <input class="input" type="text" autocomplete="username" bind:value={webdavUser} />
           </label>
           <label class="field">
-            <span>Senha (de app, recomendado)</span>
+            <span>Password (app password recommended)</span>
             <input class="input" type="password" autocomplete="new-password" bind:value={webdavPass} />
           </label>
         {:else}
           <p class="hint">
-            Backup manual em <code>.colpkg</code>. Cada sync gera um arquivo novo timestamped.
-            Você pode importar de volta via Importar.
+            Manual <code>.colpkg</code> backup. Each sync writes a new timestamped file.
+            You can import it back via Import.
           </p>
           <label class="field">
-            <span>Pasta de destino</span>
+            <span>Destination folder</span>
             <input class="input" type="text" placeholder="C:\Users\you\Documents\anki-backups" bind:value={colpkgDir} />
           </label>
         {/if}
 
         <div class="actions">
           <AnkiButton variant="outline" onclick={test} disabled={busy || !isFormValid()}>
-            Testar conexão
+            Test connection
           </AnkiButton>
           <AnkiButton variant="primary" onclick={save} disabled={busy || !isFormValid()}>
-            Salvar provedor
+            Save provider
           </AnkiButton>
         </div>
       </AnkiCard>

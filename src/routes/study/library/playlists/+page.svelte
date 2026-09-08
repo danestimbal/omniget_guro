@@ -584,7 +584,7 @@
   message={selected
     ? `"${selected.name}" será removida. Os cursos não serão deletados — apenas a playlist.`
     : ""}
-  confirmLabel="Excluir"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={deletePlaylist}
 />

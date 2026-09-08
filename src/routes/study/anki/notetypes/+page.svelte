@@ -526,7 +526,7 @@
                   onclick={saveDraft}
                   disabled={saving}
                 >
-                  {saving ? "Salvando…" : "Salvar"}
+                  {saving ? "Saving…" : "Save"}
                 </button>
               {:else}
                 <button class="btn ghost" onclick={openClone}>Clonar</button>
@@ -672,7 +672,7 @@
                       </button>
                       <button
                         class="iconbtn danger"
-                        title="Remover"
+                        title="Remove"
                         onclick={() => removeField(f.ord)}
                         disabled={saving || f.config.prevent_deletion}
                       >
@@ -913,7 +913,7 @@
   message={pendingDelete
     ? `"${pendingDelete.name}" será removido. Cards e notas associados também serão deletados. Esta ação não pode ser desfeita.`
     : ""}
-  confirmLabel="Excluir"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={confirmDelete}
 />

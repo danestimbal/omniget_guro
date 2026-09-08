@@ -241,7 +241,7 @@
             type="button"
             class="detail-close"
             onclick={() => (selectedCode = null)}
-            aria-label="Fechar"
+            aria-label="Close"
           >×</button>
         </header>
         <p>{detail.description}</p>

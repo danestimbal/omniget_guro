@@ -356,7 +356,7 @@
           onclick={confirmRename}
           disabled={renameBusy || !renameNewValue.trim() || renameNewValue.trim() === renameTarget.full_name}
         >
-          {renameBusy ? "Renomeando…" : "Renomear"}
+          {renameBusy ? "Renomeando…" : "Rename"}
         </button>
       </footer>
     </div>

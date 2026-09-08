@@ -452,7 +452,7 @@
   {/if}
 
   <header class="top-bar">
-    <a class="back" href={backHref} aria-label="Voltar">
+    <a class="back" href={backHref} aria-label="Back">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="19" y1="12" x2="5" y2="12" />
         <polyline points="12 19 5 12 12 5" />
@@ -462,7 +462,7 @@
       <span class="course-title">{courseTitle}</span>
       <span class="lesson-title">{title}</span>
     </div>
-    <button type="button" class="icon-btn" onclick={onClose} aria-label="Fechar">
+    <button type="button" class="icon-btn" onclick={onClose} aria-label="Close">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />

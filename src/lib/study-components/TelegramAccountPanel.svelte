@@ -183,7 +183,7 @@
           <h2>Contas Telegram</h2>
           <p class="subtitle">Salve e alterne entre múltiplas sessões.</p>
         </div>
-        <button type="button" class="icon-btn" onclick={close} aria-label="Fechar">
+        <button type="button" class="icon-btn" onclick={close} aria-label="Close">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 6L6 18" />
             <path d="M6 6l12 12" />
@@ -280,7 +280,7 @@
                         <button type="button" class="primary-btn small" onclick={() => (confirmRestoreId = p.id)}>
                           Ativar
                         </button>
-                        <button type="button" class="danger-btn small" onclick={() => (confirmDeleteId = p.id)} aria-label="Remover">
+                        <button type="button" class="danger-btn small" onclick={() => (confirmDeleteId = p.id)} aria-label="Remove">
                           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="3 6 5 6 21 6" />
                             <path d="M19 6l-2 14a2 2 0 01-2 2H9a2 2 0 01-2-2L5 6" />

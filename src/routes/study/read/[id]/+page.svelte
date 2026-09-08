@@ -2310,7 +2310,7 @@
                     type="button"
                     class="ep-close"
                     onclick={closeHighlightEditor}
-                    aria-label="Fechar"
+                    aria-label="Close"
                   >×</button>
                 </header>
 
@@ -2484,7 +2484,7 @@
           onclick={saveMetadata}
           disabled={savingMetadata}
         >
-          {savingMetadata ? "Salvando…" : "Salvar"}
+          {savingMetadata ? "Saving…" : "Save"}
         </button>
       </footer>
     </div>

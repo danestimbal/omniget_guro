@@ -493,7 +493,7 @@
   message={currentPage
     ? `"${currentPage.title ?? currentPage.name}" e todos os seus blocos serão removidos. Esta ação não pode ser desfeita.`
     : ""}
-  confirmLabel="Excluir"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={deletePage}
 />

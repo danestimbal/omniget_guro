@@ -53,7 +53,7 @@
   </span>
   <span class="seg saving" class:on={notesShell.saving}>
     <span class="dot-mark" aria-hidden="true"></span>
-    <span class="value">{notesShell.saving ? "Salvando…" : "Salvo"}</span>
+    <span class="value">{notesShell.saving ? "Saving…" : "Salvo"}</span>
   </span>
   <span class="spacer"></span>
   <span class="seg clock">

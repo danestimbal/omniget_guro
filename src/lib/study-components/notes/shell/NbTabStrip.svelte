@@ -133,7 +133,7 @@
     }
     switch (tab.view_kind) {
       case "graph": return "Graph";
-      case "search": return "Buscar";
+      case "search": return "Search";
       case "journal": return "Journal";
       case "templates": return "Templates";
       case "settings": return "Settings";

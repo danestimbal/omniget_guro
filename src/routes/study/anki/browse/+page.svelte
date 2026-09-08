@@ -549,7 +549,7 @@
 </script>
 
 <section class="study-page">
-  <PageHero title="Buscar" />
+  <PageHero title="Search" />
 
   <div class="search-row">
     <input
@@ -749,7 +749,7 @@
   bind:open={confirmOpen}
   title="Excluir cards"
   message="{selected.size} cards serão excluídos permanentemente. Esta ação não pode ser desfeita."
-  confirmLabel="Excluir"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={confirmAndDo}
 />
@@ -829,7 +829,7 @@
           onclick={bulkApplyTags}
           disabled={busy || bulkTagInput.trim() === ""}
         >
-          {bulkTagMode === "add" ? "Adicionar" : "Remover"}
+          {bulkTagMode === "add" ? "Add" : "Remove"}
         </button>
       </div>
     </div>
@@ -913,7 +913,7 @@
           onclick={saveEditedNote}
           disabled={editNoteBusy}
         >
-          {editNoteBusy ? "Salvando…" : "Salvar"}
+          {editNoteBusy ? "Saving…" : "Save"}
         </button>
       </div>
     </div>
@@ -940,7 +940,7 @@
     <div class="drawer" role="dialog" aria-modal="true">
       <header class="drawer-head">
         <h3>Card #{drawerCardId}</h3>
-        <button type="button" class="close-btn" onclick={closeDrawer} aria-label="Fechar">×</button>
+        <button type="button" class="close-btn" onclick={closeDrawer} aria-label="Close">×</button>
       </header>
       {#if drawerError}
         <p class="error">{drawerError}</p>

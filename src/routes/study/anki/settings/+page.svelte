@@ -534,7 +534,7 @@
                 onclick={saveScheduler}
                 disabled={saving === "scheduler"}
               >
-                {saving === "scheduler" ? "Salvando…" : "Salvar"}
+                {saving === "scheduler" ? "Saving…" : "Save"}
               </button>
             </div>
           </div>
@@ -686,7 +686,7 @@
                 onclick={saveDeckDefaults}
                 disabled={saving === "deck"}
               >
-                {saving === "deck" ? "Salvando…" : "Salvar padrões"}
+                {saving === "deck" ? "Saving…" : "Salvar padrões"}
               </button>
             </div>
           </div>

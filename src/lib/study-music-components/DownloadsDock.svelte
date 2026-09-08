@@ -185,7 +185,7 @@
       </span>
       <div class="head-actions">
         <button type="button" class="link" onclick={clearDone}>Limpar concluídos</button>
-        <button type="button" class="close" onclick={toggleDrawer} aria-label="Fechar">×</button>
+        <button type="button" class="close" onclick={toggleDrawer} aria-label="Close">×</button>
       </div>
     </header>
 
@@ -281,8 +281,8 @@
                 type="button"
                 class="ghost-btn"
                 onclick={() => dismiss(job)}
-                aria-label="Remover"
-                title="Remover"
+                aria-label="Remove"
+                title="Remove"
               >
                 ×
               </button>
