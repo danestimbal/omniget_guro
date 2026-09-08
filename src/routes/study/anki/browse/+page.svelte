@@ -114,18 +114,18 @@
   let searchTimer: number | null = null;
 
   const presetQueries = [
-    { label: "Pendentes", q: "is:due" },
-    { label: "Novos", q: "is:new" },
-    { label: "Aprendendo", q: "is:learning" },
-    { label: "Suspensos", q: "is:suspended" },
-    { label: "Marcados (qualquer)", q: "-flag:0" },
-    { label: "Lapsos hoje", q: "rated:1:1" },
+    { label: "Due", q: "is:due" },
+    { label: "New", q: "is:new" },
+    { label: "Learning", q: "is:learning" },
+    { label: "Suspended", q: "is:suspended" },
+    { label: "Flagged (any)", q: "-flag:0" },
+    { label: "Lapses today", q: "rated:1:1" },
   ];
 
   function fmtDate(ms: number | null): string {
     if (!ms) return "—";
     const d = new Date(ms);
-    return d.toLocaleDateString("pt-BR", {
+    return d.toLocaleDateString(undefined, {
       day: "2-digit",
       month: "short",
       year: "2-digit",
@@ -135,7 +135,7 @@
   function fmtRelativeSecs(secs: number): string {
     const now = Math.floor(Date.now() / 1000);
     const diff = now - secs;
-    if (diff < 60) return "agora";
+    if (diff < 60) return "now";
     if (diff < 3600) return `${Math.floor(diff / 60)}min`;
     if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
     if (diff < 86400 * 7) return `${Math.floor(diff / 86400)}d`;
@@ -173,15 +173,15 @@
   function queueLabel(q: string): string {
     switch (q) {
       case "new":
-        return "Novo";
+        return "New";
       case "learning":
-        return "Aprend.";
+        return "Learn";
       case "review":
-        return "Revisão";
+        return "Review";
       case "day_learn_relearn":
         return "Relearn";
       case "suspended":
-        return "Suspenso";
+        return "Suspended";
       case "user_buried":
         return "Buried";
       case "sched_buried":
@@ -556,7 +556,7 @@
       type="search"
       class="search-input"
       bind:value={query}
-      placeholder="deck:Inglês is:due tag:vocab"
+      placeholder="deck:English is:due tag:vocab"
       aria-label="Search query"
     />
     <span class="total">{total} {total === 1 ? "card" : "cards"}</span>
@@ -571,26 +571,26 @@
   </div>
 
   {#if selected.size > 0}
-    <div class="bulk-bar" role="toolbar" aria-label="Ações em massa">
-      <span class="bulk-count">{selected.size} selecionados</span>
+    <div class="bulk-bar" role="toolbar" aria-label="Bulk actions">
+      <span class="bulk-count">{selected.size} selected</span>
       <button type="button" class="bulk-btn" onclick={bulkSuspend} disabled={busy}>
-        Suspender
+        Suspend
       </button>
       <button type="button" class="bulk-btn" onclick={bulkUnsuspend} disabled={busy}>
-        Reativar
+        Unsuspend
       </button>
       <button type="button" class="bulk-btn" onclick={bulkBury} disabled={busy}>
-        Adiar
+        Bury
       </button>
       <details class="flag-menu">
-        <summary class="bulk-btn">Marcar</summary>
+        <summary class="bulk-btn">Flag</summary>
         <div class="flag-grid">
           {#each [
-            ["Sem marca", 0, "transparent"],
-            ["Vermelha", 1, "var(--error)"],
-            ["Laranja", 2, "var(--warning, var(--accent))"],
-            ["Verde", 3, "var(--success, var(--accent))"],
-            ["Azul", 4, "var(--accent)"],
+            ["No flag", 0, "transparent"],
+            ["Red", 1, "var(--error)"],
+            ["Orange", 2, "var(--warning, var(--accent))"],
+            ["Green", 3, "var(--success, var(--accent))"],
+            ["Blue", 4, "var(--accent)"],
           ] as [label, n, color] (n)}
             <button
               type="button"
@@ -610,7 +610,7 @@
         onclick={() => (bulkDeckPickerOpen = true)}
         disabled={busy}
       >
-        Mover deck
+        Move deck
       </button>
       <button
         type="button"
@@ -618,7 +618,7 @@
         onclick={() => { bulkTagMode = "add"; bulkTagOpen = true; }}
         disabled={busy}
       >
-        Adicionar tag
+        Add tag
       </button>
       <button
         type="button"
@@ -626,7 +626,7 @@
         onclick={() => { bulkTagMode = "remove"; bulkTagOpen = true; }}
         disabled={busy}
       >
-        Remover tag
+        Remove tag
       </button>
       <button
         type="button"
@@ -634,10 +634,10 @@
         onclick={askDelete}
         disabled={busy}
       >
-        Excluir
+        Delete
       </button>
       <button type="button" class="bulk-btn ghost" onclick={clearSelection}>
-        Limpar
+        Clear
       </button>
     </div>
   {/if}
@@ -648,18 +648,18 @@
       class="util-btn"
       onclick={() => { unburyDeckTarget = null; unburyDeckPickerOpen = true; }}
       disabled={busy}
-      title="Reativa cards enterrados de um deck inteiro"
+      title="Unbury buried cards from an entire deck"
     >
-      Reativar enterrados…
+      Unbury buried…
     </button>
   </div>
 
   {#if loading}
-    <p class="muted">Buscando…</p>
+    <p class="muted">Searching…</p>
   {:else if error}
     <p class="error">{error}</p>
   {:else if items.length === 0}
-    <p class="muted center">Nenhum card encontrado.</p>
+    <p class="muted center">No cards found.</p>
   {:else}
     <div class="table-wrap">
       <table class="card-table">
@@ -668,7 +668,7 @@
             <th class="cb-col">
               <input
                 type="checkbox"
-                aria-label="Selecionar todos visíveis"
+                aria-label="Select all visible"
                 checked={items.every((c) => selected.has(c.id))}
                 onchange={(e) => {
                   if ((e.target as HTMLInputElement).checked) selectAllVisible();
@@ -747,8 +747,8 @@
 
 <ConfirmDialog
   bind:open={confirmOpen}
-  title="Excluir cards"
-  message="{selected.size} cards serão excluídos permanentemente. Esta ação não pode ser desfeita."
+  title="Delete cards"
+  message="{selected.size} cards will be deleted permanently. This action cannot be undone."
   confirmLabel="Delete"
   variant="danger"
   onConfirm={confirmAndDo}
@@ -763,9 +763,9 @@
     }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Mover {selected.size} cards</h3>
+      <h3>Move {selected.size} cards</h3>
       <label>
-        <span>Novo deck</span>
+        <span>New deck</span>
         <select bind:value={bulkDeckTarget}>
           {#each allDecks.filter((d) => !d.filtered) as d (d.id)}
             <option value={d.id}>{d.name}</option>
@@ -803,14 +803,14 @@
       <h3>
         {bulkTagMode === "add" ? "Adicionar tag" : "Remover tag"}
         em {selectedNoteIds().length}
-        {selectedNoteIds().length === 1 ? "nota" : "notas"}
+        {selectedNoteIds().length === 1 ? "note" : "notes"}
       </h3>
       <label>
-        <span>Tags (separadas por espaço; use <code>::</code> para hierarquia)</span>
+        <span>Tags (space-separated; use <code>::</code> for hierarchy)</span>
         <input
           type="text"
           bind:value={bulkTagInput}
-          placeholder="exemplo livro::cap1"
+          placeholder="e.g. book::ch1"
           onkeydown={(e) => { if (e.key === "Enter") bulkApplyTags(); }}
         />
       </label>
@@ -843,15 +843,15 @@
     onclick={(e) => { if (e.target === e.currentTarget) unburyDeckPickerOpen = false; }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Reativar cards enterrados</h3>
+      <h3>Unbury buried cards</h3>
       <p class="modal-hint">
-        Reverte o estado de enterro de cards do deck selecionado, retornando-os
-        às filas normais.
+        Reverts the buried state of cards in the selected deck, returning them
+        to the normal queues.
       </p>
       <label>
         <span>Deck</span>
         <select bind:value={unburyDeckTarget}>
-          <option value={null}>Selecione…</option>
+          <option value={null}>Select…</option>
           {#each allDecks as d (d.id)}
             <option value={d.id}>{d.name}</option>
           {/each}
@@ -863,7 +863,7 @@
           class="btn-secondary"
           onclick={() => (unburyDeckPickerOpen = false)}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -871,7 +871,7 @@
           onclick={unburyDeckAction}
           disabled={busy || unburyDeckTarget == null}
         >
-          Reativar
+          Unbury
         </button>
       </div>
     </div>
@@ -885,16 +885,16 @@
     onclick={(e) => { if (e.target === e.currentTarget) editNoteOpen = false; }}
   >
     <div class="modal modal-wide" role="dialog" aria-modal="true">
-      <h3>Editar nota #{editNoteTarget.id}</h3>
+      <h3>Edit note #{editNoteTarget.id}</h3>
       <div class="edit-fields">
         {#each editNoteFields as _field, idx (idx)}
           <label class="edit-field">
-            <span>Campo {idx + 1}</span>
+            <span>Field {idx + 1}</span>
             <textarea bind:value={editNoteFields[idx]} rows="2"></textarea>
           </label>
         {/each}
         <label class="edit-field">
-          <span>Tags (espaço como separador)</span>
+          <span>Tags (space-separated)</span>
           <input type="text" bind:value={editNoteTags} />
         </label>
       </div>
@@ -922,9 +922,9 @@
 
 <ConfirmDialog
   bind:open={confirmDeleteNoteOpen}
-  title="Excluir nota"
-  message="A nota e todos os cards associados serão removidos. Não pode ser desfeito."
-  confirmLabel="Excluir nota"
+  title="Delete note"
+  message="The note and all its associated cards will be removed. This can't be undone."
+  confirmLabel="Delete note"
   variant="danger"
   onConfirm={confirmDeleteNote}
 />
@@ -945,11 +945,11 @@
       {#if drawerError}
         <p class="error">{drawerError}</p>
       {:else if !drawerStats}
-        <p class="muted">Carregando…</p>
+        <p class="muted">Loading…</p>
       {:else}
         <section class="drawer-section">
           <div class="drawer-section-head">
-            <h4>Conteúdo</h4>
+            <h4>Content</h4>
             {#if drawerNote}
               <div class="drawer-section-actions">
                 <button
@@ -957,14 +957,14 @@
                   class="btn-link"
                   onclick={() => drawerNote && startEditNote(drawerNote)}
                 >
-                  Editar
+                  Edit
                 </button>
                 <button
                   type="button"
                   class="btn-link danger"
                   onclick={() => drawerNote && askDeleteNote(drawerNote.id)}
                 >
-                  Excluir nota
+                  Delete note
                 </button>
               </div>
             {/if}
@@ -989,11 +989,11 @@
         </section>
 
         <section class="drawer-section">
-          <h4>Outras cards desta nota</h4>
+          <h4>Other cards for this note</h4>
           {#if siblingsLoading}
-            <p class="muted small">Carregando…</p>
+            <p class="muted small">Loading…</p>
           {:else if siblingCards.length <= 1}
-            <p class="muted small">Esta nota tem só essa card.</p>
+            <p class="muted small">This note has only this card.</p>
           {:else}
             <ul class="sibling-list">
               {#each siblingCards as sib (sib.id)}
@@ -1025,7 +1025,7 @@
             <dd class="mono">{drawerStats.reviews_count}</dd>
             <dt>Lapsos</dt>
             <dd class="mono">{drawerStats.lapses_count}</dd>
-            <dt>Tempo médio</dt>
+            <dt>Average time</dt>
             <dd class="mono">{drawerStats.avg_seconds.toFixed(1)}s</dd>
             <dt>Primeiro review</dt>
             <dd class="mono">{fmtDate(drawerStats.first_review_ms)}</dd>
@@ -1052,7 +1052,7 @@
 
         {#if drawerStats.revlog.length > 0}
           <section class="drawer-section">
-            <h4>Histórico ({drawerStats.revlog.length})</h4>
+            <h4>History ({drawerStats.revlog.length})</h4>
             <ul class="revlog-list">
               {#each [...drawerStats.revlog].reverse().slice(0, 30) as r (r.id)}
                 <li>

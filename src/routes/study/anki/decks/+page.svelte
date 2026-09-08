@@ -300,18 +300,18 @@
   <PageHero title="Decks" />
 
   {#if loading}
-    <p class="muted">Carregando árvore…</p>
+    <p class="muted">Loading tree…</p>
   {:else if error}
     <p class="error">{error}</p>
   {:else}
     <div class="toolbar">
       <button type="button" class="btn-primary" onclick={() => openCreate(null)}>
-        + Novo deck
+        + New deck
       </button>
-      <a href="/study/anki/decks/filtered" class="advanced-link">Decks filtrados →</a>
+      <a href="/study/anki/decks/filtered" class="advanced-link">Filtered decks →</a>
       <a href="/study/anki/decks/presets" class="advanced-link">Presets →</a>
       <span class="hint">
-        Use <code>::</code> no nome pra criar sub-deck (ex: <code>Idiomas::Espanhol</code>)
+        Use <code>::</code> in the name to create a sub-deck (e.g. <code>Languages::Spanish</code>)
       </span>
     </div>
 
@@ -343,7 +343,7 @@
               type="button"
               class="name-btn"
               onclick={() => startRename(node)}
-              aria-label="Renomear {node.name}"
+              aria-label="Rename {node.name}"
             >
               <span class="name">{node.name}</span>
               {#if node.filtered}
@@ -354,12 +354,12 @@
           <span class="count" title="{count} cards">{count}</span>
         </div>
         <div class="actions">
-          <a class="action study" href="/study/anki/study/{node.deck_id}">Estudar</a>
+          <a class="action study" href="/study/anki/study/{node.deck_id}">Study</a>
           <button
             type="button"
             class="action"
             onclick={() => openCreate(node.deck_id)}
-            title="Criar sub-deck"
+            title="Create sub-deck"
           >
             + sub
           </button>
@@ -367,16 +367,16 @@
             type="button"
             class="action"
             onclick={() => openReparent(node)}
-            title="Mover deck"
+            title="Move deck"
             disabled={node.deck_id === 1}
           >
-            mover
+            move
           </button>
           <button
             type="button"
             class="action"
             onclick={() => openConfig(node.deck_id)}
-            title="Configurar deck"
+            title="Configure deck"
             disabled={node.filtered}
           >
             config
@@ -385,10 +385,10 @@
             type="button"
             class="action danger"
             onclick={() => askDelete(node)}
-            title="Excluir deck"
+            title="Delete deck"
             disabled={node.deck_id === 1}
           >
-            excluir
+            delete
           </button>
         </div>
       </div>
@@ -403,9 +403,9 @@
 
 <ConfirmDialog
   bind:open={confirmOpen}
-  title="Excluir deck"
+  title="Delete deck"
   message={pendingDelete
-    ? `"${pendingDelete.name}" e todos os subdecks serão removidos. Cards retornarão ao deck pai (Default se na raiz). Esta ação não pode ser desfeita.`
+    ? `"${pendingDelete.name}" and all its subdecks will be removed. Cards return to the parent deck (Default if at the root). This action cannot be undone.`
     : ""}
   confirmLabel="Delete"
   variant="danger"
@@ -421,11 +421,11 @@
     }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Mover "{reparentDeck.name}"</h3>
+      <h3>Move "{reparentDeck.name}"</h3>
       <label>
-        <span>Novo deck pai</span>
+        <span>New parent deck</span>
         <select bind:value={reparentTarget}>
-          <option value={null}>(raiz)</option>
+          <option value={null}>(root)</option>
           {#each reparentOptions as d (d.id)}
             <option value={d.id}>{d.name}</option>
           {/each}
@@ -433,10 +433,10 @@
       </label>
       <div class="modal-actions">
         <button type="button" class="btn-secondary" onclick={closeReparent}>
-          Cancelar
+          Cancel
         </button>
         <button type="button" class="btn-primary" onclick={commitReparent}>
-          Mover
+          Move
         </button>
       </div>
     </div>
@@ -452,21 +452,21 @@
     }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Novo deck</h3>
+      <h3>New deck</h3>
       {#if createParentId != null}
         {@const parent = allDecks.find((d) => d.id === createParentId)}
         {#if parent}
           <p class="muted small">
-            Será criado dentro de <code>{parent.name}</code>
+            Will be created inside <code>{parent.name}</code>
           </p>
         {/if}
       {/if}
       <label>
-        <span>Nome</span>
+        <span>Name</span>
         <input
           type="text"
           bind:value={createName}
-          placeholder="Espanhol"
+          placeholder="Spanish"
           onkeydown={(e) => {
             if (e.key === "Enter") commitCreate();
           }}
@@ -475,7 +475,7 @@
       </label>
       <div class="modal-actions">
         <button type="button" class="btn-secondary" onclick={closeCreate}>
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -483,7 +483,7 @@
           onclick={commitCreate}
           disabled={createBusy || !createName.trim()}
         >
-          {createBusy ? "Criando…" : "Criar"}
+          {createBusy ? "Creating…" : "Create"}
         </button>
       </div>
     </div>
@@ -500,7 +500,7 @@
   >
     <div class="modal config-modal" role="dialog" aria-modal="true">
       <header class="modal-head">
-        <h3>Configuração de deck</h3>
+        <h3>Deck options</h3>
         {#if configData}
           <small class="muted">{configData.name}</small>
         {/if}
@@ -509,11 +509,11 @@
         <p class="error small">{configError}</p>
       {/if}
       {#if !configData}
-        <p class="muted">Carregando…</p>
+        <p class="muted">Loading…</p>
       {:else}
         <div class="config-grid">
           <label>
-            <span>Cards novos por dia</span>
+            <span>New cards per day</span>
             <input
               type="number"
               min="0"
@@ -521,7 +521,7 @@
             />
           </label>
           <label>
-            <span>Revisões por dia</span>
+            <span>Reviews per day</span>
             <input
               type="number"
               min="0"
@@ -529,7 +529,7 @@
             />
           </label>
           <label>
-            <span>Limite de leech</span>
+            <span>Leech threshold</span>
             <input
               type="number"
               min="0"
@@ -537,7 +537,7 @@
             />
           </label>
           <label>
-            <span>Retenção desejada</span>
+            <span>Desired retention</span>
             <input
               type="number"
               min="0.5"
@@ -547,7 +547,7 @@
             />
           </label>
           <label>
-            <span>Ease inicial</span>
+            <span>Initial ease</span>
             <input
               type="number"
               min="1.3"
@@ -556,7 +556,7 @@
             />
           </label>
           <label class="span-2">
-            <span>Learning steps (minutos, separados por espaço)</span>
+            <span>Learning steps (minutes, space-separated)</span>
             <input
               type="text"
               value={fmtSteps(configData.config.learn_steps)}
@@ -568,7 +568,7 @@
             />
           </label>
           <label class="span-2">
-            <span>Relearning steps (minutos)</span>
+            <span>Relearning steps (minutes)</span>
             <input
               type="text"
               value={fmtSteps(configData.config.relearn_steps)}
@@ -583,7 +583,7 @@
       {/if}
       <div class="modal-actions">
         <button type="button" class="btn-secondary" onclick={closeConfig}>
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
