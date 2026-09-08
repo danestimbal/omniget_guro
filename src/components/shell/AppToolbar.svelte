@@ -4,6 +4,8 @@
   import { openCommandPalette } from "$lib/stores/command-palette-store.svelte";
   import { getToolbar } from "$lib/stores/toolbar-store.svelte";
   import { shortcut } from "$lib/platform";
+  import { auth } from "$lib/firebase";
+  import { signOut } from "firebase/auth";
 
   let toolbar = $derived(getToolbar());
 
@@ -28,7 +30,7 @@
   });
 </script>
 
-<header class="mac-titlebar" data-tauri-drag-region aria-label={pageTitle || "OmniGet"}>
+<header class="mac-titlebar" data-tauri-drag-region aria-label={pageTitle || "GuroHub"}>
   <div class="mac-titlebar-leading" data-tauri-drag-region>
     {#if pageTitle}
       <h1 class="mac-titlebar-title" data-tauri-drag-region>{pageTitle}</h1>
@@ -109,6 +111,17 @@
       </svg>
       <span class="mac-search-label">{$t("command_palette.open")}</span>
       <span class="kbd">{shortcut("K")}</span>
+    </button>
+    <button
+      type="button"
+      class="mac-toolbar-btn"
+      onclick={() => signOut(auth)}
+      title={$t("auth.log_out")}
+      aria-label={$t("auth.log_out")}
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+      </svg>
     </button>
   </div>
 </header>

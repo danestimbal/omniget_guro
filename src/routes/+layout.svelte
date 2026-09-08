@@ -41,6 +41,8 @@
   } from "$lib/study-feature-flags";
   import type { Snippet } from "svelte";
   import type { Component } from "svelte";
+  import { authUser, authPlan, isAuthLoading } from "$lib/firebase";
+  import LoginScreen from "$components/auth/LoginScreen.svelte";
 
   let pluginNavItems = $state<NavItem[]>([]);
 
@@ -347,6 +349,15 @@
   <div class="stream-popout">
     {@render children()}
   </div>
+{:else if $isAuthLoading}
+  <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:var(--primary);color:var(--secondary);">
+    <div style="text-align:center;">
+      <img src="/guro_ai.gif" alt="" style="width:80px;height:80px;border-radius:50%;margin-bottom:16px;" />
+      <p>{$t("auth.loading")}</p>
+    </div>
+  </div>
+{:else if !$authUser || $authPlan !== "premium_plus"}
+  <LoginScreen />
 {:else}
 <div class="shell" data-reduce-motion={settings?.accessibility?.reduce_motion} data-reduce-transparency={settings?.accessibility?.reduce_transparency}>
   {#if !hideAppSidebar}

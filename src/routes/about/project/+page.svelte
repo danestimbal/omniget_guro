@@ -2,36 +2,25 @@
   import { open } from "@tauri-apps/plugin-shell";
   import { t } from "$lib/i18n";
 
-  const GITHUB_URL = "https://github.com/tonhowtf/omniget";
+  const FACEBOOK_URL = "https://www.facebook.com/gurohub";
   const APP_VERSION = "0.9.1";
 
-  async function openGitHub() {
-    await open(GITHUB_URL);
+  async function openFacebook() {
+    await open(FACEBOOK_URL);
   }
 </script>
 
 <section class="star-section">
-  <p class="star-description">{$t('about.star_description')}</p>
-  <div class="star-iframe-wrapper">
-    <iframe
-      src="https://ghbtns.com/github-btn.html?user=tonhowtf&repo=omniget&type=star&count=true&size=large"
-      frameborder="0"
-      scrolling="0"
-      width="170"
-      height="30"
-      title="GitHub Stars"
-    ></iframe>
-  </div>
-  <button class="star-button" onclick={openGitHub}>
+  <button class="star-button" onclick={openFacebook} style="background: #1877F2;">
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" stroke="none">
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
     </svg>
-    {$t('about.star_button')}
+    Facebook
   </button>
 </section>
 
 <section class="project-header">
-  <img src="/loop.png" alt="Loop" class="project-logo" width="64" height="64" />
+  <img src="/guro_ai.gif" alt="GuroHub" class="project-logo" width="64" height="64" />
   <p class="project-description">{$t('about.description')}</p>
 </section>
 

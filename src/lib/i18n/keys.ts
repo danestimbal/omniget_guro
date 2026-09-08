@@ -71,6 +71,9 @@ export type TranslationKeys =
   | 'about.terms_title'
   | 'about.version'
 
+  | 'auth.loading'
+  | 'auth.log_out'
+
   | 'changelog.empty'
   | 'changelog.title'
 
@@ -423,6 +426,9 @@ export type TranslationKeys =
   | 'home.action_p2p'
   | 'home.action_simple'
   | 'home.action_torrent'
+  | 'home.greeting_afternoon'
+  | 'home.greeting_evening'
+  | 'home.greeting_morning'
   | 'home.hero_subtitle'
   | 'home.hero_title'
   | 'home.inspector_title'

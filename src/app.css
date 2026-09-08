@@ -5,7 +5,7 @@
 @import './lib/style/notes.css';
 
 /*
- * OmniGet design tokens — Apple-first.
+ * GuroHub design tokens — Apple-first.
  *
  * Three layers:
  *   1. Global scale (spacing, type, radius, rows, motion). Never changes per theme.
@@ -118,13 +118,13 @@
   --popup-bg: #2C2C2E;
   --dialog-backdrop: rgba(0, 0, 0, 0.5);
 
-  --accent: #FF9F0A;
-  --accent-text: #FFB340;
+  --accent: #D97706;
+  --accent-text: #F59E0B;
   --on-accent: #1E1200;
-  --cta: #FF9F0A;
-  --cta-hover: #FFAD2E;
-  --cta-press: #F09000;
-  --on-cta: #1E1200;
+  --cta: #1C4ED8;
+  --cta-hover: #2563EB;
+  --cta-press: #1E40AF;
+  --on-cta: #FFFFFF;
 
   --blue: #0A84FF;
   --success: #30D158;
@@ -158,13 +158,13 @@
   --popup-bg: #FFFFFF;
   --dialog-backdrop: rgba(30, 28, 25, 0.32);
 
-  --accent: #FF9500;
-  --accent-text: #B85C00;
+  --accent: #D97706;
+  --accent-text: #B45309;
   --on-accent: #1E1200;
-  --cta: #FF9500;
-  --cta-hover: #FFA424;
-  --cta-press: #F08800;
-  --on-cta: #1E1200;
+  --cta: #1C4ED8;
+  --cta-hover: #1E40AF;
+  --cta-press: #1E3A8A;
+  --on-cta: #FFFFFF;
 
   --blue: #007AFF;
   --success: #248A3D;

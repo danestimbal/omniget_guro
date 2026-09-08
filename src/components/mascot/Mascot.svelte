@@ -1,11 +1,9 @@
 <script lang="ts">
   type MascotEmotion = "idle" | "downloading" | "error" | "stalled" | "queue" | "complete" | "amazed";
 
-  function emotionToSrc(e: MascotEmotion): string {
-    // amazed.png ships with a baked-in background, which reads as a grey
-    // square on the hero; the celebratory thumbs-up has a clean alpha channel.
-    if (e === "amazed") return "/mascot/complete.png";
-    return `/mascot/${e}.png`;
+  function emotionToSrc(_e: MascotEmotion): string {
+    // GuroHub uses a single animated mascot for every state.
+    return `/guro_ai.gif`;
   }
 
   let {
@@ -20,7 +18,7 @@
     bubbleText?: string;
   } = $props();
 
-  let currentSrc = $state("/mascot/idle.png");
+  let currentSrc = $state("/guro_ai.gif");
   let nextSrc = $state("");
   let showCurrent = $state(false);
   let showNext = $state(false);
@@ -64,7 +62,7 @@
   {#if !errored}
     <img
       src={currentSrc}
-      alt="OmniGet mascot"
+      alt="GuroHub mascot"
       class="mascot-img"
       class:visible={showCurrent}
       onload={onCurrentLoad}
@@ -117,8 +115,9 @@
 
   .mascot-img {
     height: 100px;
-    width: auto;
-    border-radius: var(--radius-xl);
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
     opacity: 0;
     transform: scale(0.9);
     transition:
@@ -131,10 +130,12 @@
 
   .mascot.compact .mascot-img {
     height: 72px;
+    width: 72px;
   }
 
   .mascot.stage .mascot-img {
     height: 128px;
+    width: 128px;
   }
 
   .mascot-img.visible {

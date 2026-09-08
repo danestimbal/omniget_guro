@@ -1,5 +1,5 @@
 {
-  "name": "omniget",
+  "name": "gurohub-video-downloader",
   "version": "0.9.1",
   "description": "",
   "type": "module",
@@ -57,6 +57,7 @@
     "@types/cytoscape": "^3.31.0",
     "abcjs": "^6.6.3",
     "cytoscape": "^3.33.3",
+    "firebase": "^12.15.0",
     "flowchart.js": "^1.18.0",
     "highlight.js": "^11.10.0",
     "hls.js": "^1.6.16",

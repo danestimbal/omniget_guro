@@ -1,6 +1,6 @@
 <!--
 搜索关键词（放在这里方便 GitHub 搜索、Google 和 AI 助手找到本项目）：
-OmniGet 是一款免费开源的下载器和媒体工具箱，支持 Windows、macOS 和 Linux。
+GuroHub 是一款免费开源的下载器和媒体工具箱，支持 Windows、macOS 和 Linux。
 udemy 课程下载, hotmart 课程下载, 课程下载器, youtube 视频下载, yt-dlp 图形界面, instagram 下载,
 instagram 快拍下载, reels 下载, twitter 视频下载, x 视频下载, pinterest 下载, pinterest 画板备份,
 tiktok 下载, reddit 下载, twitch 录像下载, bilibili 下载, B站下载, telegram 下载, 种子客户端, 磁力链接,
@@ -9,10 +9,10 @@ spicetify, 下载管理器, tauri, rust, svelte.
 -->
 
 <p align="center">
-  <img src="assets/readme/hero.svg" alt="OmniGet：粘贴链接，拿到文件。下载、工具和学习库合在一个桌面应用里，支持 Windows、macOS 和 Linux。" width="100%" />
+  <img src="assets/readme/hero.svg" alt="GuroHub：粘贴链接，拿到文件。下载、工具和学习库合在一个桌面应用里，支持 Windows、macOS 和 Linux。" width="100%" />
 </p>
 
-<h1 align="center">OmniGet</h1>
+<h1 align="center">GuroHub</h1>
 
 <p align="center">
   <a href="README.md">English</a>
@@ -22,7 +22,7 @@ spicetify, 下载管理器, tauri, rust, svelte.
 </p>
 
 <p align="center">
-  <sub>简体中文版由维护者创建，文字由 <a href="https://github.com/Tan665565">@Tan665565</a> 润色（<a href="https://github.com/tonhowtf/omniget/pull/154">PR #154</a>）。感谢。</sub>
+  <sub>简体中文版由维护者创建，文字由 <a href="https://github.com/Tan665565">@Tan665565</a> 润色（<a href="https://github.com/danestimbal/omniget_guro/pull/154">PR #154</a>）。感谢。</sub>
 </p>
 
 <p align="center">
@@ -30,16 +30,16 @@ spicetify, 下载管理器, tauri, rust, svelte.
 </p>
 
 <p align="center">
-  <a href="https://github.com/tonhowtf/omniget/releases/latest"><img src="https://img.shields.io/github/v/release/tonhowtf/omniget?style=for-the-badge&label=release&color=F28500" alt="最新版本" /></a>
-  <a href="https://github.com/tonhowtf/omniget/releases"><img src="https://img.shields.io/github/downloads/tonhowtf/omniget/total?style=for-the-badge&label=downloads&color=1E6FE8" alt="总下载量" /></a>
-  <a href="https://github.com/tonhowtf/omniget/stargazers"><img src="https://img.shields.io/github/stars/tonhowtf/omniget?style=for-the-badge&color=FFD426" alt="GitHub Star 数" /></a>
+  <a href="https://github.com/danestimbal/omniget_guro/releases/latest"><img src="https://img.shields.io/github/v/release/danestimbal/omniget_guro?style=for-the-badge&label=release&color=F28500" alt="最新版本" /></a>
+  <a href="https://github.com/danestimbal/omniget_guro/releases"><img src="https://img.shields.io/github/downloads/danestimbal/omniget_guro/total?style=for-the-badge&label=downloads&color=1E6FE8" alt="总下载量" /></a>
+  <a href="https://github.com/danestimbal/omniget_guro/stargazers"><img src="https://img.shields.io/github/stars/danestimbal/omniget_guro?style=for-the-badge&color=FFD426" alt="GitHub Star 数" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPL--3.0-2AA845?style=for-the-badge" alt="GPL-3.0 许可证" /></a>
   <a href="https://discord.gg/jgdxyPy7Vn"><img src="https://img.shields.io/badge/Discord-社区-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord 社区" /></a>
-  <a href="https://hosted.weblate.org/engage/omniget/"><img src="https://hosted.weblate.org/widget/omniget/frontend-json/svg-badge.svg" alt="翻译状态" /></a>
+  <a href="https://hosted.weblate.org/engage/gurohub/"><img src="https://hosted.weblate.org/widget/gurohub/frontend-json/svg-badge.svg" alt="翻译状态" /></a>
 </p>
 
 <p align="center">
-  <a href="#下载与安装"><img src="https://img.shields.io/badge/下载_Windows、macOS_或_Linux_版-→-F28500?style=for-the-badge" alt="下载 OmniGet" height="40" /></a>
+  <a href="#下载与安装"><img src="https://img.shields.io/badge/下载_Windows、macOS_或_Linux_版-→-F28500?style=for-the-badge" alt="下载 GuroHub" height="40" /></a>
   &nbsp;
   <a href="#tools-工具区16-个分类共-108-个工具"><img src="https://img.shields.io/badge/查看_108_个工具-→-3D5BF0?style=for-the-badge" alt="查看 Tools 工具区" height="40" /></a>
 </p>
@@ -50,24 +50,24 @@ spicetify, 下载管理器, tauri, rust, svelte.
 </p>
 
 <p align="center">
-  <img src="assets/readme/home.png" alt="OmniGet 主界面：粘贴 URL、磁力链接或 .torrent，文件直接落到你的文件夹" width="900" />
+  <img src="assets/readme/home.png" alt="GuroHub 主界面：粘贴 URL、磁力链接或 .torrent，文件直接落到你的文件夹" width="900" />
 </p>
 
 ---
 
 ## 目录
 
-- [为什么用 OmniGet](#为什么用-omniget)
+- [为什么用 GuroHub](#为什么用-omniget)
 - [下载与安装](#下载与安装)
 - [一分钟完成第一次下载](#一分钟完成第一次下载)
-- [OmniGet 能下载什么](#omniget-能下载什么)
+- [GuroHub 能下载什么](#omniget-能下载什么)
 - [浏览器扩展，手把手安装](#浏览器扩展手把手安装)
 - [Tools 工具区：16 个分类共 108 个工具](#tools-工具区16-个分类共-108-个工具)
 - [插件：Courses、Study、Telegram、Convert](#插件coursesstudytelegramconvert)
 - [内置聊天，默认关闭](#内置聊天默认关闭)
 - [给英雄联盟玩家的功能](#给英雄联盟玩家的功能)
 - [其他随附功能](#其他随附功能)
-- [隐私，以及 OmniGet 拒绝做的事](#隐私以及-omniget-拒绝做的事)
+- [隐私，以及 GuroHub 拒绝做的事](#隐私以及-omniget-拒绝做的事)
 - [常见问题](#常见问题)
 - [命令行](#命令行)
 - [从源码构建](#从源码构建)
@@ -75,19 +75,19 @@ spicetify, 下载管理器, tauri, rust, svelte.
 
 ---
 
-## 为什么用 OmniGet
+## 为什么用 GuroHub
 
 你买了一门课，想在平台下架之前把它存到硬盘上。你留着一份 yt-dlp 参数小抄，因为那些参数怎么都记不住。你有一个网站下 Instagram 快拍，另一个下 X 的视频，一个 Chrome 扩展下 Pinterest，一个 Python 脚本下字幕，而它们没有一个记得你的登录状态。
 
-OmniGet 把这一切都收进一个输入框。粘贴链接，看到带清晰度选项的预览，点下载。同一个窗口接着还能播放课程、打开 PDF、转写音频、备份 Pinterest 画板。yt-dlp 和 FFmpeg 自己安装、自己更新，没有什么要配置，也不用打开终端。
+GuroHub 把这一切都收进一个输入框。粘贴链接，看到带清晰度选项的预览，点下载。同一个窗口接着还能播放课程、打开 PDF、转写音频、备份 Pinterest 画板。yt-dlp 和 FFmpeg 自己安装、自己更新，没有什么要配置，也不用打开终端。
 
 <p align="center">
-  <img src="assets/readme/workflow.svg" alt="OmniGet 的工作方式：粘贴链接或按下快捷键，OmniGet 识别网站并用 yt-dlp 或原生提取器抓取，文件落到你的文件夹，并在内置播放器、阅读器或工具中打开。" width="100%" />
+  <img src="assets/readme/workflow.svg" alt="GuroHub 的工作方式：粘贴链接或按下快捷键，GuroHub 识别网站并用 yt-dlp 或原生提取器抓取，文件落到你的文件夹，并在内置播放器、阅读器或工具中打开。" width="100%" />
 </p>
 
 ### 对比
 
-| | OmniGet | 只用 yt-dlp | 单站网页下载器 | 付费课程下载器 |
+| | GuroHub | 只用 yt-dlp | 单站网页下载器 | 付费课程下载器 |
 |---|---|---|---|---|
 | 支持网站 | 课程、Instagram、X、Pinterest、Bilibili、Telegram、种子原生支持，另有 1,800+ 网站通过 yt-dlp | 1,800+ | 一个 | 一两个平台 |
 | 安装 | 下载一个文件，打开 | Python、PATH、FFmpeg、参数 | 无 | 安装程序和许可证密钥 |
@@ -96,13 +96,13 @@ OmniGet 把这一切都收进一个输入框。粘贴链接，看到带清晰度
 | 下载之后 | 播放器、阅读器、记忆卡、笔记、108 个工具 | 文件 | 文件，常常被重新编码 | 文件 |
 | 价格与许可证 | 免费，GPL-3.0 | 免费，Unlicense | 免费带广告 | 订阅 |
 
-yt-dlp 是 OmniGet 运行的引擎，没有它就没有 OmniGet。如果你常年住在终端里，只需要文件，直接用 yt-dlp 更合适。
+yt-dlp 是 GuroHub 运行的引擎，没有它就没有 GuroHub。如果你常年住在终端里，只需要文件，直接用 yt-dlp 更合适。
 
 ---
 
 ## 下载与安装
 
-选择你的系统。所有构建都发布在 [Releases 页面](https://github.com/tonhowtf/omniget/releases/latest)。更新在应用内推送。
+选择你的系统。所有构建都发布在 [Releases 页面](https://github.com/danestimbal/omniget_guro/releases/latest)。更新在应用内推送。
 
 <table>
   <tr>
@@ -113,7 +113,7 @@ yt-dlp 是 OmniGet 运行的引擎，没有它就没有 OmniGet。如果你常�
   <tr>
     <td><b>Windows 10 / 11</b></td>
     <td><code>omniget_x.y.z_x64-setup.exe</code>（安装版）<br/><code>omniget_x.y.z_x64-portable.exe</code>（免安装，放哪儿都能跑）<br/><code>omniget_x.y.z_x64_en-US.msi</code>（企业部署用）</td>
-    <td><code>winget install -e --id tonhowtf.OmniGet</code></td>
+    <td><code>winget install -e --id tonhowtf.GuroHub</code></td>
   </tr>
   <tr>
     <td><b>macOS 10.15+</b></td>
@@ -129,18 +129,18 @@ yt-dlp 是 OmniGet 运行的引擎，没有它就没有 OmniGet。如果你常�
 
 ### 第一次启动的警告，以及如何解除
 
-OmniGet 没有用付费证书签名，所以每个系统第一次打开时都会弹警告。这对开源桌面应用很正常，处理一次就好。
+GuroHub 没有用付费证书签名，所以每个系统第一次打开时都会弹警告。这对开源桌面应用很正常，处理一次就好。
 
 **Windows。** SmartScreen 显示一个蓝色窗口。点击**更多信息**，再点**仍要运行**。
 
-**macOS。** Gatekeeper 拒绝打开应用，可能提示它「已损坏」。把 OmniGet 拖进「应用程序」之后，打开「终端」（Spotlight 里输入 Terminal），粘贴这两行：
+**macOS。** Gatekeeper 拒绝打开应用，可能提示它「已损坏」。把 GuroHub 拖进「应用程序」之后，打开「终端」（Spotlight 里输入 Terminal），粘贴这两行：
 
 ```bash
 xattr -cr /Applications/omniget.app
 codesign --force --deep --sign - /Applications/omniget.app
 ```
 
-然后像平常一样从启动台打开 OmniGet。
+然后像平常一样从启动台打开 GuroHub。
 
 **Linux，Debian 12+ 或 Ubuntu 24.04+ 上的 AppImage。** 这些版本不带 AppImage 需要的 FUSE 2。如果运行报 libfuse 错误，执行 `sudo apt install libfuse2`，或者用 `./omniget.AppImage --appimage-extract-and-run` 启动。用 `.deb` 就完全没有这个问题。
 
@@ -152,25 +152,25 @@ codesign --force --deep --sign - /Applications/omniget.app
 
 ## 一分钟完成第一次下载
 
-1. 打开 OmniGet。设置向导会问你语言和主题，然后一键安装 yt-dlp 和 FFmpeg。yt-dlp 在运行前会核对 SHA-256。
+1. 打开 GuroHub。设置向导会问你语言和主题，然后一键安装 yt-dlp 和 FFmpeg。yt-dlp 在运行前会核对 SHA-256。
 2. 复制任意链接：YouTube 视频、Instagram Reel、X 帖子、Pinterest 画板、磁力链接、文件直链。
-3. 粘贴到主界面的输入框。OmniGet 识别网站，显示标题、封面和可用清晰度。选一个，按回车。
+3. 粘贴到主界面的输入框。GuroHub 识别网站，显示标题、封面和可用清晰度。选一个，按回车。
 
 「下载」页面直接从下载器读取速度、阶段和剩余时间，所以卡住的下载看起来就是卡住了，而不是一直停在「剩余 3 秒」。中断的下载从断点继续。被限速的网站会以退避方式重试，每个站点的连接数也会自动调整：YouTube 最多 16 个并行分片，返回 429 的站点则减少。机器上有 Python 3.10 或更新版本时，yt-dlp 会以 zipapp 方式在其上运行，启动不到一秒，不用每次都解包内置的二进制文件。
 
 <p align="center">
-  <img src="assets/readme/downloads.png" alt="OmniGet 下载页面，一个 4K YouTube 视频正在下载，显示阶段、速度、剩余时间和精确的 yt-dlp 命令，以及排队和已完成的条目" width="900" />
+  <img src="assets/readme/downloads.png" alt="GuroHub 下载页面，一个 4K YouTube 视频正在下载，显示阶段、速度、剩余时间和精确的 yt-dlp 命令，以及排队和已完成的条目" width="900" />
 </p>
 
 ### 连窗口都不用开
 
-在系统任何地方复制一个链接，按 **Ctrl+Shift+D**（macOS 上是 **Cmd+Shift+D**）。OmniGet 读取剪贴板，在后台开始下载。第二个快捷键 **Ctrl+Shift+M** 只抓音频，一条 YouTube 链接不用打开任何东西就变成 MP3。它默认关闭，需要你手动启用；两个快捷键都可以在**设置 → 下载 → 剪贴板与快捷键**里重新绑定。
+在系统任何地方复制一个链接，按 **Ctrl+Shift+D**（macOS 上是 **Cmd+Shift+D**）。GuroHub 读取剪贴板，在后台开始下载。第二个快捷键 **Ctrl+Shift+M** 只抓音频，一条 YouTube 链接不用打开任何东西就变成 MP3。它默认关闭，需要你手动启用；两个快捷键都可以在**设置 → 下载 → 剪贴板与快捷键**里重新绑定。
 
 ---
 
-## OmniGet 能下载什么
+## GuroHub 能下载什么
 
-OmniGet 为最常用的平台写了原生提取器，其余的交给 [yt-dlp](https://github.com/yt-dlp/yt-dlp)，后者覆盖大约 1,800 个网站。
+GuroHub 为最常用的平台写了原生提取器，其余的交给 [yt-dlp](https://github.com/yt-dlp/yt-dlp)，后者覆盖大约 1,800 个网站。
 
 | 类别 | 网站与格式 |
 |---|---|
@@ -179,71 +179,71 @@ OmniGet 为最常用的平台写了原生提取器，其余的交给 [yt-dlp](ht
 | 哔哩哔哩，登录后 | 按你的会员等级提供 4K、HDR、杜比视界、Hi-Res 无损和杜比全景声。弹幕导出为 XML、ASS 或 JSON，为 Kodi 和 Jellyfin 生成 NFO，自定义命名模板，支持 11 种链接类型，包括番剧、课程、收藏夹、稍后再看和历史记录 |
 | 图片画廊 | 通过 gallery-dl 下载 250+ 网站的整个画廊和主页（DeviantArt、Pixiv、ArtStation、Flickr、Tumblr、Imgur、Kemono 等） |
 | 批量 | 粘贴多条链接或载入 `.txt`，下载整个 subreddit、Reddit 和 X 的主页、Instagram 和 Pinterest 的主页 |
-| 文件与传输 | 用内置 BitTorrent 客户端下载 `.torrent` 和磁力链接，HTTP 直链，HLS 和 DASH 清单，以及两台装了 OmniGet 的电脑之间用一串短口令互传文件 |
+| 文件与传输 | 用内置 BitTorrent 客户端下载 `.torrent` 和磁力链接，HTTP 直链，HLS 和 DASH 清单，以及两台装了 GuroHub 的电脑之间用一串短口令互传文件 |
 | Telegram | 通过 Telegram 插件下载你所在的任何频道或群组里的照片、视频、文件和音频 |
 
 设置一次就不用再管的选项：默认清晰度、纯音频格式（MP3、M4A、Opus、FLAC 或 WAV）、字幕语言和格式（SRT、VTT、ASS，内嵌或外挂）、封面和元数据嵌入、文件名模板、按平台分文件夹、跳过已有文件、按章节切分、限速、并发数、代理。规则可以把某个频道或域名固定送到指定文件夹和清晰度，不再每次询问。关注的频道会在后台检查，可以自动下载新视频并在托盘通知。
 
 <p align="center">
-  <img src="assets/readme/settings.png" alt="OmniGet 设置：分组侧栏包含外观、下载、网络、Cookie、频道、AI、插件和高级，下载部分包含输出、清晰度、字幕、剪贴板与快捷键、按平台选项" width="900" />
+  <img src="assets/readme/settings.png" alt="GuroHub 设置：分组侧栏包含外观、下载、网络、Cookie、频道、AI、插件和高级，下载部分包含输出、清晰度、字幕、剪贴板与快捷键、按平台选项" width="900" />
 </p>
 
 ---
 
 ## 浏览器扩展，手把手安装
 
-扩展做两件事。在它认识的网站上（YouTube、Instagram、TikTok、X、Reddit、Twitch、Pinterest、Bluesky、Telegram、Vimeo、Udemy、Hotmart、Rocketseat、哔哩哔哩、SoundCloud），点一下或按 **Alt+O** 就把当前页面发给 OmniGet。在其他任何网站上，它监听网络流量，发现 MP4、HLS、DASH、WebM 和音频流，并在弹窗里列出来。两种情况下它都会转发你的 Cookie 和 Referer，正是这一点让 OmniGet 能下载你已登录的私密内容，比如 Instagram 快拍、付费课程或会员专属视频。Cookie 按真实站点分组，所以 `.com.br` 这类域名有自己独立的条目，不会和其他所有 `.com.br` 站点混在一起。弹窗里还有一个针对 YouTube 的 **强制 H.264** 开关，给播放 VP9 和 AV1 会卡顿的电脑用。
+扩展做两件事。在它认识的网站上（YouTube、Instagram、TikTok、X、Reddit、Twitch、Pinterest、Bluesky、Telegram、Vimeo、Udemy、Hotmart、Rocketseat、哔哩哔哩、SoundCloud），点一下或按 **Alt+O** 就把当前页面发给 GuroHub。在其他任何网站上，它监听网络流量，发现 MP4、HLS、DASH、WebM 和音频流，并在弹窗里列出来。两种情况下它都会转发你的 Cookie 和 Referer，正是这一点让 GuroHub 能下载你已登录的私密内容，比如 Instagram 快拍、付费课程或会员专属视频。Cookie 按真实站点分组，所以 `.com.br` 这类域名有自己独立的条目，不会和其他所有 `.com.br` 站点混在一起。弹窗里还有一个针对 YouTube 的 **强制 H.264** 开关，给播放 VP9 和 AV1 会卡顿的电脑用。
 
 按你的熟悉程度选一个级别。
 
 <p align="center">
-  <img src="assets/readme/extension.svg" alt="配对流程：在 Chrome 里安装扩展，在 OmniGet 设置里点「配对扩展」，扩展在 localhost 找到应用并连接。之后每次下载都带上你的 Cookie。" width="100%" />
+  <img src="assets/readme/extension.svg" alt="配对流程：在 Chrome 里安装扩展，在 GuroHub 设置里点「配对扩展」，扩展在 localhost 找到应用并连接。之后每次下载都带上你的 Cookie。" width="100%" />
 </p>
 
 ### 级别一：在应用里完成（不用另外下载，不用解压）
 
-1. 打开 OmniGet，没装的先装上。至少启动一次。
-2. 进入**设置 → 插件 → 浏览器扩展**。点 Chrome 旁边的**更新 / 安装**。OmniGet 会把内置的扩展复制到一个文件夹，并帮你打开这个文件夹。
+1. 打开 GuroHub，没装的先装上。至少启动一次。
+2. 进入**设置 → 插件 → 浏览器扩展**。点 Chrome 旁边的**更新 / 安装**。GuroHub 会把内置的扩展复制到一个文件夹，并帮你打开这个文件夹。
 3. 打开 Chrome（Edge、Brave 等 Chromium 浏览器操作一样），在地址栏输入 `chrome://extensions`。
 4. 打开右上角的**开发者模式**开关。
-5. 点**加载已解压的扩展程序**，选择 OmniGet 刚打开的那个文件夹。
-6. 工具栏出现 OmniGet 图标。一个选项页面会自动打开，提示正在寻找桌面应用。
-7. 回到 OmniGet，还是在**设置 → 插件 → 浏览器扩展**，点**配对扩展**。几秒钟后应用显示「扩展已连接」，选项页面变绿。完成。
+5. 点**加载已解压的扩展程序**，选择 GuroHub 刚打开的那个文件夹。
+6. 工具栏出现 GuroHub 图标。一个选项页面会自动打开，提示正在寻找桌面应用。
+7. 回到 GuroHub，还是在**设置 → 插件 → 浏览器扩展**，点**配对扩展**。几秒钟后应用显示「扩展已连接」，选项页面变绿。完成。
 
-从此以后，打开任何受支持的页面，点图标即可。页面、Cookie 和标题发给 OmniGet，下载开始。你的 Cookie 也会出现在**设置 → Cookie**里，Courses 插件以及 Instagram、X 和 Pinterest 工具都会复用它们。
+从此以后，打开任何受支持的页面，点图标即可。页面、Cookie 和标题发给 GuroHub，下载开始。你的 Cookie 也会出现在**设置 → Cookie**里，Courses 插件以及 Instagram、X 和 Pinterest 工具都会复用它们。
 
 ### 级别二：从发布包的 zip 安装
 
-每个版本都附带 `omniget-chrome-extension-vX.Y.Z.zip`。从[最新版本](https://github.com/tonhowtf/omniget/releases/latest)下载、解压，然后按上面第 3 到第 7 步操作，把**加载已解压的扩展程序**指向解压出的文件夹。适合应用装在一台电脑、浏览器在另一台的情况，或者你在帮别人安装。
+每个版本都附带 `omniget-chrome-extension-vX.Y.Z.zip`。从[最新版本](https://github.com/danestimbal/omniget_guro/releases/latest)下载、解压，然后按上面第 3 到第 7 步操作，把**加载已解压的扩展程序**指向解压出的文件夹。适合应用装在一台电脑、浏览器在另一台的情况，或者你在帮别人安装。
 
 ### 级别三：Firefox、其他浏览器和手动配对
 
 Firefox：**设置 → 插件 → 浏览器扩展 → 更新 / 安装**，点 Firefox 旁边的按钮，然后打开 `about:debugging#/runtime/this-firefox`，点**临时载入附加组件**，选择导出文件夹里的 `manifest.json`。Firefox 重启后会丢弃临时附加组件，所以在扩展上架 AMO 之前需要重复这一步。Safari 暂不支持，因为 Safari 扩展必须通过 App Store 分发。
 
-手动配对：如果**配对扩展**超时了，打开扩展的选项页（右键图标 → 选项），然后在 OmniGet 里显示并复制**配对令牌**，粘贴到选项页。端点 URL 会自动检测。应用监听 `127.0.0.1` 的 47720 到 47729 端口，令牌按安装生成，所以什么都不会离开你的电脑。
+手动配对：如果**配对扩展**超时了，打开扩展的选项页（右键图标 → 选项），然后在 GuroHub 里显示并复制**配对令牌**，粘贴到选项页。端点 URL 会自动检测。应用监听 `127.0.0.1` 的 47720 到 47729 端口，令牌按安装生成，所以什么都不会离开你的电脑。
 
-如果扩展已安装但 OmniGet 没开着，点击会回落到 `omniget://` 链接协议，仍然能把 URL 加入队列，但带不上 Cookie。Chrome 第一次询问时勾选「始终允许」。
+如果扩展已安装但 GuroHub 没开着，点击会回落到 `omniget://` 链接协议，仍然能把 URL 加入队列，但带不上 Cookie。Chrome 第一次询问时勾选「始终允许」。
 
 ---
 
 ## Tools 工具区：16 个分类共 108 个工具
 
-Tools 是 OmniGet 里长到下载之外的那部分。每个方块是一项工作：一条独立的 Rust 命令，JSON 进、JSON 出，这也是让 AI 代理通过内置的 MCP 服务器调用它们的基础。工具区有一个能听懂英文和葡萄牙文的搜索框（输入「legenda」能找到字幕工具），还有平台筛选；只能在 Windows 上运行的工具会在方块上注明，在其他系统上隐藏。
+Tools 是 GuroHub 里长到下载之外的那部分。每个方块是一项工作：一条独立的 Rust 命令，JSON 进、JSON 出，这也是让 AI 代理通过内置的 MCP 服务器调用它们的基础。工具区有一个能听懂英文和葡萄牙文的搜索框（输入「legenda」能找到字幕工具），还有平台筛选；只能在 Windows 上运行的工具会在方块上注明，在其他系统上隐藏。
 
 <p align="center">
-  <img src="assets/readme/tools.png" alt="OmniGet 的 Tools 工具区，16 个分类：YouTube、语音与字幕、视频编辑、Instagram、X、Pinterest、Spotify、PDF、文档、图片、系统、文件、下载、自动化、手机和 AI" width="900" />
+  <img src="assets/readme/tools.png" alt="GuroHub 的 Tools 工具区，16 个分类：YouTube、语音与字幕、视频编辑、Instagram、X、Pinterest、Spotify、PDF、文档、图片、系统、文件、下载、自动化、手机和 AI" width="900" />
 </p>
 
 状态标记：无标记表示可用，**beta** 表示能用但没在所有类型账号上测过，**计划中** 表示方块已经放上去让你看到方向，但暂时什么都不做。
 
 <table>
   <tr>
-    <td><img src="assets/readme/tools-instagram.png" alt="OmniGet 的 Instagram 工具：下载帖子、批量下载、Reel 音频、快拍、精选、谁看了我的快拍、查看主页、高清头像、下载整个主页、谁没回关、粉丝、互关、谁取关了我、僵尸粉、白名单、数据导出、主页分析、对比主页、话题探索、评论导出、点赞名单、抽奖、发布和定时发布" /></td>
-    <td><img src="assets/readme/tools-x.png" alt="OmniGet 的 X / Twitter 工具：下载帖子、展开长推、帖子转图片、主页透视、主页媒体、高级搜索、导出书签、谁没回关、你的 X 存档和 Grok" /></td>
+    <td><img src="assets/readme/tools-instagram.png" alt="GuroHub 的 Instagram 工具：下载帖子、批量下载、Reel 音频、快拍、精选、谁看了我的快拍、查看主页、高清头像、下载整个主页、谁没回关、粉丝、互关、谁取关了我、僵尸粉、白名单、数据导出、主页分析、对比主页、话题探索、评论导出、点赞名单、抽奖、发布和定时发布" /></td>
+    <td><img src="assets/readme/tools-x.png" alt="GuroHub 的 X / Twitter 工具：下载帖子、展开长推、帖子转图片、主页透视、主页媒体、高级搜索、导出书签、谁没回关、你的 X 存档和 Grok" /></td>
   </tr>
   <tr>
-    <td><img src="assets/readme/tools-pinterest.png" alt="OmniGet 的 Pinterest 工具：下载 Pin、画板备份、主页备份、无 AI 无广告搜索、相似 Pin、查找来源、重复项、配色、离线画廊和关键词灵感" /></td>
-    <td><img src="assets/readme/tools-speech.png" alt="OmniGet 的语音与字幕工具：用 whisper.cpp 转写、文字转语音、翻译字幕、按字幕配音，以及计划中的声音克隆、声音设计、人声分离和听写" /></td>
+    <td><img src="assets/readme/tools-pinterest.png" alt="GuroHub 的 Pinterest 工具：下载 Pin、画板备份、主页备份、无 AI 无广告搜索、相似 Pin、查找来源、重复项、配色、离线画廊和关键词灵感" /></td>
+    <td><img src="assets/readme/tools-speech.png" alt="GuroHub 的语音与字幕工具：用 whisper.cpp 转写、文字转语音、翻译字幕、按字幕配音，以及计划中的声音克隆、声音设计、人声分离和听写" /></td>
   </tr>
 </table>
 
@@ -305,7 +305,7 @@ Tools 是 OmniGet 里长到下载之外的那部分。每个方块是一项工�
 - **点赞名单。** 列出并导出给帖子点赞的账号。
 - **抽奖。** 在评论中抽取获奖者，支持提及、关键词和每人一次的规则。
 - **发布。** 通过你的会话或官方 Graph API 发布照片、多图、Reel、视频或快拍。*beta*
-- **定时发布。** 按日期和时间排队发帖，OmniGet 开着的时候自动发布。*beta*
+- **定时发布。** 按日期和时间排队发帖，GuroHub 开着的时候自动发布。*beta*
 
 ### X / Twitter（10）
 
@@ -400,11 +400,11 @@ Tools 是 OmniGet 里长到下载之外的那部分。每个方块是一项工�
 ### AI（6）
 
 - **比较价格。** 同一模型在不同服务商的价格，数据来自 LiteLLM 和 models.dev。
-- **AI 花费。** OmniGet 在 AI 上花了多少，按天、模型和任务统计，来自本地账本。
+- **AI 花费。** GuroHub 在 AI 上花了多少，按天、模型和任务统计，来自本地账本。
 - **本地模型（Ollama）。** 查看、下载和删除本地模型，把它们当作免费服务商使用。
 - **去 AI 味。** 把一眼 AI 生成的文字改写得像人写的，不改变原意。运行在你配置的 AI 上。*beta*
 - **API 密钥。** 本地保险库，集中保管密钥和账号，带连接测试，可查看 OpenRouter、DeepSeek、SiliconFlow 和 New API 的余额，并导出到 Claude Code、Codex、Cherry Studio、opencode 或 `.env` 文件。
-- **MCP 服务器。** 通过本地桥接以 Model Context Protocol 暴露 OmniGet 的工具，31 个工具，使用和扩展相同的令牌，附带 Claude Code、Claude Desktop、Cursor、VS Code、Goose 和 Codex 的现成配置片段。*beta*
+- **MCP 服务器。** 通过本地桥接以 Model Context Protocol 暴露 GuroHub 的工具，31 个工具，使用和扩展相同的令牌，附带 Claude Code、Claude Desktop、Cursor、VS Code、Goose 和 Codex 的现成配置片段。*beta*
 
 所有涉及 AI 的工具都使用**设置 → AI** 里配置的服务商：OpenAI、Anthropic，或任何兼容 OpenAI 接口的本地端点，比如 Ollama 或 LM Studio。密钥保存在本地，从不写入日志。自动点击器、听写和回放缓冲都可以各自设置全局快捷键。
 
@@ -412,15 +412,15 @@ Tools 是 OmniGet 里长到下载之外的那部分。每个方块是一项工�
 
 ## 插件：Courses、Study、Telegram、Convert
 
-插件是启动时加载的独立 Rust 库。OmniGet 在第一次启动时安装官方插件集，并自动更新。Marketplace 页面显示已安装的插件、每个插件被允许做什么（事件、通知、设置、下载文件夹、代理、托管工具、下载队列），并且可以隐藏、禁用或卸载任何一个。
+插件是启动时加载的独立 Rust 库。GuroHub 在第一次启动时安装官方插件集，并自动更新。Marketplace 页面显示已安装的插件、每个插件被允许做什么（事件、通知、设置、下载文件夹、代理、托管工具、下载队列），并且可以隐藏、禁用或卸载任何一个。
 
 <p align="center">
-  <img src="assets/readme/marketplace.png" alt="OmniGet 的 Marketplace，列出 Courses、Study、Telegram 和 Convert 插件，显示版本、作者、权限和启用开关" width="900" />
+  <img src="assets/readme/marketplace.png" alt="GuroHub 的 Marketplace，列出 Courses、Study、Telegram 和 Convert 插件，显示版本、作者、权限和启用开关" width="900" />
 </p>
 
 ### Courses
 
-通过应用内的浏览器窗口登录 **Hotmart**、**Udemy**、**Kiwify**、**Rocketseat** 或 **Meta-Analysis Academy**，也可以使用扩展保存的 Cookie，或在平台允许时直接用邮箱和密码。OmniGet 列出你购买的课程，打开课程大纲让你勾选想要的章节（并告诉你有多少课时受 DRM 保护、会被跳过），然后下载全部课时和附件，需要的话可以连续编号。Hotmart 使用当前的 OIDC 登录流程，所以在 Hotmart 2026 年更换认证方式之后仍然可用，免费课程和在 Hotmart Club 之外交付的课程也会列出来。下载好的课程自动出现在 Study 里。
+通过应用内的浏览器窗口登录 **Hotmart**、**Udemy**、**Kiwify**、**Rocketseat** 或 **Meta-Analysis Academy**，也可以使用扩展保存的 Cookie，或在平台允许时直接用邮箱和密码。GuroHub 列出你购买的课程，打开课程大纲让你勾选想要的章节（并告诉你有多少课时受 DRM 保护、会被跳过），然后下载全部课时和附件，需要的话可以连续编号。Hotmart 使用当前的 OIDC 登录流程，所以在 Hotmart 2026 年更换认证方式之后仍然可用，免费课程和在 Hotmart Club 之外交付的课程也会列出来。下载好的课程自动出现在 Study 里。
 
 ### Study
 
@@ -446,7 +446,7 @@ FFmpeg 转换，机器支持时使用 GPU 加速：视频和音频的容器、�
 
 ## 内置聊天，默认关闭
 
-OmniGet 自带一个叫 OmniDisc 的 Discord 风格聊天，配合你自己用 [omnidisc-server](https://github.com/tonhowtf/omnidisc-server) 搭建的服务器使用。文字频道、私信、好友、角色与权限、置顶、搜索、语音、视频和屏幕共享。私信及其中发送的文件用 MLS 端到端加密，加密通话的密钥由同一个群组派生，所以服务器运营者无法窃听。语音在 Rust 里运行而不是在 WebView 里，屏幕共享使用机器的硬件编码器。通过聊天发送的文件在服务器上加密存储，三十分钟后删除。
+GuroHub 自带一个叫 OmniDisc 的 Discord 风格聊天，配合你自己用 [omnidisc-server](https://github.com/tonhowtf/omnidisc-server) 搭建的服务器使用。文字频道、私信、好友、角色与权限、置顶、搜索、语音、视频和屏幕共享。私信及其中发送的文件用 MLS 端到端加密，加密通话的密钥由同一个群组派生，所以服务器运营者无法窃听。语音在 Rust 里运行而不是在 WebView 里，屏幕共享使用机器的硬件编码器。通过聊天发送的文件在服务器上加密存储，三十分钟后删除。
 
 它是实验性功能，在你于**设置 → 高级 → 聊天（OmniDisc）**开启并添加服务器之前什么都不会做。
 
@@ -456,7 +456,7 @@ OmniGet 自带一个叫 OmniDisc 的 Discord 风格聊天，配合你自己用 [
 
 侧栏里有一个 League 菜单。它在本地读取正在运行的游戏客户端，不需要账号，也不依赖第三方出装网站，客户端没打开时什么都不做。如果你不玩，在**设置 → 高级 → League of Legends**里关掉，菜单就会消失。
 
-双方队伍的对局侦察：段位、近期状态、KDA 以及每位玩家真正在玩的英雄。胜率预测会按样本量把胜率往基准值收缩，并且始终给出区间。全部十名玩家的实时经济、补刀和等级。可编辑的分路目标。由客户端自身推荐的符文和召唤师技能，一键应用，且只替换 OmniGet 创建的那一页。按位置的英雄梯队。按 Riot ID 搜索玩家。可选的自动化：自动接受对局、按你的优先列表选人和禁人、从 ARAM 备选席抓英雄。每项自动化都有自己的开关。
+双方队伍的对局侦察：段位、近期状态、KDA 以及每位玩家真正在玩的英雄。胜率预测会按样本量把胜率往基准值收缩，并且始终给出区间。全部十名玩家的实时经济、补刀和等级。可编辑的分路目标。由客户端自身推荐的符文和召唤师技能，一键应用，且只替换 GuroHub 创建的那一页。按位置的英雄梯队。按 Riot ID 搜索玩家。可选的自动化：自动接受对局、按你的优先列表选人和禁人、从 ARAM 备选席抓英雄。每项自动化都有自己的开关。
 
 新增内容，标为 beta 或实验性：**个人资料**标签页，编辑别人看到的你（聊天中显示的段位、挑战徽章和头衔、横幅和纹章、聊天头像、批量管理好友）；**皮肤、炫彩和守卫轮盘**，锁定英雄的那一刻随机选一个你拥有的皮肤，可以重抽；**英雄和分路抽签**，想让队列替你做决定时用，另有可选的选人阶段随机锁定；通过客户端自身的后端网关获取**任意玩家的完整对局历史和排位数据**，并可下载回放；还有一个 **AI 教练**，用你配置的 AI 服务商和 OP.GG 的公开数据复盘一场对局、总结最近几场的趋势，或回答关于当前选人阶段的问题。
 
@@ -467,8 +467,8 @@ OmniGet 自带一个叫 OmniDisc 的 Discord 风格聊天，配合你自己用 [
 - 命令面板（**Ctrl+K** 或 **Cmd+K**），跳转到任何页面、设置或工具。
 - 剪贴板检测，复制链接后弹出提示，一键下载。
 - Cookie 管理器，按网站保存会话，来自扩展捕获或导入的 `cookies.txt`，每个域名都有测试按钮。
-- 视频摘要：在**设置 → AI** 里粘贴 URL，OmniGet 抓取字幕并按你选的长度和语言总结。
-- 给别人发文件：选文件，分享口令，对方粘贴到自己的 OmniGet 里。
+- 视频摘要：在**设置 → AI** 里粘贴 URL，GuroHub 抓取字幕并按你选的长度和语言总结。
+- 给别人发文件：选文件，分享口令，对方粘贴到自己的 GuroHub 里。
 - Discord Rich Presence，显示你在听、在看或在读什么。下载内容保持私密。
 - 托盘图标、随系统启动、最小化启动、下载时阻止休眠。
 - 每次下载都保留实际执行的 yt-dlp 命令。打开、改一个参数、重试。
@@ -478,21 +478,21 @@ OmniGet 自带一个叫 OmniDisc 的 Discord 风格聊天，配合你自己用 [
 
 ---
 
-## 隐私，以及 OmniGet 拒绝做的事
+## 隐私，以及 GuroHub 拒绝做的事
 
-一切都在你的电脑上运行。没有账号，中间没有我们的服务器，也不会上报你下载了什么。Cookie 和 API 密钥保存在你的本地配置里。OmniGet 自己发起的网络请求只有三类：你要求下载的网站、去 GitHub 获取更新和插件、以及你在使用 AI 工具时配置的 AI 服务商。
+一切都在你的电脑上运行。没有账号，中间没有我们的服务器，也不会上报你下载了什么。Cookie 和 API 密钥保存在你的本地配置里。GuroHub 自己发起的网络请求只有三类：你要求下载的网站、去 GitHub 获取更新和插件、以及你在使用 AI 工具时配置的 AI 服务商。
 
-OmniGet 只下载你自己已登录的会话本来就能打开的内容。它不绕过 DRM，不破解付费墙，不共享凭据；有 DRM 保护的课时会被跳过并告知。尊重版权和各平台的服务条款是你的责任。完整条款在应用内的**关于 → 条款与伦理**。
+GuroHub 只下载你自己已登录的会话本来就能打开的内容。它不绕过 DRM，不破解付费墙，不共享凭据；有 DRM 保护的课时会被跳过并告知。尊重版权和各平台的服务条款是你的责任。完整条款在应用内的**关于 → 条款与伦理**。
 
 ---
 
 ## 常见问题
 
-**OmniGet 免费吗？**
+**GuroHub 免费吗？**
 免费。GPL-3.0，没有付费版本，没有广告，不用注册。
 
-**OmniGet 是 yt-dlp 的图形界面吗？**
-一部分是。yt-dlp 负责长尾网站，OmniGet 把它打包、校验并自动更新。在此之上还有课程、Instagram、X、Pinterest、哔哩哔哩、Telegram 和种子的原生提取器，带续传和重试的队列，Tools 工具区，以及 Study 学习库。
+**GuroHub 是 yt-dlp 的图形界面吗？**
+一部分是。yt-dlp 负责长尾网站，GuroHub 把它打包、校验并自动更新。在此之上还有课程、Instagram、X、Pinterest、哔哩哔哩、Telegram 和种子的原生提取器，带续传和重试的队列，Tools 工具区，以及 Study 学习库。
 
 **能下载我买过的 Udemy 或 Hotmart 课程吗？**
 能。安装 Courses 插件（已预装），在应用里登录，选择课程和章节，下载。课时和附件按课程分文件夹保存，并出现在 Study 里。Kiwify、Rocketseat 和 Meta-Analysis Academy 的用法相同。
@@ -525,13 +525,13 @@ OmniGet 只下载你自己已登录的会话本来就能打开的内容。它不
 能，在 Windows 上，在可执行文件旁边放一个 `portable.txt`。
 
 **Linux 该选哪个包？**
-Debian 和 Ubuntu：`.deb`。Fedora、openSUSE、RHEL 系：`.rpm`。其他：`.AppImage`。x86_64 和 ARM64 都有发布。OmniGet 不在 Flathub 上。
+Debian 和 Ubuntu：`.deb`。Fedora、openSUSE、RHEL 系：`.rpm`。其他：`.AppImage`。x86_64 和 ARM64 都有发布。GuroHub 不在 Flathub 上。
 
 ---
 
 ## 命令行
 
-`omniget-cli` 随每个版本发布，支持 Windows、macOS（Intel 和 Apple Silicon）和 Linux。从[最新版本](https://github.com/tonhowtf/omniget/releases/latest)下载 `omniget-cli-<版本>-<平台>`。
+`omniget-cli` 随每个版本发布，支持 Windows、macOS（Intel 和 Apple Silicon）和 Linux。从[最新版本](https://github.com/danestimbal/omniget_guro/releases/latest)下载 `omniget-cli-<版本>-<平台>`。
 
 ```bash
 omniget info <url>                     # 标题、格式和大小，不下载任何东西
@@ -545,10 +545,10 @@ omniget import-cookies cookies.txt     # Netscape 格式
 
 ## 从源码构建
 
-如果你只是想用 OmniGet，请[直接下载发布版](#下载与安装)。构建需要 [Rust](https://rustup.rs/)（精确的工具链版本固定在 `rust-toolchain.toml` 里，因为插件 ABI 依赖它）、[Node.js](https://nodejs.org/) 18+ 和 [pnpm](https://pnpm.io/)。
+如果你只是想用 GuroHub，请[直接下载发布版](#下载与安装)。构建需要 [Rust](https://rustup.rs/)（精确的工具链版本固定在 `rust-toolchain.toml` 里，因为插件 ABI 依赖它）、[Node.js](https://nodejs.org/) 18+ 和 [pnpm](https://pnpm.io/)。
 
 ```bash
-git clone https://github.com/tonhowtf/omniget.git
+git clone https://github.com/danestimbal/omniget_guro.git
 cd omniget
 pnpm install
 pnpm tauri dev
@@ -572,7 +572,7 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 正式版本用只有维护者持有的私钥签名更新包，所以直接 `pnpm tauri build` 会停在 "A public key has been found, but no private key"。上面的参数在本地构建时关掉这些更新包，其他一切不变。
 
-插件在各自的仓库里：[omniget-plugin-courses](https://github.com/tonhowtf/omniget-plugin-courses)、[omniget-plugin-telegram](https://github.com/tonhowtf/omniget-plugin-telegram)、[omniget-plugin-convert](https://github.com/tonhowtf/omniget-plugin-convert) 和 [omniget-study-release](https://github.com/tonhowtf/omniget-study-release)。注册表是 [omniget-plugins](https://github.com/tonhowtf/omniget-plugins)。`pnpm plugins:deploy` 会构建旁边目录里的插件仓库并复制到你的本地数据文件夹。
+插件在各自的仓库里：[omniget-plugin-courses](https://github.com/danestimbal/omniget_guro-plugin-courses)、[omniget-plugin-telegram](https://github.com/danestimbal/omniget_guro-plugin-telegram)、[omniget-plugin-convert](https://github.com/danestimbal/omniget_guro-plugin-convert) 和 [omniget-study-release](https://github.com/danestimbal/omniget_guro-study-release)。注册表是 [omniget-plugins](https://github.com/danestimbal/omniget_guro-plugins)。`pnpm plugins:deploy` 会构建旁边目录里的插件仓库并复制到你的本地数据文件夹。
 
 技术栈：Tauri 2、Rust、SvelteKit（Svelte 5）、SQLite、yt-dlp、FFmpeg、librqbit（种子）、whisper.cpp、aria2、gallery-dl。
 
@@ -580,18 +580,18 @@ pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'
 
 ## 参与贡献与翻译
 
-Bug 报告和 Pull Request 请提到 [Issues](https://github.com/tonhowtf/omniget/issues) 和 [Pull requests](https://github.com/tonhowtf/omniget/pulls)。提问和快速求助在 [Discord](https://discord.gg/jgdxyPy7Vn)。
+Bug 报告和 Pull Request 请提到 [Issues](https://github.com/danestimbal/omniget_guro/issues) 和 [Pull requests](https://github.com/danestimbal/omniget_guro/pulls)。提问和快速求助在 [Discord](https://discord.gg/jgdxyPy7Vn)。
 
-翻译在 [Weblate](https://hosted.weblate.org/engage/omniget/) 上进行。选择你的语言，直接在浏览器里翻译。新字符串合入 `main` 几小时后就会出现在那里。
+翻译在 [Weblate](https://hosted.weblate.org/engage/gurohub/) 上进行。选择你的语言，直接在浏览器里翻译。新字符串合入 `main` 几小时后就会出现在那里。
 
-OmniGet 建立在 [yt-dlp](https://github.com/yt-dlp/yt-dlp)、[FFmpeg](https://ffmpeg.org/)、[gallery-dl](https://github.com/mikf/gallery-dl)、[whisper.cpp](https://github.com/ggerganov/whisper.cpp)、[aria2](https://aria2.github.io/)、[SponsorBlock](https://sponsor.ajay.app/)、[Return YouTube Dislike](https://returnyoutubedislike.com/)、[FxTwitter](https://github.com/FixTweet/FxTwitter)、[Spicetify](https://spicetify.app/) 和 [Tauri](https://tauri.app/) 之上。感谢所有维护这些项目的人。
+GuroHub 建立在 [yt-dlp](https://github.com/yt-dlp/yt-dlp)、[FFmpeg](https://ffmpeg.org/)、[gallery-dl](https://github.com/mikf/gallery-dl)、[whisper.cpp](https://github.com/ggerganov/whisper.cpp)、[aria2](https://aria2.github.io/)、[SponsorBlock](https://sponsor.ajay.app/)、[Return YouTube Dislike](https://returnyoutubedislike.com/)、[FxTwitter](https://github.com/FixTweet/FxTwitter)、[Spicetify](https://spicetify.app/) 和 [Tauri](https://tauri.app/) 之上。感谢所有维护这些项目的人。
 
-主界面上的小生物 Loop 是 OmniGet 的吉祥物。欢迎同人创作。原始美术不得用于商业用途，也不得修改后再分发。
+主界面上的小生物 Loop 是 GuroHub 的吉祥物。欢迎同人创作。原始美术不得用于商业用途，也不得修改后再分发。
 
 <p align="center">
-  <a href="https://star-history.com/#tonhowtf/omniget&Date"><img src="https://api.star-history.com/svg?repos=tonhowtf/omniget&type=Date" alt="tonhowtf/omniget 的 Star 历史" width="600" /></a>
+  <a href="https://star-history.com/#danestimbal/omniget_guro&Date"><img src="https://api.star-history.com/svg?repos=danestimbal/omniget_guro&type=Date" alt="danestimbal/omniget_guro 的 Star 历史" width="600" /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/tonhowtf/omniget/releases/latest"><b>下载 OmniGet</b></a> · <a href="LICENSE">GPL-3.0</a>
+  <a href="https://github.com/danestimbal/omniget_guro/releases/latest"><b>下载 GuroHub</b></a> · <a href="LICENSE">GPL-3.0</a>
 </p>

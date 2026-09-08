@@ -60,7 +60,7 @@ export type SpotifySdkState = {
 };
 
 const SDK_SCRIPT = "https://sdk.scdn.co/spotify-player.js";
-const DEVICE_NAME = "OmniGet";
+const DEVICE_NAME = "GuroHub";
 
 class SpotifySdkController {
   ready = $state(false);
