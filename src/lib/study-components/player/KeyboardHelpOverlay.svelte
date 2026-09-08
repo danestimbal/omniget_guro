@@ -11,46 +11,46 @@
 
   const groups: Group[] = [
     {
-      title: "Reprodução",
+      title: "Playback",
       items: [
-        { keys: ["Espaço"], label: "Play / Pausar" },
-        { keys: ["F"], label: "Tela cheia" },
-        { keys: ["M"], label: "Mutar / Desmutar" },
-        { keys: ["T"], label: "Modo cinema" },
-        { keys: ["Esc"], label: "Sair do fullscreen / Fechar" },
+        { keys: ["Space"], label: "Play / Pause" },
+        { keys: ["F"], label: "Fullscreen" },
+        { keys: ["M"], label: "Mute / Unmute" },
+        { keys: ["T"], label: "Theater mode" },
+        { keys: ["Esc"], label: "Exit fullscreen / Close" },
       ],
     },
     {
-      title: "Navegação",
+      title: "Navigation",
       items: [
-        { keys: ["←", "J"], label: "Voltar 10s" },
-        { keys: ["→", "L", "K"], label: "Avançar 10s" },
-        { keys: ["Shift", "+", "J"], label: "Voltar 3s (fine seek)" },
-        { keys: ["Shift", "+", "L"], label: "Avançar 3s (fine seek)" },
-        { keys: [","], label: "Frame anterior (pausado)" },
-        { keys: ["."], label: "Próximo frame (pausado)" },
-        { keys: ["0", "—", "9"], label: "Pular pra 0%, 10%, … 90%" },
+        { keys: ["←", "J"], label: "Back 10s" },
+        { keys: ["→", "L", "K"], label: "Forward 10s" },
+        { keys: ["Shift", "+", "J"], label: "Back 3s (fine seek)" },
+        { keys: ["Shift", "+", "L"], label: "Forward 3s (fine seek)" },
+        { keys: [","], label: "Previous frame (paused)" },
+        { keys: ["."], label: "Next frame (paused)" },
+        { keys: ["0", "—", "9"], label: "Jump to 0%, 10%, … 90%" },
       ],
     },
     {
-      title: "Velocidade",
+      title: "Speed",
       items: [
-        { keys: ["["], label: "Diminuir velocidade" },
-        { keys: ["]"], label: "Aumentar velocidade" },
+        { keys: ["["], label: "Decrease speed" },
+        { keys: ["]"], label: "Increase speed" },
       ],
     },
     {
-      title: "Legendas / Notas",
+      title: "Subtitles / Notes",
       items: [
-        { keys: ["C"], label: "Próxima legenda (cycle)" },
-        { keys: ["N"], label: "Adicionar nota no timestamp" },
+        { keys: ["C"], label: "Next subtitle (cycle)" },
+        { keys: ["N"], label: "Add note at timestamp" },
       ],
     },
     {
-      title: "Geral",
+      title: "General",
       items: [
-        { keys: ["?"], label: "Mostrar este painel" },
-        { keys: ["/"], label: "Buscar (em qualquer rota)" },
+        { keys: ["?"], label: "Show this panel" },
+        { keys: ["/"], label: "Search (from any route)" },
       ],
     },
   ];
@@ -68,15 +68,15 @@
     class="overlay"
     role="dialog"
     aria-modal="true"
-    aria-label="Atalhos de teclado"
+    aria-label="Keyboard shortcuts"
     tabindex="-1"
     onkeydown={onBackdropKey}
   >
-    <button type="button" class="bg-btn" aria-label="Fechar" onclick={onClose}></button>
+    <button type="button" class="bg-btn" aria-label="Close" onclick={onClose}></button>
     <div class="modal" role="document">
       <header class="head">
-        <h2>Atalhos de teclado</h2>
-        <button type="button" class="close" aria-label="Fechar" onclick={onClose}>×</button>
+        <h2>Keyboard shortcuts</h2>
+        <button type="button" class="close" aria-label="Close" onclick={onClose}>×</button>
       </header>
       <div class="body">
         {#each groups as g (g.title)}
@@ -102,7 +102,7 @@
         {/each}
       </div>
       <footer class="foot">
-        Pressione <kbd>?</kbd> ou <kbd>Esc</kbd> para fechar
+        Press <kbd>?</kbd> or <kbd>Esc</kbd> to close
       </footer>
     </div>
   </div>

@@ -35,7 +35,7 @@
 </script>
 
 {#if chapters.length > 0}
-  <ol class="chapters" class:compact aria-label="Capítulos">
+  <ol class="chapters" class:compact aria-label="Chapters">
     {#each chapters as chapter, i (chapter.start_ms + ":" + chapter.title)}
       <li>
         <button
