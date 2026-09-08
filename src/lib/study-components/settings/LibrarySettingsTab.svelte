@@ -32,7 +32,7 @@
         ms: number;
         new_lessons_notified?: number;
       }>("study", "study:rescan");
-      rescanReport = `${r.courses_found} cursos · ${r.lessons_found} aulas · ${r.new_lessons_notified ?? 0} aulas novas detectadas (${r.ms}ms)`;
+      rescanReport = `${r.courses_found} courses · ${r.lessons_found} lessons · ${r.new_lessons_notified ?? 0} new lessons detected (${r.ms}ms)`;
     } catch (e) {
       rescanReport = e instanceof Error ? e.message : String(e);
     } finally {
@@ -43,8 +43,8 @@
 
 <section class="tab">
   <SettingsField
-    label="Watcher ativado"
-    description="Detecta automaticamente quando arquivos de curso são adicionados ou removidos"
+    label="Watcher enabled"
+    description="Automatically detects when course files are added or removed"
   >
     <SettingsToggle
       value={library.watcher_enabled ?? true}
@@ -54,30 +54,30 @@
   </SettingsField>
 
   <SettingsField
-    label="Incluir pastas ocultas"
-    description="Inclui pastas com nome iniciado em ponto durante o scan"
+    label="Include hidden folders"
+    description="Includes folders whose name starts with a dot during the scan"
   >
     <SettingsToggle
       value={library.scan_hidden ?? false}
       onChange={(v) => setLibrary("scan_hidden", v)}
-      ariaLabel="Pastas ocultas"
+      ariaLabel="Hidden folders"
     />
   </SettingsField>
 
   <SettingsField
-    label="Limpeza automática"
-    description="Roda vacuum periódico (apaga seek logs antigos, notificações dispensadas, recents fora do top 50)"
+    label="Automatic cleanup"
+    description="Runs a periodic vacuum (removes old seek logs, dismissed notifications, recents outside the top 50)"
   >
     <SettingsToggle
       value={library.auto_vacuum ?? true}
       onChange={(v) => setLibrary("auto_vacuum", v)}
-      ariaLabel="Limpeza automática"
+      ariaLabel="Automatic cleanup"
     />
   </SettingsField>
 
   <SettingsField
-    label="Intervalo de limpeza"
-    description="Quantos dias entre cada vacuum"
+    label="Cleanup interval"
+    description="How many days between each vacuum"
     valueDisplay={`${library.auto_vacuum_interval_days ?? 30}d`}
   >
     <SettingsSlider
@@ -91,14 +91,14 @@
 
   <div class="actions">
     <div>
-      <strong>Re-scanear biblioteca</strong>
-      <p class="hint">Força detecção de novos cursos/aulas e dispara notificações</p>
+      <strong>Re-scan library</strong>
+      <p class="hint">Forces detection of new courses/lessons and fires notifications</p>
       {#if rescanReport}
         <p class="report">{rescanReport}</p>
       {/if}
     </div>
     <button type="button" class="btn" disabled={rescanning} onclick={rescan}>
-      {rescanning ? "Escaneando…" : "Re-scanear agora"}
+      {rescanning ? "Scanning…" : "Re-scan now"}
     </button>
   </div>
 </section>

@@ -27,10 +27,10 @@
     { value: "pt", label: "Português" },
     { value: "en", label: "English" },
     { value: "es", label: "Español" },
-    { value: "default", label: "Padrão (auto)" },
+    { value: "default", label: "Default (auto)" },
   ];
   const fontOptions = [
-    { value: "system", label: "Sistema" },
+    { value: "system", label: "System" },
     { value: "serif", label: "Serif" },
     { value: "sans", label: "Sans-serif" },
   ];
@@ -49,7 +49,7 @@
     />
   </div>
 
-  <SettingsField label="Idioma padrão" description="Track auto-selecionada quando há match no nome do arquivo">
+  <SettingsField label="Default language" description="Track auto-selected when the file name matches">
     <SettingsSelect
       value={player.subtitles_default_lang ?? "pt-BR"}
       options={langOptions}
@@ -57,7 +57,7 @@
     />
   </SettingsField>
 
-  <SettingsField label="Idioma secundário" description="Fallback quando o idioma padrão não está disponível na aula">
+  <SettingsField label="Secondary language" description="Fallback when the default language is not available in the lesson">
     <SettingsSelect
       value={player.subtitles_secondary_lang ?? "en"}
       options={langOptions}
@@ -65,7 +65,7 @@
     />
   </SettingsField>
 
-  <SettingsField label="Tamanho" valueDisplay={`${player.subtitles_size ?? 100}%`}>
+  <SettingsField label="Size" valueDisplay={`${player.subtitles_size ?? 100}%`}>
     <SettingsSlider
       value={player.subtitles_size ?? 100}
       min={50}
@@ -75,7 +75,7 @@
     />
   </SettingsField>
 
-  <SettingsField label="Sincronia" description="Compensa atraso na legenda" valueDisplay={`${(player.subtitles_offset_ms ?? 0) / 1000}s`}>
+  <SettingsField label="Sync" description="Compensates for subtitle delay" valueDisplay={`${(player.subtitles_offset_ms ?? 0) / 1000}s`}>
     <SettingsSlider
       value={player.subtitles_offset_ms ?? 0}
       min={-5000}
@@ -85,28 +85,28 @@
     />
   </SettingsField>
 
-  <SettingsField label="Cor do texto">
+  <SettingsField label="Text color">
     <SettingsColorPicker
       value={player.subtitles_text_color ?? "#ffffff"}
       onChange={(v) => setPlayer("subtitles_text_color", v)}
     />
   </SettingsField>
 
-  <SettingsField label="Cor de fundo">
+  <SettingsField label="Background color">
     <SettingsColorPicker
       value={player.subtitles_background_color ?? "#000000"}
       onChange={(v) => setPlayer("subtitles_background_color", v)}
     />
   </SettingsField>
 
-  <SettingsField label="Cor da borda">
+  <SettingsField label="Outline color">
     <SettingsColorPicker
       value={player.subtitles_outline_color ?? "#000000"}
       onChange={(v) => setPlayer("subtitles_outline_color", v)}
     />
   </SettingsField>
 
-  <SettingsField label="Opacidade" valueDisplay={`${player.subtitles_opacity ?? 100}%`}>
+  <SettingsField label="Opacity" valueDisplay={`${player.subtitles_opacity ?? 100}%`}>
     <SettingsSlider
       value={player.subtitles_opacity ?? 100}
       min={0}
@@ -116,7 +116,7 @@
     />
   </SettingsField>
 
-  <SettingsField label="Fonte">
+  <SettingsField label="Font">
     <SettingsSelect
       value={player.subtitles_font ?? "system"}
       options={fontOptions}
@@ -124,22 +124,22 @@
     />
   </SettingsField>
 
-  <SettingsField label="Negrito">
+  <SettingsField label="Bold">
     <SettingsToggle
       value={player.subtitles_bold ?? false}
       onChange={(v) => setPlayer("subtitles_bold", v)}
-      ariaLabel="Negrito"
+      ariaLabel="Bold"
     />
   </SettingsField>
 
   <SettingsField
-    label="Respeitar estilo do .ass"
-    description="Quando ativo, arquivos .ass mantêm cores, posições e fontes próprios em vez de aplicar configurações globais"
+    label="Respect .ass styling"
+    description="When on, .ass files keep their own colors, positions and fonts instead of applying the global settings"
   >
     <SettingsToggle
       value={player.ass_subtitles_styling ?? true}
       onChange={(v) => setPlayer("ass_subtitles_styling", v)}
-      ariaLabel="Respeitar styling do .ass"
+      ariaLabel="Respect .ass styling"
     />
   </SettingsField>
 </section>

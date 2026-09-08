@@ -23,7 +23,7 @@
     busy = "search";
     try {
       const r = await notesSearchRebuild();
-      onToast("ok", `Busca reindexada: ${r.indexed} blocos`);
+      onToast("ok", `Search reindexed: ${r.indexed} blocks`);
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -35,7 +35,7 @@
     busy = "refs";
     try {
       const r = await notesRefsRebuildAll();
-      onToast("ok", `Backlinks reconstruídos: ${r.total_refs} refs`);
+      onToast("ok", `Backlinks rebuilt: ${r.total_refs} refs`);
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -47,7 +47,7 @@
     busy = "qcache";
     try {
       const r = await notesQueryInvalidateCache();
-      onToast("ok", `Cache limpo (${r.size_after} entradas restantes)`);
+      onToast("ok", `Cache cleared (${r.size_after} entries remaining)`);
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -69,7 +69,7 @@
       a.click();
       document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      onToast("ok", "Grafo exportado");
+      onToast("ok", "Graph exported");
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -112,7 +112,7 @@
         name: importPreview.name,
         markdown: importPreview.markdown,
       });
-      onToast("ok", `Importado: ${r.blocks_created} blocos em "${importPreview.name}"`);
+      onToast("ok", `Imported: ${r.blocks_created} blocks into "${importPreview.name}"`);
       importPreview = null;
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
@@ -123,10 +123,10 @@
 </script>
 
 <article class="card">
-  <h3>Manutenção</h3>
+  <h3>Maintenance</h3>
   <p class="hint">
-    Tarefas de housekeeping. Reconstruir índices é seguro mas pode levar alguns segundos
-    em databases grandes.
+    Housekeeping tasks. Rebuilding indexes is safe but can take a few seconds
+    on large databases.
   </p>
 
   <div class="actions-grid">
@@ -135,45 +135,45 @@
       class="btn"
       onclick={rebuildSearch}
       disabled={busy !== null}
-      title="Reindexa FTS5 (notes_v2). Use se a busca estiver retornando resultados desatualizados."
+      title="Reindexes FTS5 (notes_v2). Use if search is returning stale results."
     >
-      {busy === "search" ? "Reindexando…" : "Reconstruir busca"}
+      {busy === "search" ? "Reindexing…" : "Rebuild search"}
     </button>
     <button
       type="button"
       class="btn"
       onclick={rebuildRefs}
       disabled={busy !== null}
-      title="Recalcula a tabela de refs/backlinks varrendo todo o conteúdo."
+      title="Recomputes the refs/backlinks table by scanning all content."
     >
-      {busy === "refs" ? "Calculando…" : "Reconstruir backlinks"}
+      {busy === "refs" ? "Computing…" : "Rebuild backlinks"}
     </button>
     <button
       type="button"
       class="btn"
       onclick={clearQueryCache}
       disabled={busy !== null}
-      title="Limpa cache de queries. Inofensivo; queries serão recalculadas."
+      title="Clears the query cache. Harmless; queries will be recomputed."
     >
-      {busy === "qcache" ? "Limpando…" : "Limpar cache de queries"}
+      {busy === "qcache" ? "Clearing…" : "Clear query cache"}
     </button>
     <button
       type="button"
       class="btn"
       onclick={exportGraph}
       disabled={busy !== null}
-      title="Baixa o grafo de notes (nodes + edges) como JSON pra inspeção/backup."
+      title="Downloads the notes graph (nodes + edges) as JSON for inspection/backup."
     >
-      {busy === "graph" ? "Exportando…" : "Exportar grafo (JSON)"}
+      {busy === "graph" ? "Exporting…" : "Export graph (JSON)"}
     </button>
     <button
       type="button"
       class="btn"
       onclick={pickImport}
       disabled={busy !== null || importing}
-      title="Lê um .md do disco e cria uma página com o conteúdo."
+      title="Reads a .md from disk and creates a page with its content."
     >
-      Importar markdown
+      Import markdown
     </button>
     <input
       type="file"
@@ -195,20 +195,20 @@
       if (e.target === e.currentTarget) cancelImport();
     }}
   >
-    <div class="modal" role="dialog" aria-label="Confirmar importação" aria-modal="true">
-      <h3>Importar markdown?</h3>
+    <div class="modal" role="dialog" aria-label="Confirm import" aria-modal="true">
+      <h3>Import markdown?</h3>
       <p class="meta">
         <strong>{importPreview.name}</strong>
-        <span class="muted">· {importPreview.lines} linhas</span>
+        <span class="muted">· {importPreview.lines} lines</span>
       </p>
       <p class="hint">
-        Vai criar uma página chamada <code>{importPreview.name}</code> e parsear o markdown
-        em blocos hierárquicos.
+        This will create a page called <code>{importPreview.name}</code> and parse the markdown
+        into hierarchical blocks.
       </p>
 
       <p class="warn-soft">
-        Se já existir uma página com esse nome, o backend devolve erro e nada
-        é importado.
+        If a page with this name already exists, the backend returns an error and nothing
+        is imported.
       </p>
 
       <footer class="foot">
@@ -219,7 +219,7 @@
           onclick={cancelImport}
           disabled={importing}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -227,7 +227,7 @@
           onclick={confirmImport}
           disabled={importing}
         >
-          {importing ? "Importando…" : "Importar"}
+          {importing ? "Importing…" : "Import"}
         </button>
       </footer>
     </div>

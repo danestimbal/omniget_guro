@@ -35,7 +35,7 @@
       lastVacuum = r;
       onToast(
         "ok",
-        `Limpeza: ${r.seek_logs_deleted} logs, ${r.notifications_deleted} notificações, ${r.recents_deleted} recents`,
+        `Cleanup: ${r.seek_logs_deleted} logs, ${r.notifications_deleted} notifications, ${r.recents_deleted} recents`,
       );
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
@@ -59,7 +59,7 @@
       a.click();
       document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      onToast("ok", `Exportados ${data.courses.length} cursos`);
+      onToast("ok", `Exported ${data.courses.length} courses`);
     } catch (e) {
       onToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -109,7 +109,7 @@
       lastImport = r;
       onToast(
         "ok",
-        `Importação ${r.mode}: ${r.imported} importados, ${r.skipped} pulados, ${r.missing} ausentes`,
+        `Import ${r.mode}: ${r.imported} imported, ${r.skipped} skipped, ${r.missing} missing`,
       );
       importPreview = null;
       importDoubleConfirm = false;
@@ -134,16 +134,16 @@
   <article class="card">
     <header class="card-head">
       <div>
-        <h3>Limpeza</h3>
+        <h3>Cleanup</h3>
         <p class="hint">
-          Apaga: seek logs com mais de 30 dias, notificações dispensadas com mais de 90 dias,
-          recents fora do top 50.
+          Removes: seek logs older than 30 days, dismissed notifications older than 90 days,
+          recents outside the top 50.
         </p>
       </div>
     </header>
     {#if lastVacuum}
       <p class="report">
-        Última: {lastVacuum.seek_logs_deleted} logs · {lastVacuum.notifications_deleted} notificações
+        Last: {lastVacuum.seek_logs_deleted} logs · {lastVacuum.notifications_deleted} notifications
         · {lastVacuum.recents_deleted} recents
       </p>
     {/if}
@@ -154,7 +154,7 @@
         disabled={vacuumRunning}
         onclick={() => (vacuumConfirmOpen = true)}
       >
-        {vacuumRunning ? "Limpando…" : "Executar limpeza"}
+        {vacuumRunning ? "Cleaning…" : "Run cleanup"}
       </button>
     </div>
   </article>
@@ -162,10 +162,10 @@
   <article class="card">
     <header class="card-head">
       <div>
-        <h3>Exportar dados</h3>
+        <h3>Export data</h3>
         <p class="hint">
-          Salva um arquivo JSON com state de todos os cursos (progresso, watched, recents).
-          Útil pra backup ou troca de máquina.
+          Saves a JSON file with the state of every course (progress, watched, recents).
+          Useful for backup or switching machines.
         </p>
       </div>
     </header>
@@ -176,7 +176,7 @@
         disabled={exporting}
         onclick={exportData}
       >
-        {exporting ? "Exportando…" : "Exportar agora"}
+        {exporting ? "Exporting…" : "Export now"}
       </button>
     </div>
   </article>
@@ -184,15 +184,15 @@
   <article class="card">
     <header class="card-head">
       <div>
-        <h3>Importar dados</h3>
+        <h3>Import data</h3>
         <p class="hint">
-          Carrega um backup JSON. Você escolhe o modo de mesclagem antes de aplicar.
+          Loads a JSON backup. You choose the merge mode before applying.
         </p>
       </div>
     </header>
     {#if lastImport}
       <p class="report">
-        Última: {lastImport.imported} importados · {lastImport.skipped} pulados · {lastImport.missing} ausentes
+        Last: {lastImport.imported} imported · {lastImport.skipped} skipped · {lastImport.missing} missing
         ({lastImport.mode})
       </p>
     {/if}
@@ -205,41 +205,41 @@
         style:display="none"
       />
       <button type="button" class="btn ghost" onclick={pickImport}>
-        Selecionar arquivo…
+        Select file…
       </button>
     </div>
   </article>
 </section>
 
 {#if vacuumConfirmOpen}
-  <div class="modal-bg" role="dialog" aria-modal="true" aria-label="Confirmar limpeza">
-    <button type="button" class="bg-btn" aria-label="Fechar" onclick={() => (vacuumConfirmOpen = false)}></button>
+  <div class="modal-bg" role="dialog" aria-modal="true" aria-label="Confirm cleanup">
+    <button type="button" class="bg-btn" aria-label="Close" onclick={() => (vacuumConfirmOpen = false)}></button>
     <div class="modal" role="document">
-      <h3>Executar limpeza?</h3>
-      <p>Os seguintes itens serão apagados permanentemente:</p>
+      <h3>Run cleanup?</h3>
+      <p>The following items will be permanently deleted:</p>
       <ul>
-        <li>Seek logs com mais de 30 dias</li>
-        <li>Notificações dispensadas com mais de 90 dias</li>
-        <li>Recents fora do top 50 mais usados</li>
+        <li>Seek logs older than 30 days</li>
+        <li>Dismissed notifications older than 90 days</li>
+        <li>Recents outside the 50 most used</li>
       </ul>
-      <p class="reassure">Não afeta progresso, notas ou bitfield de aulas vistas.</p>
+      <p class="reassure">Does not affect progress, notes or the watched-lessons bitfield.</p>
       <div class="modal-actions">
-        <button type="button" class="btn ghost" onclick={() => (vacuumConfirmOpen = false)}>Cancelar</button>
-        <button type="button" class="btn primary" onclick={runVacuum}>Confirmar</button>
+        <button type="button" class="btn ghost" onclick={() => (vacuumConfirmOpen = false)}>Cancel</button>
+        <button type="button" class="btn primary" onclick={runVacuum}>Confirm</button>
       </div>
     </div>
   </div>
 {/if}
 
 {#if importPreview}
-  <div class="modal-bg" role="dialog" aria-modal="true" aria-label="Confirmar importação">
-    <button type="button" class="bg-btn" aria-label="Fechar" onclick={cancelImport}></button>
+  <div class="modal-bg" role="dialog" aria-modal="true" aria-label="Confirm import">
+    <button type="button" class="bg-btn" aria-label="Close" onclick={cancelImport}></button>
     <div class="modal" role="document">
-      <h3>Importar {importPreview.courses.length} {importPreview.courses.length === 1 ? "curso" : "cursos"}?</h3>
-      <p class="hint">Backup exportado em {fmtExportedAt(importPreview.exported_at)}</p>
+      <h3>Import {importPreview.courses.length} {importPreview.courses.length === 1 ? "course" : "courses"}?</h3>
+      <p class="hint">Backup exported on {fmtExportedAt(importPreview.exported_at)}</p>
 
       <fieldset class="modes">
-        <legend>Modo de mesclagem</legend>
+        <legend>Merge mode</legend>
         <label class="mode-row" class:selected={importMode === "skip"}>
           <input
             type="radio"
@@ -252,7 +252,7 @@
             }}
           />
           <span>
-            <strong>Skip</strong> — preserva state existente, só importa cursos sem state local
+            <strong>Skip</strong> — keeps existing state, only imports courses with no local state
           </span>
         </label>
         <label class="mode-row recommended" class:selected={importMode === "merge"}>
@@ -267,7 +267,7 @@
             }}
           />
           <span>
-            <strong>Merge</strong> <span class="rec-tag">recomendado</span> — mantém o maior progresso entre local e backup
+            <strong>Merge</strong> <span class="rec-tag">recommended</span> — keeps the higher progress between local and backup
           </span>
         </label>
         <label class="mode-row danger" class:selected={importMode === "overwrite"}>
@@ -282,20 +282,20 @@
             }}
           />
           <span>
-            <strong>Overwrite</strong> — sobrescreve TODO state local com o do backup (irreversível)
+            <strong>Overwrite</strong> — replaces ALL local state with the backup's (irreversible)
           </span>
         </label>
       </fieldset>
 
       {#if importMode === "overwrite" && importDoubleConfirm}
         <div class="warning">
-          <strong>Tem certeza?</strong> Isso vai apagar progresso local que não está no backup.
-          Recomendamos exportar primeiro.
+          <strong>Are you sure?</strong> This will erase local progress that isn't in the backup.
+          We recommend exporting first.
         </div>
       {/if}
 
       <div class="modal-actions">
-        <button type="button" class="btn ghost" onclick={cancelImport}>Cancelar</button>
+        <button type="button" class="btn ghost" onclick={cancelImport}>Cancel</button>
         <button
           type="button"
           class="btn"
@@ -305,13 +305,13 @@
           onclick={confirmImport}
         >
           {#if importing}
-            Importando…
+            Importing…
           {:else if importMode === "overwrite" && !importDoubleConfirm}
-            Avançar com Overwrite
+            Continue with Overwrite
           {:else if importMode === "overwrite"}
-            Confirmar Overwrite
+            Confirm Overwrite
           {:else}
-            Importar ({importMode})
+            Import ({importMode})
           {/if}
         </button>
       </div>

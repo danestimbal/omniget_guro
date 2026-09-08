@@ -20,8 +20,8 @@
 
 <section class="tab">
   <SettingsField
-    label="Idioma de áudio padrão"
-    description="Track auto-selecionada quando há áudios em vários idiomas (sidecars vídeo + .lang.m4a)"
+    label="Default audio language"
+    description="Track auto-selected when a lesson has audio in multiple languages (video sidecars + .lang.m4a)"
   >
     <SettingsSelect
       value={player.audio_default_lang ?? "pt-BR"}
@@ -31,8 +31,8 @@
   </SettingsField>
 
   <SettingsField
-    label="Idioma secundário"
-    description="Fallback quando o idioma padrão não está disponível na aula"
+    label="Secondary language"
+    description="Fallback when the default language is not available in the lesson"
   >
     <SettingsSelect
       value={player.audio_secondary_lang ?? "en"}

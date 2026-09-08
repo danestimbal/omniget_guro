@@ -22,8 +22,8 @@
 
 <section class="tab">
   <SettingsField
-    label="Auto-play da próxima aula"
-    description="Quando você termina uma aula, a próxima começa automaticamente após countdown"
+    label="Auto-play next lesson"
+    description="When you finish a lesson, the next one starts automatically after a countdown"
   >
     <SettingsToggle
       value={player.binge_watching ?? true}
@@ -33,8 +33,8 @@
   </SettingsField>
 
   <SettingsField
-    label="Tempo do countdown"
-    description="Quantos segundos o aviso de auto-play aparece antes de pular"
+    label="Countdown time"
+    description="How many seconds the auto-play notice shows before skipping"
     valueDisplay={`${(player.next_video_notification_ms ?? 5000) / 1000}s`}
   >
     <SettingsSlider
@@ -47,13 +47,13 @@
   </SettingsField>
 
   <SettingsField
-    label="Coletar histórico de seeks"
-    description="Registra onde você volta para gerar heatmap de dificuldade. Local apenas — nada sai da máquina"
+    label="Collect seek history"
+    description="Records where you rewind to build a difficulty heatmap. Local only — nothing leaves your machine"
   >
     <SettingsToggle
       value={player.collect_seek_logs ?? true}
       onChange={(v) => setPlayer("collect_seek_logs", v)}
-      ariaLabel="Coletar histórico"
+      ariaLabel="Collect history"
     />
   </SettingsField>
 </section>
