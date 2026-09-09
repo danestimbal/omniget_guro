@@ -30,13 +30,13 @@ const GROUP_ORDER: SlashCommandGroup[] = [
 ];
 
 const GROUP_LABEL: Record<SlashCommandGroup, string> = {
-  estrutura: "Estrutura",
-  blocos: "Blocos",
+  estrutura: "Structure",
+  blocos: "Blocks",
   callout: "Callouts",
   renderers: "Renderers",
   refs: "Refs",
-  datas: "Datas",
-  utilidades: "Utilidades",
+  datas: "Dates",
+  utilidades: "Utilities",
 };
 
 function todayIso(): string {
@@ -55,8 +55,8 @@ function nowHm(): string {
 export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "paragraph",
-    label: "Parágrafo",
-    hint: "Texto simples",
+    label: "Paragraph",
+    hint: "Plain text",
     aliases: ["p", "paragraph", "texto", "text"],
     indicator: "¶",
     group: "estrutura",
@@ -66,7 +66,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "h1",
     label: "Heading 1",
-    hint: "Título principal",
+    hint: "Main heading",
     aliases: ["h1", "heading1", "titulo1", "t1"],
     indicator: "H1",
     group: "estrutura",
@@ -76,7 +76,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "h2",
     label: "Heading 2",
-    hint: "Título de seção",
+    hint: "Section heading",
     aliases: ["h2", "heading2", "titulo2", "t2"],
     indicator: "H2",
     group: "estrutura",
@@ -86,7 +86,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "h3",
     label: "Heading 3",
-    hint: "Sub-seção",
+    hint: "Sub-section",
     aliases: ["h3", "heading3", "titulo3", "t3"],
     indicator: "H3",
     group: "estrutura",
@@ -125,7 +125,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "bullet",
-    label: "Lista",
+    label: "List",
     hint: "Bullet list",
     aliases: ["bullet", "list", "lista", "ul"],
     indicator: "•",
@@ -135,8 +135,8 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "ordered",
-    label: "Lista ordenada",
-    hint: "Numeração automática",
+    label: "Ordered list",
+    hint: "Automatic numbering",
     aliases: ["ordered", "ol", "numbered", "numerada"],
     indicator: "1.",
     group: "estrutura",
@@ -155,7 +155,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "quote",
-    label: "Citação",
+    label: "Quote",
     hint: "Blockquote",
     aliases: ["quote", "blockquote", "citacao"],
     indicator: "❝",
@@ -165,7 +165,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "code",
-    label: "Bloco de código",
+    label: "Code block",
     hint: "Syntax highlight",
     aliases: ["code", "codigo", "pre"],
     indicator: "<>",
@@ -191,13 +191,13 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "query",
     label: "Database view (query)",
-    hint: "Insere {{query <expr>}} live (table view)",
+    hint: "Inserts {{query <expr>}} live (table view)",
     aliases: ["query", "db", "database", "dataview"],
     indicator: "{}",
     group: "blocos",
     run: (editor, range) => {
       const expr = window.prompt(
-        "Expressão da query (ex: (and (todo TODO))):",
+        "Query expression (e.g. (and (todo TODO))):",
         "(and (todo TODO))",
       );
       if (!expr) return;
@@ -211,13 +211,13 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "embed-page",
-    label: "Embed de página",
-    hint: "Transcluir conteúdo de outra página",
+    label: "Page embed",
+    hint: "Transclude content from another page",
     aliases: ["embed", "embedpage", "transclusao", "transclude"],
     indicator: "⤴",
     group: "blocos",
     run: (editor, range) => {
-      const name = window.prompt("Nome da página a embedar:");
+      const name = window.prompt("Name of the page to embed:");
       if (!name || !name.trim()) return;
       editor
         .chain()
@@ -236,7 +236,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "divider",
-    label: "Divisor",
+    label: "Divider",
     hint: "Linha horizontal",
     aliases: ["divider", "hr", "rule", "linha"],
     indicator: "—",
@@ -246,8 +246,8 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "table",
-    label: "Tabela",
-    hint: "3×3 inicial",
+    label: "Table",
+    hint: "3×3 initial",
     aliases: ["table", "tabela", "grid"],
     indicator: "▦",
     group: "blocos",
@@ -295,7 +295,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "callout-tip",
     label: "Callout: Tip",
-    hint: "Dica destacada",
+    hint: "Highlighted tip",
     aliases: ["tip", "dica", "callout"],
     indicator: "💡",
     group: "callout",
@@ -315,7 +315,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "callout-warning",
     label: "Callout: Warning",
-    hint: "Aviso",
+    hint: "Warning",
     aliases: ["warning", "aviso", "callout"],
     indicator: "⚠",
     group: "callout",
@@ -335,7 +335,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "mermaid",
     label: "Diagrama (mermaid)",
-    hint: "Flowcharts, sequência, gantt — sintaxe mermaid",
+    hint: "Flowcharts, sequence, gantt — mermaid syntax",
     aliases: ["mermaid", "diagram", "diagrama", "flow", "fluxo"],
     indicator: "▦",
     group: "renderers",
@@ -353,7 +353,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "flowchart",
     label: "Fluxograma (flowchart.js)",
-    hint: "Sintaxe flowchart.js: símbolos start/end/operation/condition",
+    hint: "flowchart.js syntax: start/end/operation/condition symbols",
     aliases: ["flowchart", "fluxograma", "fluxo", "fc"],
     indicator: "⇄",
     group: "renderers",
@@ -393,8 +393,8 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "abc",
-    label: "Partitura (notação ABC)",
-    hint: "Notação musical ABC — escala, melodia, harmonia",
+    label: "Score (ABC notation)",
+    hint: "ABC music notation — scale, melody, harmony",
     aliases: ["abc", "musica", "music", "score", "partitura", "notation"],
     indicator: "♪",
     group: "renderers",
@@ -414,7 +414,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "plantuml",
     label: "Diagrama UML (PlantUML)",
-    hint: "Sequência, classe, casos de uso — sintaxe PlantUML",
+    hint: "Sequence, class, use case — PlantUML syntax",
     aliases: ["plantuml", "puml", "uml", "diagrama", "sequence", "class"],
     indicator: "⚙",
     group: "renderers",
@@ -452,7 +452,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "page-link",
     label: "Page link [[",
-    hint: "Inicia link de página (autocomplete em D1)",
+    hint: "Starts a page link (autocomplete in D1)",
     aliases: ["page", "pagina", "wiki", "wikilink"],
     indicator: "[[",
     group: "refs",
@@ -482,7 +482,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "today",
     label: "Hoje (texto)",
-    hint: "Insere YYYY-MM-DD",
+    hint: "Inserts YYYY-MM-DD",
     aliases: ["today", "hoje", "date", "data"],
     indicator: "📅",
     group: "datas",
@@ -497,7 +497,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "today-link",
     label: "Hoje (link)",
-    hint: "Insere [[YYYY-MM-DD]]",
+    hint: "Inserts [[YYYY-MM-DD]]",
     aliases: ["todaylink", "datelink", "datalink"],
     indicator: "📆",
     group: "datas",
@@ -512,7 +512,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "now",
     label: "Agora (HH:MM)",
-    hint: "Insere hora atual",
+    hint: "Inserts the current time",
     aliases: ["now", "agora", "hora", "time"],
     indicator: "⏱",
     group: "datas",
@@ -526,8 +526,8 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "clear",
-    label: "Limpar formatação",
-    hint: "Remove marks da seleção",
+    label: "Clear formatting",
+    hint: "Removes marks from the selection",
     aliases: ["clear", "limpar", "unset"],
     indicator: "⌫",
     group: "utilidades",
@@ -543,7 +543,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "property",
     label: "Propriedade",
-    hint: "Insere linha key:: value",
+    hint: "Inserts a key:: value line",
     aliases: ["property", "prop", "propriedade", "kv"],
     indicator: "::",
     group: "utilidades",
@@ -563,7 +563,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "template",
     label: "Aplicar template",
-    hint: "Abre página de templates",
+    hint: "Opens the templates page",
     aliases: ["template", "tpl", "templates"],
     indicator: "▤",
     group: "utilidades",
