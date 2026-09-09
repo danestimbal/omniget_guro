@@ -228,7 +228,7 @@
         setGlobal("estTimes", showIntervalsOnButtons),
         setGlobal("lrnLearnAhead", learnAheadSecs),
       ]);
-      showToast("ok", "Preferências de estudo salvas");
+      showToast("ok", "Study preferences saved");
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -263,7 +263,7 @@
         config: updated,
       });
       defaultDeckCfg = updated;
-      showToast("ok", "Padrões do deck atualizados");
+      showToast("ok", "Deck defaults updated");
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -293,7 +293,7 @@
         "study",
         "study:anki:backup:create",
       );
-      showToast("ok", `Backup criado · ${formatBytes(r.bytes)}`);
+      showToast("ok", `Backup created · ${formatBytes(r.bytes)}`);
       await loadBackups();
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
@@ -311,7 +311,7 @@
         { sourcePath: path },
       );
       verifyCache = { ...verifyCache, [path]: report };
-      showToast(report.ok ? "ok" : "err", report.ok ? "Backup íntegro" : "Backup com problemas");
+      showToast(report.ok ? "ok" : "err", report.ok ? "Backup intact" : "Backup has problems");
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -332,7 +332,7 @@
         "study:anki:backup:restore",
         { sourcePath: restoreTargetPath },
       );
-      showToast("ok", "Coleção restaurada");
+      showToast("ok", "Collection restored");
       restoreTargetPath = null;
       await loadBackups();
     } catch (e) {
@@ -352,7 +352,7 @@
         { keep },
       );
       if (r.removed === 0) {
-        showToast("ok", "Nenhum backup antigo pra remover");
+        showToast("ok", "No old backups to remove");
       } else {
         showToast(
           "ok",
@@ -394,7 +394,7 @@
         "study:anki:config:get_global",
         { key },
       );
-      rawValue = v == null ? "(não encontrado)" : JSON.stringify(v, null, 2);
+      rawValue = v == null ? "(not found)" : JSON.stringify(v, null, 2);
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
       rawValue = null;
@@ -432,8 +432,8 @@
 
 <section class="study-page">
   <PageHero
-    title="Configurações"
-    subtitle="Comportamento padrão do cliente Anki"
+    title="Settings"
+    subtitle="Default behavior of the Anki client"
   />
 
   {#if toast}
@@ -443,10 +443,10 @@
   {/if}
 
   {#if loading}
-    <div class="state">Carregando preferências…</div>
+    <div class="state">Loading preferences…</div>
   {:else if error}
     <div class="state err">{error}</div>
-    <button class="btn ghost" onclick={load}>Tentar de novo</button>
+    <button class="btn ghost" onclick={load}>Try again</button>
   {:else}
     <div class="sections">
       <section class="card" class:open={openSection === "scheduler"}>
@@ -457,9 +457,9 @@
           aria-expanded={openSection === "scheduler"}
         >
           <div class="head-left">
-            <h3>Estudo</h3>
+            <h3>Study</h3>
             <span class="head-sub">
-              Versão do scheduler, contagens, atalhos
+              Scheduler version, counts, shortcuts
             </span>
           </div>
           <span class="chev" aria-hidden="true">›</span>
@@ -469,20 +469,20 @@
           <div class="card-body">
             <div class="field">
               <label for="schedver">
-                Versão do scheduler
-                <span class="hint">v3 é a recomendada (FSRS-5)</span>
+                Scheduler version
+                <span class="hint">v3 is recommended (FSRS-5)</span>
               </label>
               <select id="schedver" bind:value={schedulerVer}>
-                <option value="v1">v1 (legado)</option>
-                <option value="v2">v2 (legado)</option>
-                <option value="v3">v3 (atual)</option>
+                <option value="v1">v1 (legacy)</option>
+                <option value="v2">v2 (legacy)</option>
+                <option value="v3">v3 (current)</option>
               </select>
             </div>
 
             <div class="row">
               <div class="field">
                 <label for="learnahead">
-                  Tempo até aprender adiantado <span class="hint">seg</span>
+                  Learn-ahead time <span class="hint">sec</span>
                 </label>
                 <input
                   id="learnahead"
@@ -490,12 +490,12 @@
                   min="0"
                   bind:value={learnAheadSecs}
                 />
-                <span class="default">padrão: 1200</span>
+                <span class="default">default: 1200</span>
               </div>
 
               <div class="field">
                 <label for="collapse">
-                  Colapsar tempo de estudo <span class="hint">seg</span>
+                  Collapse study time <span class="hint">sec</span>
                 </label>
                 <input
                   id="collapse"
@@ -503,13 +503,13 @@
                   min="0"
                   bind:value={collapseTime}
                 />
-                <span class="default">padrão: 1200</span>
+                <span class="default">default: 1200</span>
               </div>
             </div>
 
             <div class="field">
               <label for="timelim">
-                Limite de tempo por sessão <span class="hint">seg, 0 desliga</span>
+                Session time limit <span class="hint">sec, 0 disables</span>
               </label>
               <input
                 id="timelim"
@@ -521,11 +521,11 @@
 
             <label class="check">
               <input type="checkbox" bind:checked={showRemainingDueCounts} />
-              <span>Mostrar contagens de cards restantes</span>
+              <span>Show remaining card counts</span>
             </label>
             <label class="check">
               <input type="checkbox" bind:checked={showIntervalsOnButtons} />
-              <span>Mostrar intervalos próximos nos botões de avaliação</span>
+              <span>Show upcoming intervals on the rating buttons</span>
             </label>
 
             <div class="actions">
@@ -549,7 +549,7 @@
           aria-expanded={openSection === "deck"}
         >
           <div class="head-left">
-            <h3>Padrões de deck</h3>
+            <h3>Deck defaults</h3>
             <span class="head-sub">
               Limites diários, FSRS, learning steps, leeches
             </span>
@@ -579,7 +579,7 @@
                   min="0"
                   bind:value={dailyNewLimit}
                 />
-                <span class="default">padrão: 20</span>
+                <span class="default">default: 20</span>
               </div>
 
               <div class="field">
@@ -592,13 +592,13 @@
                   min="0"
                   bind:value={dailyReviewLimit}
                 />
-                <span class="default">padrão: 200</span>
+                <span class="default">default: 200</span>
               </div>
             </div>
 
             <div class="field">
               <label for="retention">
-                Retenção desejada (FSRS) <span class="hint">0.7 a 0.99</span>
+                Desired retention (FSRS) <span class="hint">0.7 to 0.99</span>
               </label>
               <input
                 id="retention"
@@ -609,32 +609,32 @@
                 bind:value={desiredRetention}
               />
               <span class="default">
-                padrão: 0.90 — quanto maior, mais revisões
+                default: 0.90 — higher means more reviews
               </span>
             </div>
 
             <div class="row">
               <div class="field">
                 <label for="learn">
-                  Learning steps <span class="hint">minutos</span>
+                  Learning steps <span class="hint">minutes</span>
                 </label>
                 <input id="learn" type="text" bind:value={learnStepsRaw} />
-                <span class="default">padrão: 1 10</span>
+                <span class="default">default: 1 10</span>
               </div>
 
               <div class="field">
                 <label for="relearn">
-                  Relearning steps <span class="hint">minutos</span>
+                  Relearning steps <span class="hint">minutes</span>
                 </label>
                 <input id="relearn" type="text" bind:value={relearnStepsRaw} />
-                <span class="default">padrão: 10</span>
+                <span class="default">default: 10</span>
               </div>
             </div>
 
             <div class="row">
               <div class="field">
                 <label for="leech">
-                  Limite de leech <span class="hint">lapsos antes de marcar</span>
+                  Leech threshold <span class="hint">lapses before flagging</span>
                 </label>
                 <input
                   id="leech"
@@ -642,42 +642,42 @@
                   min="1"
                   bind:value={leechThreshold}
                 />
-                <span class="default">padrão: 8</span>
+                <span class="default">default: 8</span>
               </div>
 
               <div class="field">
-                <label for="leechact">Ação ao marcar leech</label>
+                <label for="leechact">Action when a card becomes a leech</label>
                 <select id="leechact" bind:value={leechAction}>
-                  <option value="tag_only">Apenas adicionar tag</option>
-                  <option value="suspend">Suspender card</option>
+                  <option value="tag_only">Add tag only</option>
+                  <option value="suspend">Suspend card</option>
                 </select>
               </div>
             </div>
 
-            <h4 class="subhead">Comportamento da sessão</h4>
+            <h4 class="subhead">Session behavior</h4>
             <label class="check">
               <input type="checkbox" bind:checked={buryNew} />
-              <span>Enterrar novos cards relacionados até o próximo dia</span>
+              <span>Bury related new cards until the next day</span>
             </label>
             <label class="check">
               <input type="checkbox" bind:checked={buryReviews} />
-              <span>Enterrar revisões relacionadas até o próximo dia</span>
+              <span>Bury related reviews until the next day</span>
             </label>
             <label class="check">
               <input type="checkbox" bind:checked={buryInterday} />
-              <span>Enterrar learning interday relacionado</span>
+              <span>Bury related interday learning</span>
             </label>
             <label class="check">
               <input type="checkbox" bind:checked={disableAutoplay} />
-              <span>Desativar autoplay de áudio/vídeo</span>
+              <span>Disable audio/video autoplay</span>
             </label>
             <label class="check">
               <input type="checkbox" bind:checked={showTimer} />
-              <span>Mostrar cronômetro durante o estudo</span>
+              <span>Show timer during study</span>
             </label>
             <label class="check">
               <input type="checkbox" bind:checked={stopTimerOnAnswer} />
-              <span>Parar cronômetro ao mostrar a resposta</span>
+              <span>Stop timer when the answer is shown</span>
             </label>
 
             <div class="actions">
@@ -686,7 +686,7 @@
                 onclick={saveDeckDefaults}
                 disabled={saving === "deck"}
               >
-                {saving === "deck" ? "Saving…" : "Salvar padrões"}
+                {saving === "deck" ? "Saving…" : "Save defaults"}
               </button>
             </div>
           </div>
@@ -704,7 +704,7 @@
             <h3>Backup</h3>
             <span class="head-sub">
               {backups.length === 0
-                ? "Snapshots manuais da coleção"
+                ? "Manual snapshots of the collection"
                 : backups.length === 1
                   ? "1 backup salvo"
                   : `${backups.length} backups salvos`}
@@ -725,17 +725,17 @@
                 onclick={runBackup}
                 disabled={saving === "backup"}
               >
-                {saving === "backup" ? "Criando…" : "Criar backup agora"}
+                {saving === "backup" ? "Creating…" : "Create backup now"}
               </button>
             </div>
 
             {#if backupsLoading}
-              <p class="muted small">Carregando…</p>
+              <p class="muted small">Loading…</p>
             {:else if backups.length === 0}
               <div class="empty-backup">
-                <p>Nenhum backup ainda.</p>
+                <p>No backups yet.</p>
                 <p class="hint">
-                  Crie o primeiro antes de imports grandes ou mudanças de schema.
+                  Create the first one before large imports or schema changes.
                 </p>
               </div>
             {:else}
@@ -753,7 +753,7 @@
                             class:err={!v.ok}
                             title={v.message}
                           >
-                            {v.ok ? "íntegro" : "com problema"}
+                            {v.ok ? "intact" : "problem"}
                           </span>
                         {/if}
                       </div>
@@ -768,7 +768,7 @@
                         onclick={() => verifyBackup(b.path)}
                         disabled={verifyingPath === b.path}
                       >
-                        {verifyingPath === b.path ? "Verificando…" : "Verificar"}
+                        {verifyingPath === b.path ? "Checking…" : "Check"}
                       </button>
                       <button
                         type="button"
@@ -799,7 +799,7 @@
                   onclick={runCleanup}
                   disabled={cleanupBusy || backups.length <= cleanupKeep}
                 >
-                  {cleanupBusy ? "Limpando…" : "Limpar antigos"}
+                  {cleanupBusy ? "Cleaning…" : "Delete old"}
                 </button>
               </div>
             {/if}
@@ -815,7 +815,7 @@
           aria-expanded={openSection === "advanced"}
         >
           <div class="head-left">
-            <h3>Avançado</h3>
+            <h3>Advanced</h3>
             <span class="head-sub">Estado interno, debug</span>
           </div>
           <span class="chev" aria-hidden="true">›</span>
@@ -824,15 +824,15 @@
         {#if openSection === "advanced"}
           <div class="card-body">
             <dl class="kv">
-              <dt>Próxima posição de novo card</dt>
+              <dt>Next new-card position</dt>
               <dd>{nextNewCardPos}</dd>
-              <dt>Último unbury</dt>
+              <dt>Last unbury</dt>
               <dd>
                 {lastUnburied > 0
                   ? new Date(lastUnburied * 1000).toLocaleString()
                   : "—"}
               </dd>
-              <dt>Presets de deck</dt>
+              <dt>Deck presets</dt>
               <dd>
                 {deckConfigs.length} cadastrados ({deckConfigs.reduce(
                   (s, c) => s + c.use_count,
@@ -842,20 +842,20 @@
             </dl>
 
             <details class="raw">
-              <summary>Configuração global bruta (col.conf)</summary>
+              <summary>Raw global config (col.conf)</summary>
               <pre>{JSON.stringify(globalConf, null, 2)}</pre>
             </details>
 
             <h4 class="subhead">Inspecionar chave</h4>
             <p class="lede">
-              Lê ou apaga uma chave específica de <code>col.conf</code>. Use só
-              se souber o que está fazendo.
+              Reads or deletes a specific key in <code>col.conf</code>. Only use
+              if you know what you are doing.
             </p>
             <div class="raw-row">
               <input
                 type="text"
                 class="raw-input"
-                placeholder="ex: schedVer"
+                placeholder="e.g. schedVer"
                 bind:value={rawKey}
                 onkeydown={(e) => { if (e.key === "Enter") getRawKey(); }}
               />
@@ -865,7 +865,7 @@
                 onclick={getRawKey}
                 disabled={rawBusy || !rawKey.trim()}
               >
-                Ler
+                Read
               </button>
               <button
                 type="button"
@@ -873,7 +873,7 @@
                 onclick={() => (confirmDeleteKeyOpen = true)}
                 disabled={rawBusy || !rawKey.trim()}
               >
-                Apagar
+                Delete
               </button>
             </div>
             {#if rawValue !== null}
@@ -901,9 +901,9 @@
       onclick={(e) => e.stopPropagation()}
       onkeydown={(e) => { if (e.key === "Escape") { e.stopPropagation(); confirmDeleteKeyOpen = false; } }}
     >
-      <h3>Apagar chave?</h3>
+      <h3>Delete key?</h3>
       <p class="modal-body">
-        Vai apagar <code>{rawKey}</code> de <code>col.conf</code>. Não dá pra desfazer.
+        Will delete <code>{rawKey}</code> from <code>col.conf</code>. This can't be undone.
       </p>
       <footer class="modal-foot">
         <button
@@ -911,14 +911,14 @@
           class="btn ghost"
           onclick={() => (confirmDeleteKeyOpen = false)}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
           class="btn primary danger"
           onclick={deleteRawKey}
         >
-          Apagar
+          Delete
         </button>
       </footer>
     </div>
@@ -954,7 +954,7 @@
           onclick={() => (restoreTargetPath = null)}
           disabled={restoring}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -962,7 +962,7 @@
           onclick={confirmRestore}
           disabled={restoring}
         >
-          {restoring ? "Restaurando…" : "Restaurar"}
+          {restoring ? "Restoring…" : "Restore"}
         </button>
       </footer>
     </div>

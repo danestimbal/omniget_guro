@@ -36,7 +36,7 @@
   let data = $state<GraphsResponse | null>(null);
 
   const periodOptions = [
-    { value: "1m", label: "1 mês" },
+    { value: "1m", label: "1 month" },
     { value: "3m", label: "3 meses" },
     { value: "6m", label: "6 meses" },
     { value: "1y", label: "1 ano" },
@@ -131,40 +131,40 @@
 </script>
 
 <section class="study-page">
-  <PageHero title="Estatísticas" />
+  <PageHero title="Statistics" />
 
   <div class="period-row">
     <SegmentedControl
       options={periodOptions}
       bind:value={period}
-      ariaLabel="Período"
+      ariaLabel="Period"
     />
-    <a href="/study/anki/stats/revlog" class="advanced-link">Revlog detalhado →</a>
+    <a href="/study/anki/stats/revlog" class="advanced-link">Detailed revlog →</a>
   </div>
 
   {#if loading}
-    <p class="muted">Carregando…</p>
+    <p class="muted">Loading…</p>
   {:else if error}
     <p class="error">{error}</p>
   {:else if data}
     <div class="kpi-grid">
-      <StatCard label="Revisões" value={fmtNumber(totalReviews)} hint="no período" />
+      <StatCard label="Reviews" value={fmtNumber(totalReviews)} hint="in the period" />
       <StatCard label="Tempo total" value={fmtHours(totalHours)} hint="estudando" />
       <StatCard
-        label="Tempo médio"
+        label="Average time"
         value={`${avgSecs.toFixed(1)}s`}
-        hint="por revisão"
+        hint="per review"
       />
       <StatCard
-        label="Carga diária"
+        label="Daily load"
         value={dailyLoad.toFixed(1)}
-        hint="próximos 30 dias"
+        hint="next 30 days"
       />
     </div>
 
     <section class="card heatmap-card">
       <header class="card-head">
-        <h2>Atividade (últimos 12 meses)</h2>
+        <h2>Activity (last 12 months)</h2>
         <div class="legend">
           <span>menos</span>
           <span class="cell level-0" aria-hidden="true"></span>
@@ -176,15 +176,15 @@
         </div>
       </header>
       {#if heatmap.weeks.length === 0}
-        <p class="muted small">Sem revisões no período.</p>
+        <p class="muted small">No reviews in this period.</p>
       {:else}
-        <div class="heatmap" role="img" aria-label="Heatmap de revisões diárias">
+        <div class="heatmap" role="img" aria-label="Daily reviews heatmap">
           {#each heatmap.weeks as week, i (i)}
             <div class="week">
               {#each week as day (day.date)}
                 <span
                   class="cell level-{day.level}"
-                  title="{day.date}: {day.count} {day.count === 1 ? 'revisão' : 'revisões'}"
+                  title="{day.date}: {day.count} {day.count === 1 ? 'review' : 'reviews'}"
                 ></span>
               {/each}
             </div>
@@ -196,16 +196,16 @@
     <div class="grid-2">
       <section class="card">
         <header class="card-head">
-          <h2>Distribuição de intervalos</h2>
-          <small class="muted">Cards em revisão</small>
+          <h2>Interval distribution</h2>
+          <small class="muted">Cards in review</small>
         </header>
         {@render barChart(data.interval_distribution)}
       </section>
 
       <section class="card">
         <header class="card-head">
-          <h2>Distribuição de ease</h2>
-          <small class="muted">Cards em revisão</small>
+          <h2>Ease distribution</h2>
+          <small class="muted">Cards in review</small>
         </header>
         {@render barChart(data.ease_distribution)}
       </section>
@@ -213,14 +213,14 @@
       <section class="card">
         <header class="card-head">
           <h2>Carga futura</h2>
-          <small class="muted">Próximos 30 dias</small>
+          <small class="muted">Next 30 days</small>
         </header>
         {@render futureChart(data.future_due)}
       </section>
 
       <section class="card">
         <header class="card-head">
-          <h2>Curva de retenção</h2>
+          <h2>Retention curve</h2>
           <small class="muted">% de acertos por dia</small>
         </header>
         {@render retentionChart(data.retention_curve)}
@@ -237,7 +237,7 @@
             <tr>
               <th>Modelo</th>
               <th class="num">Cards</th>
-              <th class="num">Intervalo médio (d)</th>
+              <th class="num">Average interval (d)</th>
             </tr>
           </thead>
           <tbody>
@@ -286,7 +286,7 @@
   {#if max === 0}
     <p class="muted small">Nenhum card programado.</p>
   {:else}
-    <div class="vbar" role="img" aria-label="Distribuição de cards por dia">
+    <div class="vbar" role="img" aria-label="Card distribution per day">
       {#each filled as f (f.day)}
         {@const h = max === 0 ? 0 : (f.count / max) * 100}
         <span
@@ -308,7 +308,7 @@
 
 {#snippet retentionChart(rows: RetentionEntry[])}
   {#if rows.length < 2}
-    <p class="muted small">Mínimo de 2 dias com revisões necessário.</p>
+    <p class="muted small">At least 2 days with reviews required.</p>
   {:else}
     {@const w = 360}
     {@const h = 120}

@@ -144,18 +144,18 @@
   const stockOptions: { value: StockKind; label: string; hint: string }[] = [
     {
       value: "basic",
-      label: "Básico",
-      hint: "Front/Back simples — 1 card por nota",
+      label: "Basic",
+      hint: "Simple front/back — 1 card per note",
     },
     {
       value: "basic_and_reversed",
-      label: "Básico + invertido",
-      hint: "Front↔Back gera 2 cards por nota",
+      label: "Basic + reversed",
+      hint: "Front↔Back makes 2 cards per note",
     },
     {
       value: "basic_optional_reversed",
-      label: "Básico (invertido opcional)",
-      hint: "Reverso só se campo 'Add Reverse' preenchido",
+      label: "Basic (optional reversed)",
+      hint: "Reverse only if the 'Add Reverse' field is filled",
     },
     {
       value: "cloze",
@@ -281,7 +281,7 @@
   function addTemplate() {
     if (!draft) return;
     if (draft.config.kind === "cloze") {
-      showToast("err", "Modelos cloze têm 1 template fixo");
+      showToast("err", "Cloze note types have 1 fixed template");
       return;
     }
     const ord = nextOrd(draft.templates);
@@ -325,7 +325,7 @@
         { notetype: draft },
       );
       saveSummary = summary;
-      showToast("ok", "Modelo atualizado");
+      showToast("ok", "Note type updated");
       const id = draft.id;
       editMode = false;
       draft = null;
@@ -357,7 +357,7 @@
         args,
       );
       cloneOpen = false;
-      showToast("ok", "Modelo clonado");
+      showToast("ok", "Note type cloned");
       await loadList();
       await selectNotetype(r.id);
     } catch (e) {
@@ -385,7 +385,7 @@
         args,
       );
       createOpen = false;
-      showToast("ok", "Modelo criado");
+      showToast("ok", "Note type created");
       await loadList();
       await selectNotetype(r.id);
     } catch (e) {
@@ -432,9 +432,9 @@
 </script>
 
 <section class="study-page">
-  <PageHero title="Modelos" subtitle="Note types da coleção">
+  <PageHero title="Note types" subtitle="Note types in the collection">
     {#snippet actions()}
-      <button class="btn primary" onclick={openCreate}>+ Novo modelo</button>
+      <button class="btn primary" onclick={openCreate}>+ New note type</button>
     {/snippet}
   </PageHero>
 
@@ -445,15 +445,15 @@
   {/if}
 
   {#if loading}
-    <div class="state">Carregando modelos…</div>
+    <div class="state">Loading note types…</div>
   {:else if error}
     <div class="state err">{error}</div>
-    <button class="btn ghost" onclick={loadList}>Tentar de novo</button>
+    <button class="btn ghost" onclick={loadList}>Try again</button>
   {:else if summaries.length === 0}
     <div class="empty">
-      <h3>Nenhum modelo ainda</h3>
+      <h3>No note types yet</h3>
       <p>
-        Crie um modelo a partir de um stock type pra começar a adicionar notas.
+        Create a note type from a stock type to start adding notes.
       </p>
       <button class="btn primary" onclick={openCreate}>
         Criar primeiro modelo
@@ -461,7 +461,7 @@
     </div>
   {:else}
     <div class="grid">
-      <ul class="list" aria-label="Lista de modelos">
+      <ul class="list" aria-label="Note type list">
         {#each summaries as s (s.id)}
           <li>
             <button
@@ -487,7 +487,7 @@
 
       <div class="detail" aria-live="polite">
         {#if detailLoading}
-          <div class="state">Carregando detalhes…</div>
+          <div class="state">Loading details…</div>
         {:else if !selected}
           <div class="placeholder">
             <p>Selecione um modelo na lista pra ver fields, templates e CSS.</p>
@@ -500,7 +500,7 @@
                   class="title-input"
                   type="text"
                   bind:value={draft.name}
-                  aria-label="Nome do modelo"
+                  aria-label="Note type name"
                 />
               {:else}
                 <h3>{selected.name}</h3>
@@ -529,8 +529,8 @@
                   {saving ? "Saving…" : "Save"}
                 </button>
               {:else}
-                <button class="btn ghost" onclick={openClone}>Clonar</button>
-                <button class="btn ghost" onclick={startEdit}>Editar</button>
+                <button class="btn ghost" onclick={openClone}>Clone</button>
+                <button class="btn ghost" onclick={startEdit}>Edit</button>
                 <button
                   class="btn ghost danger"
                   onclick={() =>
@@ -552,18 +552,18 @@
           {#if editMode && selectedNoteCount !== null && selectedNoteCount > 0}
             <div class="info-banner warn">
               <strong>{selectedNoteCount}</strong>
-              {selectedNoteCount === 1 ? "nota usa" : "notas usam"} este modelo.
-              Adicionar/remover fields ou templates regenera cards e ajusta
-              notas existentes. Tags, agenda e revisões ficam intactas.
+              {selectedNoteCount === 1 ? "note uses" : "notes use"} this note type.
+              Adding/removing fields or templates regenerates cards and adjusts
+              existing notes. Tags, scheduling and reviews stay intact.
             </div>
           {:else if !editMode && selectedNoteCount !== null && selectedNoteCount > 0}
             <div class="info-banner">
               <strong>{selectedNoteCount}</strong>
-              {selectedNoteCount === 1 ? "nota usa" : "notas usam"} este modelo.
+              {selectedNoteCount === 1 ? "note uses" : "notes use"} this note type.
             </div>
           {:else}
             <div class="info-banner subtle">
-              Nenhuma nota usa este modelo ainda.
+              No notes use this note type yet.
             </div>
           {/if}
 
@@ -624,7 +624,7 @@
                     <input
                       type="text"
                       bind:value={f.name}
-                      placeholder="Nome do field"
+                      placeholder="Field name"
                       disabled={saving}
                     />
                     <span class="flags">
@@ -656,7 +656,7 @@
                     <div class="row-actions">
                       <button
                         class="iconbtn"
-                        title="Mover acima"
+                        title="Move up"
                         onclick={() => moveField(f.ord, -1)}
                         disabled={saving}
                       >
@@ -664,7 +664,7 @@
                       </button>
                       <button
                         class="iconbtn"
-                        title="Mover abaixo"
+                        title="Move down"
                         onclick={() => moveField(f.ord, 1)}
                         disabled={saving}
                       >
@@ -715,7 +715,7 @@
                 {#if t.ord === activeTemplateOrd || draft.templates.length === 1}
                   <div class="tpl-edit">
                     <label class="lbl">
-                      <span>Nome</span>
+                      <span>Name</span>
                       <input
                         type="text"
                         bind:value={t.name}
@@ -724,7 +724,7 @@
                     </label>
                     <div class="tpl-pane">
                       <div class="tpl-col">
-                        <span class="tpl-label">Frente (Q)</span>
+                        <span class="tpl-label">Front (Q)</span>
                         <textarea
                           bind:value={t.config.q_format}
                           rows="8"
@@ -733,7 +733,7 @@
                         ></textarea>
                       </div>
                       <div class="tpl-col">
-                        <span class="tpl-label">Verso (A)</span>
+                        <span class="tpl-label">Back (A)</span>
                         <textarea
                           bind:value={t.config.a_format}
                           rows="8"
@@ -818,11 +818,11 @@
               {#if activeTemplate}
                 <div class="tpl-pane">
                   <div class="tpl-col">
-                    <span class="tpl-label">Frente (Q)</span>
+                    <span class="tpl-label">Front (Q)</span>
                     <pre>{activeTemplate.config.q_format}</pre>
                   </div>
                   <div class="tpl-col">
-                    <span class="tpl-label">Verso (A)</span>
+                    <span class="tpl-label">Back (A)</span>
                     <pre>{activeTemplate.config.a_format}</pre>
                   </div>
                 </div>
@@ -838,10 +838,10 @@
               <section class="block">
                 <h4>Cloze</h4>
                 <p class="hint">
-                  Modelos cloze geram 1 card para cada
+                  Cloze note types make 1 card for each
                   <code>{"{{c1::…}}"}</code>,
-                  <code>{"{{c2::…}}"}</code> etc no campo. Use
-                  <code>{"{{c1::dica::pista}}"}</code> para incluir uma pista.
+                  <code>{"{{c2::…}}"}</code> etc. in the field. Use
+                  <code>{"{{c1::text::hint}}"}</code> to include a hint.
                 </p>
               </section>
             {/if}
@@ -861,13 +861,13 @@
     }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Novo modelo</h3>
+      <h3>New note type</h3>
 
       <label class="lbl">
-        <span>Nome (opcional)</span>
+        <span>Name (optional)</span>
         <input
           type="text"
-          placeholder="ex.: Vocabulário inglês"
+          placeholder="e.g. English vocabulary"
           bind:value={createName}
         />
       </label>
@@ -900,7 +900,7 @@
           Cancelar
         </button>
         <button class="btn primary" onclick={doCreate} disabled={creating}>
-          {creating ? "Criando…" : "Criar modelo"}
+          {creating ? "Creating…" : "Criar modelo"}
         </button>
       </footer>
     </div>
@@ -909,9 +909,9 @@
 
 <ConfirmDialog
   bind:open={confirmOpen}
-  title="Excluir modelo"
+  title="Delete note type"
   message={pendingDelete
-    ? `"${pendingDelete.name}" será removido. Cards e notas associados também serão deletados. Esta ação não pode ser desfeita.`
+    ? `"${pendingDelete.name}" will be removed. Associated cards and notes will also be deleted. This action cannot be undone.`
     : ""}
   confirmLabel="Delete"
   variant="danger"
@@ -927,13 +927,13 @@
     }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Clonar modelo</h3>
+      <h3>Clone note type</h3>
       <p class="hint">
-        Cria um novo modelo independente com fields, templates e CSS idênticos.
-        Notas existentes não são copiadas.
+        Creates a new independent note type with identical fields, templates and CSS.
+        Existing notes are not copied.
       </p>
       <label class="lbl">
-        <span>Nome do clone</span>
+        <span>Clone name</span>
         <input type="text" bind:value={cloneName} disabled={cloning} />
       </label>
       <footer class="modal-foot">
@@ -945,7 +945,7 @@
           Cancelar
         </button>
         <button class="btn primary" onclick={doClone} disabled={cloning}>
-          {cloning ? "Clonando…" : "Clonar"}
+          {cloning ? "Cloning…" : "Clonar"}
         </button>
       </footer>
     </div>

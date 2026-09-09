@@ -154,7 +154,7 @@
       await pluginInvoke("study", "study:anki:deckconfig:update", {
         config: updated,
       });
-      showToast("ok", "Preset atualizado");
+      showToast("ok", "Preset updated");
       editing = null;
       editForm = null;
       await load();
@@ -199,8 +199,8 @@
 
 <section class="study-page">
   <PageHero
-    title="Presets de deck"
-    subtitle="Configurações reutilizáveis (limites, FSRS, learning steps)"
+    title="Deck presets"
+    subtitle="Reusable settings (limits, FSRS, learning steps)"
   />
 
   {#if toast}
@@ -210,14 +210,14 @@
   {/if}
 
   <div class="toolbar">
-    <a class="back-link" href="/study/anki/decks">← Voltar pra Decks</a>
+    <a class="back-link" href="/study/anki/decks">← Back to Decks</a>
   </div>
 
   <div class="create-row">
     <input
       type="text"
       class="name-input"
-      placeholder="Nome do novo preset…"
+      placeholder="New preset name…"
       bind:value={createName}
       onkeydown={(e) => { if (e.key === "Enter") create(); }}
     />
@@ -227,17 +227,17 @@
       onclick={create}
       disabled={creating || !createName.trim()}
     >
-      {creating ? "Criando…" : "Criar preset"}
+      {creating ? "Creating…" : "Create preset"}
     </button>
   </div>
 
   {#if loading}
-    <div class="state">Carregando…</div>
+    <div class="state">Loading…</div>
   {:else if error}
     <div class="state err">{error}</div>
   {:else if summaries.length === 0}
     <div class="empty">
-      <p>Nenhum preset ainda.</p>
+      <p>No presets yet.</p>
     </div>
   {:else}
     <ul class="preset-list">
@@ -247,7 +247,7 @@
             <div class="preset-name">
               {p.name}
               {#if p.id === DEFAULT_PRESET_ID}
-                <span class="badge">padrão</span>
+                <span class="badge">default</span>
               {/if}
             </div>
             <div class="preset-meta">
@@ -261,7 +261,7 @@
               class="btn ghost sm"
               onclick={() => startEdit(p)}
             >
-              Editar
+              Edit
             </button>
             <button
               type="button"
@@ -269,12 +269,12 @@
               onclick={() => askDelete(p)}
               disabled={p.id === DEFAULT_PRESET_ID || p.use_count > 0}
               title={p.id === DEFAULT_PRESET_ID
-                ? "Preset padrão não pode ser apagado"
+                ? "The default preset can't be deleted"
                 : p.use_count > 0
-                  ? "Mover decks pra outro preset antes de apagar"
+                  ? "Move decks to another preset before deleting"
                   : ""}
             >
-              Apagar
+              Delete
             </button>
           </div>
         </li>
@@ -290,11 +290,11 @@
     onclick={(e) => { if (e.target === e.currentTarget) editing = null; }}
   >
     <div class="modal modal-wide" role="dialog" aria-modal="true">
-      <h3>Editar preset · {editing.name}</h3>
+      <h3>Edit preset · {editing.name}</h3>
 
       <div class="form-grid">
         <label class="field">
-          <span>Novos cards / dia</span>
+          <span>New cards / day</span>
           <input
             type="number"
             min="0"
@@ -302,7 +302,7 @@
           />
         </label>
         <label class="field">
-          <span>Reviews / dia</span>
+          <span>Reviews / day</span>
           <input
             type="number"
             min="0"
@@ -310,7 +310,7 @@
           />
         </label>
         <label class="field">
-          <span>Retenção desejada (FSRS)</span>
+          <span>Desired retention (FSRS)</span>
           <input
             type="number"
             step="0.01"
@@ -320,7 +320,7 @@
           />
         </label>
         <label class="field">
-          <span>Limite de leech</span>
+          <span>Leech threshold</span>
           <input
             type="number"
             min="1"
@@ -346,18 +346,18 @@
       </div>
 
       <fieldset class="check-group">
-        <legend>Comportamento</legend>
+        <legend>Behavior</legend>
         <label class="check">
           <input type="checkbox" bind:checked={editForm.bury_new} />
-          <span>Enterrar novos cards relacionados</span>
+          <span>Bury related new cards</span>
         </label>
         <label class="check">
           <input type="checkbox" bind:checked={editForm.bury_reviews} />
-          <span>Enterrar reviews relacionados</span>
+          <span>Bury related reviews</span>
         </label>
         <label class="check">
           <input type="checkbox" bind:checked={editForm.disable_autoplay} />
-          <span>Desativar autoplay de mídia</span>
+          <span>Disable media autoplay</span>
         </label>
         <label class="check">
           <input type="checkbox" bind:checked={editForm.show_timer} />
@@ -389,11 +389,11 @@
 
 <ConfirmDialog
   bind:open={confirmDeleteOpen}
-  title="Apagar preset"
+  title="Delete preset"
   message={deleteTarget
-    ? `Apagar o preset "${deleteTarget.name}"? Decks que usam vão pro preset padrão.`
+    ? `Delete the preset "${deleteTarget.name}"? Decks using it move to the default preset.`
     : ""}
-  confirmLabel="Apagar"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={confirmDelete}
 />

@@ -63,7 +63,7 @@
       let res: RevlogEntry[] = [];
       if (mode === "card") {
         if (cardId === "" || !Number.isFinite(Number(cardId))) {
-          error = "Informe um cardId numérico";
+          error = "Enter a numeric cardId";
           entries = [];
           return;
         }
@@ -127,7 +127,7 @@
   }
 
   function easeLabel(ease: number): string {
-    return ["?", "Errei", "Difícil", "Bom", "Fácil"][ease] ?? `?${ease}`;
+    return ["?", "Errei", "Hard", "Bom", "Easy"][ease] ?? `?${ease}`;
   }
 
   function easeClass(ease: number): string {
@@ -158,11 +158,11 @@
 <section class="study-page">
   <PageHero
     title="Revlog"
-    subtitle="Histórico bruto de respostas para análise"
+    subtitle="Raw answer history for analysis"
   />
 
   <div class="toolbar">
-    <a href="/study/anki/stats" class="back-link">← Estatísticas</a>
+    <a href="/study/anki/stats" class="back-link">← Statistics</a>
   </div>
 
   <div class="filter-card">
@@ -173,7 +173,7 @@
         class:active={mode === "range"}
         role="tab"
         onclick={() => (mode = "range")}
-      >Período</button>
+      >Period</button>
       <button
         type="button"
         class="mode-tab"
@@ -201,13 +201,13 @@
         class:active={mode === "card"}
         role="tab"
         onclick={() => (mode = "card")}
-      >Card específico</button>
+      >Specific card</button>
     </div>
 
     <div class="filter-body">
       {#if mode === "range"}
         <label class="field">
-          <span>Últimos N dias</span>
+          <span>Last N days</span>
           <input
             type="number"
             min="1"
@@ -272,7 +272,7 @@
         onclick={run}
         disabled={loading}
       >
-        {loading ? "Buscando…" : "Search"}
+        {loading ? "Searching…" : "Search"}
       </button>
     </div>
   </div>
@@ -293,7 +293,7 @@
       </div>
       <div class="sum-stat ease-2">
         <span class="sum-num">{summary.counts[2]}</span>
-        <span class="sum-label">difícil</span>
+        <span class="sum-label">hard</span>
       </div>
       <div class="sum-stat ease-3">
         <span class="sum-num">{summary.counts[3]}</span>
@@ -301,17 +301,17 @@
       </div>
       <div class="sum-stat ease-4">
         <span class="sum-num">{summary.counts[4]}</span>
-        <span class="sum-label">fácil</span>
+        <span class="sum-label">easy</span>
       </div>
       <div class="sum-stat">
         <span class="sum-num">{summary.avgSec}s</span>
-        <span class="sum-label">médio</span>
+        <span class="sum-label">average</span>
       </div>
     </div>
   {/if}
 
   {#if loading}
-    <p class="muted">Carregando…</p>
+    <p class="muted">Loading…</p>
   {:else if entries.length === 0 && !error}
     <p class="muted center">Nenhuma entrada nesse filtro.</p>
   {:else if entries.length > 0}

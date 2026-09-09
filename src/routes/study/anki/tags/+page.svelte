@@ -109,8 +109,8 @@
         r.updated === 0
           ? "Tag renomeada"
           : r.updated === 1
-            ? "Tag renomeada · 1 nota atualizada"
-            : `Tag renomeada · ${r.updated} notas atualizadas`,
+            ? "Tag renamed · 1 note updated"
+            : `Tag renamed · ${r.updated} notes updated`,
       );
       renameTarget = null;
       await load();
@@ -145,8 +145,8 @@
         r.updated === 0
           ? "Tag movida"
           : r.updated === 1
-            ? "Tag movida · 1 nota atualizada"
-            : `Tag movida · ${r.updated} notas atualizadas`,
+            ? "Tag moved · 1 note updated"
+            : `Tag moved · ${r.updated} notes updated`,
       );
       reparentTarget = null;
       await load();
@@ -167,7 +167,7 @@
       showToast(
         "ok",
         r.removed === 0
-          ? "Nenhuma tag não usada"
+          ? "No unused tags"
           : r.removed === 1
             ? "1 tag removida"
             : `${r.removed} tags removidas`,
@@ -208,10 +208,10 @@
   <PageHero
     title="Tags"
     subtitle={totalTags === 0
-      ? "Gerencie as tags da coleção"
+      ? "Manage the collection tags"
       : totalTags === 1
-        ? "1 tag · " + (unusedCount === 1 ? "1 sem uso" : `${unusedCount} sem uso`)
-        : `${totalTags} tags · ${unusedCount === 1 ? "1 sem uso" : `${unusedCount} sem uso`}`}
+        ? "1 tag · " + (unusedCount === 1 ? "1 unused" : `${unusedCount} unused`)
+        : `${totalTags} tags · ${unusedCount === 1 ? "1 unused" : `${unusedCount} unused`}`}
   />
 
   {#if toast}
@@ -224,7 +224,7 @@
     <input
       class="filter"
       type="search"
-      placeholder="Filtrar tags…"
+      placeholder="Filter tags…"
       bind:value={filter}
     />
     <button
@@ -232,19 +232,19 @@
       onclick={clearUnused}
       disabled={cleanupBusy || unusedCount === 0}
     >
-      {cleanupBusy ? "Limpando…" : "Limpar não usadas"}
+      {cleanupBusy ? "Cleaning…" : "Delete unused"}
     </button>
   </div>
 
   {#if loading}
-    <div class="state">Carregando tags…</div>
+    <div class="state">Loading tags…</div>
   {:else if error}
     <div class="state err">{error}</div>
     <button class="btn ghost" onclick={load}>Tentar de novo</button>
   {:else if tree.length === 0}
     <div class="empty">
       <p>Nenhuma tag ainda.</p>
-      <p class="hint">Tags são criadas quando você adiciona uma a uma nota.</p>
+      <p class="hint">Tags are created when you add one to a note.</p>
     </div>
   {:else if visibleTree.length === 0}
     <div class="empty">
@@ -356,7 +356,7 @@
           onclick={confirmRename}
           disabled={renameBusy || !renameNewValue.trim() || renameNewValue.trim() === renameTarget.full_name}
         >
-          {renameBusy ? "Renomeando…" : "Rename"}
+          {renameBusy ? "Renaming…" : "Rename"}
         </button>
       </footer>
     </div>
@@ -406,7 +406,7 @@
           onclick={confirmReparent}
           disabled={reparentBusy}
         >
-          {reparentBusy ? "Movendo…" : "Mover"}
+          {reparentBusy ? "Moving…" : "Mover"}
         </button>
       </footer>
     </div>

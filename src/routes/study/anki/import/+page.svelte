@@ -131,7 +131,7 @@
       lastSourcePath = picked;
       const kind = detectKind(picked);
       if (!kind) {
-        error = `Formato não reconhecido: ${picked}`;
+        error = `Unrecognized format: ${picked}`;
         return;
       }
       busy = true;
@@ -220,7 +220,7 @@
           delimiter: delim,
         });
       }
-      showExportToast("ok", `Exportado · ${target.split(/[\\/]/).pop()}`);
+      showExportToast("ok", `Exported · ${target.split(/[\\/]/).pop()}`);
     } catch (e) {
       showExportToast("err", e instanceof Error ? e.message : String(e));
     } finally {
@@ -231,52 +231,52 @@
   function summaryRows(r: Result): { label: string; value: number | string }[] {
     if (r.kind === "apkg") {
       return [
-        { label: "Notes adicionadas", value: r.data.notes_added },
-        { label: "Cards adicionados", value: r.data.cards_added },
-        { label: "Decks novos", value: r.data.decks_added },
-        { label: "Modelos novos", value: r.data.notetypes_added },
-        { label: "Mídia copiada", value: r.data.media_added },
-        { label: "Revlog importado", value: r.data.revlog_added },
-        { label: "Notes ignoradas (já existem)", value: r.data.skipped_existing_notes },
+        { label: "Notes added", value: r.data.notes_added },
+        { label: "Cards added", value: r.data.cards_added },
+        { label: "New decks", value: r.data.decks_added },
+        { label: "New note types", value: r.data.notetypes_added },
+        { label: "Media copied", value: r.data.media_added },
+        { label: "Revlog imported", value: r.data.revlog_added },
+        { label: "Notes skipped (already exist)", value: r.data.skipped_existing_notes },
       ];
     }
     if (r.kind === "json") {
       return [
-        { label: "Notes adicionadas", value: r.data.notes_added },
-        { label: "Cards adicionados", value: r.data.cards_added },
-        { label: "Decks novos", value: r.data.decks_added },
-        { label: "Configs de deck novas", value: r.data.deck_configs_added },
-        { label: "Modelos novos", value: r.data.notetypes_added },
-        { label: "Revlog importado", value: r.data.revlog_added },
-        { label: "Notes ignoradas (já existem)", value: r.data.skipped_existing_notes },
+        { label: "Notes added", value: r.data.notes_added },
+        { label: "Cards added", value: r.data.cards_added },
+        { label: "New decks", value: r.data.decks_added },
+        { label: "New deck configs", value: r.data.deck_configs_added },
+        { label: "New note types", value: r.data.notetypes_added },
+        { label: "Revlog imported", value: r.data.revlog_added },
+        { label: "Notes skipped (already exist)", value: r.data.skipped_existing_notes },
       ];
     }
     return [
-      { label: "Linhas importadas", value: r.data.imported },
-      { label: "Linhas ignoradas", value: r.data.skipped },
+      { label: "Rows imported", value: r.data.imported },
+      { label: "Rows skipped", value: r.data.skipped },
     ];
   }
 </script>
 
 <section class="study-page">
-  <PageHero title="Importar / Exportar" subtitle="Mover dados entre o omniget e outros clientes Anki" />
+  <PageHero title="Import / Export" subtitle="Move data between GuroHub and other Anki clients" />
 
   <div class="format-grid">
     <article class="format-card">
       <h3>.apkg / .colpkg</h3>
-      <p>Coleção exportada do Anki desktop. Inclui notes, cards, decks, modelos, revlog e mídia.</p>
-      <small class="muted">Conflitos: notes existentes (mesmo id ou guid) são ignoradas.</small>
+      <p>Collection exported from Anki desktop. Includes notes, cards, decks, note types, revlog and media.</p>
+      <small class="muted">Conflicts: existing notes (same id or guid) are skipped.</small>
     </article>
     <article class="format-card">
       <h3>.json</h3>
-      <p>Snapshot interno do plugin (gerado por Exportar &gt; JSON). Round-trip completo.</p>
+      <p>Internal plugin snapshot (created by Export &gt; JSON). Full round-trip.</p>
     </article>
     <article class="format-card csv-card">
       <h3>.csv / .tsv</h3>
-      <p>Planilha com colunas dos fields do modelo + opcionais Tags e Deck.</p>
+      <p>Spreadsheet with the note type's field columns + optional Tags and Deck.</p>
       <div class="csv-options">
         <label>
-          <span>Modelo</span>
+          <span>Note type</span>
           <select bind:value={csvNotetypeId} disabled={busy}>
             {#each notetypes as nt (nt.id)}
               <option value={nt.id}>{nt.name}</option>
@@ -292,17 +292,17 @@
           </select>
         </label>
         <label>
-          <span>Delimitador</span>
+          <span>Delimiter</span>
           <select bind:value={csvDelimiter} disabled={busy}>
             <option value="">Auto</option>
             <option value={"\t"}>Tab</option>
-            <option value=",">Vírgula</option>
-            <option value=";">Ponto-e-vírgula</option>
+            <option value=",">Comma</option>
+            <option value=";">Semicolon</option>
           </select>
         </label>
         <label class="checkbox">
           <input type="checkbox" bind:checked={csvHasHeader} disabled={busy} />
-          <span>Primeira linha é cabeçalho</span>
+          <span>First line is a header</span>
         </label>
       </div>
     </article>
@@ -310,10 +310,10 @@
 
   <div class="cta-row">
     <button type="button" class="btn-primary" onclick={pickAndImport} disabled={busy}>
-      {busy ? "Importando…" : "Escolher arquivo e importar"}
+      {busy ? "Importing…" : "Choose file and import"}
     </button>
     {#if lastSourcePath && !busy}
-      <span class="last-path">Último: {lastSourcePath}</span>
+      <span class="last-path">Last: {lastSourcePath}</span>
     {/if}
   </div>
 
@@ -322,10 +322,9 @@
   {/if}
 
   <section class="export-section">
-    <h2 class="section-heading">Exportar</h2>
+    <h2 class="section-heading">Export</h2>
     <p class="section-lede">
-      Salve a coleção em um arquivo. Útil pra backup externo, migração ou
-      compartilhamento.
+      Save the collection to a file. Useful for external backup, migration or sharing.
     </p>
 
     {#if exportToast}
@@ -337,49 +336,49 @@
     <div class="export-grid">
       <article class="export-card">
         <h3>.apkg</h3>
-        <p>Compatível com Anki desktop. Inclui notes, cards, decks, modelos e mídia.</p>
+        <p>Compatible with Anki desktop. Includes notes, cards, decks, note types and media.</p>
         <button
           type="button"
           class="btn-secondary"
           onclick={() => pickAndExport("apkg")}
           disabled={exporting !== null || busy}
         >
-          {exporting === "apkg" ? "Exportando…" : "Exportar .apkg"}
+          {exporting === "apkg" ? "Exporting…" : "Export .apkg"}
         </button>
       </article>
 
       <article class="export-card">
         <h3>.colpkg</h3>
-        <p>Coleção completa (formato preferido pelo Anki para backup full).</p>
+        <p>Full collection (Anki's preferred format for a full backup).</p>
         <button
           type="button"
           class="btn-secondary"
           onclick={() => pickAndExport("colpkg")}
           disabled={exporting !== null || busy}
         >
-          {exporting === "colpkg" ? "Exportando…" : "Exportar .colpkg"}
+          {exporting === "colpkg" ? "Exporting…" : "Export .colpkg"}
         </button>
       </article>
 
       <article class="export-card">
         <h3>.json</h3>
-        <p>Snapshot interno. Importável de volta no omniget com round-trip completo.</p>
+        <p>Internal snapshot. Re-importable with a full round-trip.</p>
         <button
           type="button"
           class="btn-secondary"
           onclick={() => pickAndExport("json")}
           disabled={exporting !== null || busy}
         >
-          {exporting === "json" ? "Exportando…" : "Exportar .json"}
+          {exporting === "json" ? "Exporting…" : "Export .json"}
         </button>
       </article>
 
       <article class="export-card csv-card">
         <h3>.csv (notes)</h3>
-        <p>Planilha de notes para um modelo específico. Útil pra editar em Excel/Sheets.</p>
+        <p>Note spreadsheet for a specific note type. Useful for editing in Excel/Sheets.</p>
         <div class="export-options">
           <label>
-            <span>Modelo</span>
+            <span>Note type</span>
             <select bind:value={exportNotetypeId} disabled={exporting !== null}>
               {#each notetypes as nt (nt.id)}
                 <option value={nt.id}>{nt.name}</option>
@@ -391,8 +390,8 @@
             <select bind:value={exportDelimiter} disabled={exporting !== null}>
               <option value="">Auto</option>
               <option value={"\t"}>Tab</option>
-              <option value=",">Vírgula</option>
-              <option value=";">Ponto-e-vírgula</option>
+              <option value=",">Comma</option>
+              <option value=";">Semicolon</option>
             </select>
           </label>
         </div>
@@ -402,7 +401,7 @@
           onclick={() => pickAndExport("csv")}
           disabled={exporting !== null || busy || exportNotetypeId == null}
         >
-          {exporting === "csv" ? "Exportando…" : "Exportar .csv"}
+          {exporting === "csv" ? "Exporting…" : "Export .csv"}
         </button>
       </article>
     </div>
@@ -411,7 +410,7 @@
   {#if result}
     <section class="card result-card">
       <header class="card-head">
-        <h2>Importação concluída</h2>
+        <h2>Import complete</h2>
         <span class="kind-badge">{result.kind.toUpperCase()}</span>
       </header>
       <ul class="summary-list">
@@ -424,19 +423,19 @@
       </ul>
       {#if result.kind === "csv" && result.data.errors.length > 0}
         <details class="errors">
-          <summary>{result.data.errors.length} linhas com erro</summary>
+          <summary>{result.data.errors.length} rows with errors</summary>
           <ul>
             {#each result.data.errors.slice(0, 20) as err (err)}
               <li>{err}</li>
             {/each}
             {#if result.data.errors.length > 20}
-              <li class="muted">… e mais {result.data.errors.length - 20}</li>
+              <li class="muted">… and {result.data.errors.length - 20} more</li>
             {/if}
           </ul>
         </details>
       {/if}
       <footer class="card-foot">
-        <a class="back-link" href="/study/anki">Ver no painel →</a>
+        <a class="back-link" href="/study/anki">View in dashboard →</a>
       </footer>
     </section>
   {/if}

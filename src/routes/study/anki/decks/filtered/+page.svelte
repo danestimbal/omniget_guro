@@ -41,12 +41,12 @@
 
   const ORDER_OPTIONS = [
     { value: "oldest_seen_first", label: "Mais antigo primeiro" },
-    { value: "random", label: "Aleatório" },
+    { value: "random", label: "Random" },
     { value: "interval_descending", label: "Maior intervalo" },
     { value: "interval_ascending", label: "Menor intervalo" },
     { value: "lapses_descending", label: "Mais lapsos" },
     { value: "added_descending", label: "Adicionados recentemente" },
-    { value: "added_ascending", label: "Adicionados há mais tempo" },
+    { value: "added_ascending", label: "Added longest ago" },
     { value: "due_first", label: "Vencidos primeiro" },
   ];
 
@@ -55,7 +55,7 @@
     { label: "Aprendendo", search: "is:learn" },
     { label: "Suspensos", search: "is:suspended" },
     { label: "Marcados (flag)", search: "flag:1 OR flag:2 OR flag:3 OR flag:4" },
-    { label: "Tagged 'difícil'", search: 'tag:difícil' },
+    { label: "Tagged 'hard'", search: 'tag:hard' },
     { label: "Lapsos > 5", search: "prop:lapses>5" },
   ];
 
@@ -146,7 +146,7 @@
       showToast(
         "ok",
         r.returned === 0
-          ? "Deck já estava vazio"
+          ? "Deck was already empty"
           : r.returned === 1
             ? "1 card devolvido pro deck original"
             : `${r.returned} cards devolvidos`,
@@ -188,7 +188,7 @@
 <section class="study-page">
   <PageHero
     title="Decks filtrados"
-    subtitle="Cards selecionados por uma query — bom para revisão dirigida"
+    subtitle="Cards selected by a query — good for targeted review"
   />
 
   {#if toast}
@@ -198,7 +198,7 @@
   {/if}
 
   <div class="toolbar">
-    <a class="back-link" href="/study/anki/decks">← Voltar pra Decks</a>
+    <a class="back-link" href="/study/anki/decks">← Back to Decks</a>
     <button
       type="button"
       class="btn primary"
@@ -209,23 +209,23 @@
   </div>
 
   {#if loading}
-    <div class="state">Carregando…</div>
+    <div class="state">Loading…</div>
   {:else if error}
     <div class="state err">{error}</div>
-    <button class="btn ghost" onclick={load}>Tentar de novo</button>
+    <button class="btn ghost" onclick={load}>Try again</button>
   {:else if decks.length === 0}
     <div class="empty">
-      <p>Nenhum deck filtrado ainda.</p>
+      <p>No filtered decks yet.</p>
       <p class="hint">
-        Decks filtrados puxam cards de outros decks via query (ex: <code>is:due</code>).
-        Quando você termina, os cards voltam pro deck original.
+        Filtered decks pull cards from other decks via a query (e.g. <code>is:due</code>).
+        When you finish, cards return to their original deck.
       </p>
       <button
         type="button"
         class="btn primary"
         onclick={() => (createOpen = true)}
       >
-        Criar primeiro
+        Create the first one
       </button>
     </div>
   {:else}
@@ -236,9 +236,9 @@
           <div class="filtered-info">
             <h3>{deck.name}</h3>
             <p class="meta">
-              <span class="pill new">{deck.new_count} novos</span>
-              <span class="pill learn">{deck.learn_count} aprendendo</span>
-              <span class="pill review">{deck.review_count} revisão</span>
+              <span class="pill new">{deck.new_count} new</span>
+              <span class="pill learn">{deck.learn_count} learning</span>
+              <span class="pill review">{deck.review_count} review</span>
             </p>
           </div>
           <div class="filtered-actions">
@@ -247,18 +247,18 @@
               class="btn ghost sm"
               onclick={() => rebuild(deck)}
               disabled={rebuilding === deck.id || emptying === deck.id}
-              title="Refaz a query e popula o deck"
+              title="Re-runs the query and populates the deck"
             >
-              {rebuilding === deck.id ? "Reconstruindo…" : "Reconstruir"}
+              {rebuilding === deck.id ? "Rebuilding…" : "Rebuild"}
             </button>
             <button
               type="button"
               class="btn ghost sm"
               onclick={() => emptyDeck(deck)}
               disabled={rebuilding === deck.id || emptying === deck.id || total === 0}
-              title="Devolve os cards ao deck original sem apagar o filtrado"
+              title="Returns the cards to their original deck without deleting the filtered one"
             >
-              {emptying === deck.id ? "Esvaziando…" : "Esvaziar"}
+              {emptying === deck.id ? "Emptying…" : "Empty"}
             </button>
             <button
               type="button"
@@ -266,7 +266,7 @@
               onclick={() => askDelete(deck)}
               disabled={rebuilding === deck.id || emptying === deck.id}
             >
-              Apagar
+              Delete
             </button>
           </div>
         </li>
@@ -282,18 +282,18 @@
     onclick={(e) => { if (e.target === e.currentTarget) createOpen = false; }}
   >
     <div class="modal" role="dialog" aria-modal="true">
-      <h3>Criar deck filtrado</h3>
+      <h3>Create filtered deck</h3>
       <p class="modal-hint">
-        O deck puxa cards que casam com a query. Use sintaxe Anki:
+        The deck pulls cards matching the query. Use Anki syntax:
         <code>is:due</code>, <code>tag:foo</code>, <code>deck:Bar</code>.
       </p>
 
       <label class="field">
-        <span>Nome</span>
+        <span>Name</span>
         <input
           type="text"
           bind:value={newName}
-          placeholder="Ex: Revisão hoje"
+          placeholder="e.g. Review today"
         />
       </label>
 
@@ -324,7 +324,7 @@
 
       <div class="row">
         <label class="field">
-          <span>Limite</span>
+          <span>Limit</span>
           <input
             type="number"
             min="1"
@@ -334,7 +334,7 @@
         </label>
 
         <label class="field">
-          <span>Ordem</span>
+          <span>Order</span>
           <select bind:value={newOrder}>
             {#each ORDER_OPTIONS as opt (opt.value)}
               <option value={opt.value}>{opt.label}</option>
@@ -355,7 +355,7 @@
           onclick={() => (createOpen = false)}
           disabled={createBusy}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -363,7 +363,7 @@
           onclick={createFiltered}
           disabled={createBusy || !newName.trim() || !newSearch.trim()}
         >
-          {createBusy ? "Criando…" : "Criar"}
+          {createBusy ? "Creating…" : "Create"}
         </button>
       </div>
     </div>
@@ -372,11 +372,11 @@
 
 <ConfirmDialog
   bind:open={confirmDeleteOpen}
-  title="Apagar deck filtrado"
+  title="Delete filtered deck"
   message={deleteTarget
-    ? `O deck "${deleteTarget.name}" será removido. Os cards voltam pro deck original — nada é perdido.`
+    ? `The deck "${deleteTarget.name}" will be removed. Cards return to their original deck — nothing is lost.`
     : ""}
-  confirmLabel="Apagar"
+  confirmLabel="Delete"
   variant="danger"
   onConfirm={confirmDelete}
 />
