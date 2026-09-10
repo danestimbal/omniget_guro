@@ -267,7 +267,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
     indicator: "▢",
     group: "blocos",
     run: (editor, range) => {
-      const url = window.prompt("URL da imagem:");
+      const url = window.prompt("Image URL:");
       if (!url) return;
       editor
         .chain()
@@ -462,7 +462,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   {
     id: "block-ref",
     label: "Block ref ((",
-    hint: "Inicia ref de bloco (autocomplete em D1)",
+    hint: "Starts a block ref (autocomplete in D1)",
     aliases: ["ref", "block", "bloco"],
     indicator: "((",
     group: "refs",
@@ -548,7 +548,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
     indicator: "::",
     group: "utilidades",
     run: (editor, range) => {
-      const key = window.prompt("Chave da propriedade:");
+      const key = window.prompt("Property key:");
       if (!key || !key.trim()) return;
       const cleanKey = key.trim().replace(/[^a-zA-Z0-9_-]/g, "_");
       const value = window.prompt(`Valor de ${cleanKey}:`) ?? "";
@@ -562,7 +562,7 @@ export const SLASH_COMMANDS: SlashCommand[] = [
   },
   {
     id: "template",
-    label: "Aplicar template",
+    label: "Apply template",
     hint: "Opens the templates page",
     aliases: ["template", "tpl", "templates"],
     indicator: "▤",

@@ -195,12 +195,12 @@
     <div class="db-qState err">erro: {qState.message}</div>
   {:else if qState.kind === "ok"}
     {#if qState.rows.length === 0}
-      <div class="db-qState">sem resultados</div>
+      <div class="db-qState">no results</div>
     {:else}
       <table class="db-table">
         <thead>
           <tr>
-            <th>conteúdo</th>
+            <th>content</th>
             <th class="th-narrow">
               <button
                 type="button"
@@ -261,7 +261,7 @@
           class="page-btn"
           onclick={nextPage}
           disabled={!qState.has_more}
-        >próximo ›</button>
+        >next ›</button>
       </footer>
     {/if}
   {/if}

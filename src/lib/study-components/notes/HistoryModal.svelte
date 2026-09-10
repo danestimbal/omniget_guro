@@ -113,16 +113,16 @@
       if (e.target === e.currentTarget) onClose();
     }}
   >
-    <div class="modal" role="dialog" aria-label="Histórico do bloco" aria-modal="true">
+    <div class="modal" role="dialog" aria-label="Block history" aria-modal="true">
       <header class="head">
-        <h3>Histórico do bloco</h3>
+        <h3>Block history</h3>
         <button type="button" class="btn ghost sm" onclick={onClose}>×</button>
       </header>
 
       {#if loading}
-        <div class="state muted">Carregando…</div>
+        <div class="state muted">Loading…</div>
       {:else if blockId === null}
-        <div class="state muted">Selecione um bloco para ver seu histórico.</div>
+        <div class="state muted">Select a block to see its history.</div>
       {:else if error}
         <div class="state err">{error}</div>
       {:else if snapshots.length === 0}
@@ -132,7 +132,7 @@
         </div>
       {:else}
         <div class="layout">
-          <ul class="list" role="listbox" aria-label="Versões">
+          <ul class="list" role="listbox" aria-label="Versions">
             {#each snapshots as s, i (s.id)}
               <li>
                 <button
@@ -158,7 +158,7 @@
               </div>
               <DiffView oldText={selected.content} newText={currentContent} />
             {:else}
-              <div class="state muted">Escolha uma versão.</div>
+              <div class="state muted">Choose a version.</div>
             {/if}
           </div>
         </div>
@@ -185,7 +185,7 @@
           onclick={restoreSelected}
           disabled={!selected || restoring || blockId === null}
         >
-          {restoring ? "Restaurando…" : "Restaurar esta versão"}
+          {restoring ? "Restaurando…" : "Restore this version"}
         </button>
       </footer>
     </div>
@@ -200,11 +200,11 @@
       if (e.target === e.currentTarget) confirmClearOpen = false;
     }}
   >
-    <div class="modal small" role="dialog" aria-label="Limpar histórico" aria-modal="true">
-      <h3>Limpar histórico?</h3>
+    <div class="modal small" role="dialog" aria-label="Clear history" aria-modal="true">
+      <h3>Clear history?</h3>
       <p class="warn">
         {snapshots.length === 1
-          ? "Isso apaga o snapshot deste bloco. Não dá pra desfazer."
+          ? "This deletes the snapshot of this block. It can't be undone."
           : `Isso apaga ${snapshots.length} snapshots deste bloco. Não dá pra desfazer.`}
       </p>
       <footer class="foot">

@@ -75,7 +75,7 @@
       type="button"
       class="refresh-btn"
       onclick={() => void resolve()}
-      title="Recarregar embed"
+      title="Reload embed"
     >↻</button>
   </header>
 
@@ -93,7 +93,7 @@
         <span>
           {data.target.kind === "page"
             ? `Página "${data.target.name}" não encontrada`
-            : "Bloco não encontrado"}
+            : "Block not found"}
         </span>
       </div>
     {:else if data.kind === "cycle"}
@@ -101,7 +101,7 @@
         <svg class="warning-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 3l10 18H2z M12 10v5 M12 18v.5" />
         </svg>
-        <span>Embed cíclico bloqueado</span>
+        <span>Cyclic embed blocked</span>
       </div>
     {:else if data.kind === "block"}
       <div class="embed-block">
@@ -128,7 +128,7 @@
           {/each}
         </ul>
         {#if data.truncated}
-          <p class="embed-note">… (mais blocos truncados)</p>
+          <p class="embed-note">… (more blocks truncated)</p>
         {/if}
       </div>
     {/if}

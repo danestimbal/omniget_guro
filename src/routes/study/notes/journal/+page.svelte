@@ -243,7 +243,7 @@
 
     <div class="nav-row">
       <button type="button" class="btn ghost sm" onclick={() => nav("prev")}>← Ant.</button>
-      <button type="button" class="btn ghost sm" onclick={() => nav("next")}>Próx. →</button>
+      <button type="button" class="btn ghost sm" onclick={() => nav("next")}>Next →</button>
     </div>
 
     <button
@@ -257,7 +257,7 @@
     <ActivityHeatmap journals={heatmap} onPick={openDay} />
 
     <section class="recent-list">
-      <h3>Histórico</h3>
+      <h3>History</h3>
       <ul>
         {#each recent.slice(0, 30) as r (r.page_id)}
           <li>
@@ -277,7 +277,7 @@
             </button>
           </li>
         {:else}
-          <li class="empty">Sem journals ainda.</li>
+          <li class="empty">No journals yet.</li>
         {/each}
       </ul>
     </section>
@@ -297,9 +297,9 @@
     />
 
     {#if loading}
-      <div class="state">Carregando journal…</div>
+      <div class="state">Loading journal…</div>
     {:else if !currentPage || currentDay === null}
-      <div class="state">Nenhum journal aberto.</div>
+      <div class="state">No journal open.</div>
     {:else}
       <header class="ed-head">
         <div class="title-block">
@@ -354,7 +354,7 @@
         <button type="button" class="btn ghost" onclick={() => (showJumpDialog = false)}>
           Cancelar
         </button>
-        <button type="button" class="btn primary" onclick={jumpToDate}>Abrir</button>
+        <button type="button" class="btn primary" onclick={jumpToDate}>Open</button>
       </footer>
     </div>
   </div>
@@ -369,7 +369,7 @@
     }}
   >
     <div class="modal wide">
-      <h3>Aplicar template</h3>
+      <h3>Apply template</h3>
       <p class="hint">
         Os blocos do template serão adicionados ao final deste journal.
       </p>
@@ -392,7 +392,7 @@
 
       {#if userTemplates.length > 0}
         <section>
-          <h4>Suas páginas marcadas como template</h4>
+          <h4>Your pages marked as templates</h4>
           <div class="tpl-grid">
             {#each userTemplates as t (t.page_id)}
               <button

@@ -50,7 +50,7 @@
       class="icon-btn"
       class:active={isVisible(item.id)}
       onclick={() => toggle(item.id)}
-      title="{item.label} ({isVisible(item.id) ? 'visível' : 'oculto'})"
+      title="{item.label} ({isVisible(item.id) ? 'visible' : 'hidden'})"
       aria-pressed={isVisible(item.id)}
       aria-label={item.label}
     >

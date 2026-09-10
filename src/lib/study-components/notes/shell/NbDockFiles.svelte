@@ -166,17 +166,17 @@
     const nb = notebooksStore.byId(notebookId);
     if (!nb) return;
     if (nb.id === 1) {
-      window.alert("Notebook 'Pessoal' não pode ser excluído.");
+      window.alert("The 'Personal' notebook can't be deleted.");
       return;
     }
     if (nb.page_count > 0) {
       const ok = window.confirm(
-        `Excluir "${nb.name}" remove ${nb.page_count} página${nb.page_count === 1 ? "" : "s"} para sempre. Continuar?`,
+        `Deleting "${nb.name}" removes ${nb.page_count} page${nb.page_count === 1 ? "" : "s"} forever. Continue?`,
       );
       if (!ok) return;
       const r = await notebooksStore.delete(notebookId, true);
       if (!r.deleted) {
-        window.alert("Falha ao excluir notebook.");
+        window.alert("Failed to delete the notebook.");
       } else {
         await reloadPages();
       }
@@ -207,7 +207,7 @@
   async function pickIcon(notebookId: number) {
     closeContext();
     const icon = window.prompt(
-      "Ícone (lucide name, ex: book, briefcase). Vazio = sem ícone.",
+      "Icon (lucide name, e.g. book, briefcase). Empty = no icon.",
       notebooksStore.byId(notebookId)?.icon_lucide ?? "",
     );
     if (icon == null) return;
@@ -260,7 +260,7 @@
       class="head-btn"
       type="button"
       onclick={() => void openJournalToday()}
-      title="Journal de hoje"
+      title="Today's journal"
       aria-label="Journal de hoje"
     >
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -272,7 +272,7 @@
 
   <input
     class="search"
-    placeholder="Filtrar páginas…"
+    placeholder="Filter pages…"
     bind:value={search}
   />
 
@@ -329,9 +329,9 @@
                 type="button"
                 class="page-row add-page"
                 onclick={() => startCreatePage(nb.id)}
-                title="Nova página neste notebook"
+                title="New page in this notebook"
               >
-                <span class="page-name">+ Nova página</span>
+                <span class="page-name">+ New page</span>
               </button>
             </li>
           </ul>
@@ -381,7 +381,7 @@
       type="button"
       class="new-nb"
       onclick={() => (createNotebookOpen = true)}
-      title="Novo notebook (Ctrl+Shift+N)"
+      title="New notebook (Ctrl+Shift+N)"
     >
       <span aria-hidden="true">＋</span>
       <span>Novo notebook</span>
@@ -446,7 +446,7 @@
   >
     <div class="rename-card">
       <label>
-        <span>Renomear notebook</span>
+        <span>Rename notebook</span>
         <input
           type="text"
           bind:value={renameDraft}

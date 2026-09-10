@@ -42,7 +42,7 @@
       await notebooksStore.setCover(notebookId, asset);
       onClose();
     } catch (e) {
-      error = String(e ?? "falha ao aplicar capa");
+      error = String(e ?? "failed to apply the cover");
     } finally {
       busy = false;
     }

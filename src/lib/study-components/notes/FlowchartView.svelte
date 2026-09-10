@@ -60,8 +60,8 @@
       fill: surface,
       "line-width": 2,
       "font-size": 14,
-      "yes-text": "sim",
-      "no-text": "não",
+      "yes-text": "yes",
+      "no-text": "no",
     };
   }
 
@@ -154,7 +154,7 @@
       type="button"
       class="flowchart-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Voltar pro diagrama"}
+      title={mode === "render" ? "Editar source" : "Back to diagram"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -171,7 +171,7 @@
       aria-label="Source do diagrama flowchart"
     ></textarea>
   {:else if renderState.kind === "idle"}
-    <p class="flowchart-state">Sem source. Clique em ‹/› para editar.</p>
+    <p class="flowchart-state">No source. Click ‹/› to edit.</p>
   {:else if renderState.kind === "loading"}
     <p class="flowchart-state">renderizando…</p>
   {:else if renderState.kind === "error"}

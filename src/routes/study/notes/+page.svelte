@@ -145,7 +145,7 @@
       notifyDocksDirty();
       await openPage(r.id);
       void awardXp("page_created", 15, { page_id: r.id, name });
-      showToast("ok", "Página criada");
+      showToast("ok", "Page created");
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
     }
@@ -161,7 +161,7 @@
       notesShell.setCounts(0, 0);
       notesShell.setSaving(false);
       notifyDocksDirty();
-      showToast("ok", "Página removida");
+      showToast("ok", "Page removed");
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
     }
@@ -181,10 +181,10 @@
       showToast(
         "ok",
         r.blocks_updated === 0
-          ? "Renomeada"
+          ? "Renamed"
           : r.blocks_updated === 1
-            ? "Renomeada e 1 bloco atualizado"
-            : `Renomeada e ${r.blocks_updated} blocos atualizados`,
+            ? "Renamed and 1 block updated"
+            : `Renamed and ${r.blocks_updated} blocks updated`,
       );
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
@@ -314,7 +314,7 @@
     {/if}
 
     {#if loading}
-      <div class="state">Carregando…</div>
+      <div class="state">Loading…</div>
     {:else if notesTableMissing}
       <div class="state err">
         <p>{$t("study.library.error_loading_notes")}</p>
@@ -348,7 +348,7 @@
               renameValue = currentPage?.name ?? "";
               renameOpen = true;
             }}
-            title="Click para renomear"
+            title="Click to rename"
           >
             {currentPage.title ?? currentPage.name}
           </button>
@@ -361,7 +361,7 @@
           <button
             class="btn ghost sm"
             onclick={() => (coverManagerOpen = true)}
-            title="Definir capa da página"
+            title="Set the page cover"
           >
             {coverUrl ? "Capa ✓" : "+ Capa"}
           </button>
@@ -369,14 +369,14 @@
             class="btn ghost sm"
             onclick={() => (historyOpen = true)}
             disabled={firstBlockId === null}
-            title="Ver histórico do bloco principal desta página"
+            title="View the history of this page's main block"
           >
             🕐 Histórico
           </button>
           <button
             class="btn ghost sm"
             onclick={undoLastOp}
-            title="Desfazer última operação estrutural (Cmd+Alt+Z)"
+            title="Undo the last structural operation (Cmd+Alt+Z)"
           >
             ↶
           </button>
@@ -390,14 +390,14 @@
           <a
             class="btn ghost sm"
             href="/study/notes/shortcuts"
-            title="Atalhos do editor"
+            title="Editor shortcuts"
           >
             ?
           </a>
           <button
             class="btn ghost sm"
             onclick={() => window.print()}
-            title="Imprimir / Salvar PDF (Ctrl+P)"
+            title="Print / Save PDF (Ctrl+P)"
           >
             Imprimir/PDF
           </button>
@@ -469,7 +469,7 @@
   blockId={firstBlockId}
   onRestored={() => {
     void reloadTree();
-    showToast("ok", "Versão restaurada");
+    showToast("ok", "Version restored");
   }}
   onClose={() => (historyOpen = false)}
 />
@@ -489,7 +489,7 @@
 
 <ConfirmDialog
   bind:open={confirmDeletePageOpen}
-  title="Excluir página"
+  title="Delete page"
   message={currentPage
     ? `"${currentPage.title ?? currentPage.name}" e todos os seus blocos serão removidos. Esta ação não pode ser desfeita.`
     : ""}

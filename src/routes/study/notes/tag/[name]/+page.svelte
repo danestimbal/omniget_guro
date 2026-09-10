@@ -112,7 +112,7 @@
   </header>
 
   {#if loading}
-    <p class="state">Carregando…</p>
+    <p class="state">Loading…</p>
   {:else if error}
     <p class="state err">{error}</p>
   {:else}
@@ -123,10 +123,10 @@
           <a
             class="btn ghost sm"
             href={`/study/notes?page=${encodeURIComponent(descriptionPage.name)}`}
-          >Editar →</a>
+          >Edit →</a>
         </header>
         {#if descriptionBlocks.length === 0}
-          <p class="muted">Página de descrição existe mas está vazia.</p>
+          <p class="muted">A description page exists but is empty.</p>
         {:else}
           <ul class="snippet-list">
             {#each flattenFirst(descriptionBlocks, 5) as n (n.id)}
@@ -155,7 +155,7 @@
 
     {#if pages.length > 0}
       <section class="pages">
-        <h2>Páginas com esta tag</h2>
+        <h2>Pages with this tag</h2>
         <ul>
           {#each pages as p (p.id)}
             <li>
@@ -192,7 +192,7 @@
     {/if}
 
     {#if pages.length === 0 && blocksTagged.length === 0}
-      <p class="state">Sem páginas ou blocos com tag <code>#{tagName}</code>.</p>
+      <p class="state">No pages or blocks tagged <code>#{tagName}</code>.</p>
     {/if}
   {/if}
 </div>

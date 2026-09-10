@@ -112,7 +112,7 @@
 <section class="search-page">
   <header class="head">
     <a href="/study/notes" class="back">← Notas</a>
-    <h1>Buscar em notas</h1>
+    <h1>Search notes</h1>
     <p class="hint">
       Busca FTS5 (full-text) sobre conteúdo dos blocos. Suporta operadores
       <code>palavra*</code>, <code>"frase exata"</code>,
@@ -123,7 +123,7 @@
   <div class="search-bar">
     <input
       type="search"
-      placeholder="Digite para buscar… (acentos ignorados)"
+      placeholder="Type to search… (accents ignored)"
       bind:this={inputRef}
       bind:value={query}
     />
@@ -132,7 +132,7 @@
     {:else if query}
       <button class="btn ghost sm" onclick={() => (query = "")}>×</button>
     {/if}
-    <button class="btn ghost sm" onclick={rebuildIndex} title="Reconstruir índice FTS">
+    <button class="btn ghost sm" onclick={rebuildIndex} title="Rebuild the FTS index">
       ⟳
     </button>
   </div>
@@ -197,7 +197,7 @@
 
       {#if !searching && pageHits.length === 0 && blockHits.length === 0}
         <div class="empty-state">
-          <p>Nenhum resultado para "<strong>{query}</strong>".</p>
+          <p>No results for "<strong>{query}</strong>".</p>
         </div>
       {/if}
     </div>

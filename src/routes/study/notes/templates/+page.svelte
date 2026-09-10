@@ -459,7 +459,7 @@
     }}
   >
     <div class="modal wide">
-      <h3>Aplicar template</h3>
+      <h3>Apply template</h3>
 
       <label class="form-field">
         <span>Target page</span>

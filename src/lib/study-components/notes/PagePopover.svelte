@@ -52,7 +52,7 @@
         const p = await notesPagesGetByName(pageName);
         if (cancelled) return;
         if (!p) {
-          error = "página não encontrada";
+          error = "page not found";
           loading = false;
           return;
         }
@@ -83,10 +83,10 @@
   style:left={`${position.x}px`}
   style:top={`${position.y}px`}
   role="dialog"
-  aria-label="Preview da página {pageName}"
+  aria-label="Preview of page {pageName}"
 >
   {#if loading}
-    <div class="state">carregando…</div>
+    <div class="state">loading…</div>
   {:else if error}
     <div class="state err">{error}</div>
   {:else if page}
@@ -104,7 +104,7 @@
       </button>
     </header>
     {#if snippets.length === 0}
-      <p class="empty">Página vazia</p>
+      <p class="empty">Empty page</p>
     {:else}
       <ul class="blocks">
         {#each snippets as s, i (i)}

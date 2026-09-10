@@ -164,7 +164,7 @@
       type="button"
       class="mindmap-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Voltar pro mapa"}
+      title={mode === "render" ? "Editar source" : "Back to mind map"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -181,7 +181,7 @@
       aria-label="Source do mindmap (markdown indentado)"
     ></textarea>
   {:else if renderState.kind === "idle"}
-    <p class="mindmap-state">Sem source. Clique em ‹/› para editar.</p>
+    <p class="mindmap-state">No source. Click ‹/› to edit.</p>
   {:else if renderState.kind === "loading"}
     <p class="mindmap-state">renderizando…</p>
   {:else if renderState.kind === "error"}

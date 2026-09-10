@@ -116,7 +116,7 @@
       CompressionStream?: new (format: string) => GenericTransformStream;
     };
     if (!G.CompressionStream) {
-      throw new Error("CompressionStream indisponível neste runtime");
+      throw new Error("CompressionStream unavailable in this runtime");
     }
     const ds = new G.CompressionStream("deflate-raw");
     const stream = new Blob([text]).stream().pipeThrough(ds);
@@ -210,7 +210,7 @@
       type="button"
       class="puml-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Voltar pro diagrama"}
+      title={mode === "render" ? "Editar source" : "Back to diagram"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -227,7 +227,7 @@
       aria-label="Source do diagrama PlantUML"
     ></textarea>
   {:else if renderState.kind === "idle"}
-    <p class="puml-state">Sem source. Clique em ‹/› para editar.</p>
+    <p class="puml-state">No source. Click ‹/› to edit.</p>
   {:else if renderState.kind === "loading"}
     <p class="puml-state">renderizando…</p>
   {:else if renderState.kind === "remote-rendering"}

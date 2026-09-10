@@ -61,7 +61,7 @@
   }
 </script>
 
-<div class="calendar-strip" role="group" aria-label="Calendário 14 dias">
+<div class="calendar-strip" role="group" aria-label="14-day calendar">
   <button
     type="button"
     class="nav-btn"
@@ -101,8 +101,8 @@
       type="button"
       class="month-btn"
       onclick={onShowMonth}
-      title="Ver mês completo"
-    >Mês</button>
+      title="View full month"
+    >Month</button>
   {/if}
 </div>
 

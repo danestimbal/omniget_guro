@@ -129,7 +129,7 @@
 
   function tabLabel(tab: TabSummary): string {
     if (tab.view_kind === "editor") {
-      return tab.page_title || tab.page_name || "Sem nome";
+      return tab.page_title || tab.page_name || "Untitled";
     }
     switch (tab.view_kind) {
       case "graph": return "Graph";
@@ -231,7 +231,7 @@
         <button
           type="button"
           class="close"
-          aria-label="Fechar tab"
+          aria-label="Close tab"
           onclick={(e) => closeTab(e, tab.id)}
         >
           ×
@@ -245,7 +245,7 @@
     type="button"
     onclick={openPicker}
     aria-label="Nova tab"
-    title="Nova tab (Ctrl+T)"
+    title="New tab (Ctrl+T)"
   >
     +
   </button>
@@ -263,18 +263,18 @@
     }}
     role="presentation"
   >
-    <div class="picker" role="dialog" aria-label="Abrir página em nova tab">
+    <div class="picker" role="dialog" aria-label="Open page in a new tab">
       <input
         bind:this={pickerInputEl}
         bind:value={pickerQuery}
         onkeydown={onPickerKey}
         type="text"
-        placeholder="Buscar ou criar página…"
+        placeholder="Search or create a page…"
         class="picker-input"
       />
       <div class="picker-list">
         {#if pickerLoading}
-          <div class="picker-empty">Carregando…</div>
+          <div class="picker-empty">Loading…</div>
         {:else if filteredPages.length === 0}
           <button
             class="picker-item create"

@@ -41,14 +41,14 @@
         }}
       />
       <p class="hint">
-        Backlinks <code>[[Old]]</code> e tags <code>#old</code> em outros blocos
-        serão atualizados automaticamente.
+        Backlinks <code>[[Old]]</code> and tags <code>#old</code> in other blocks
+        are updated automatically.
       </p>
       <footer>
         <button class="btn ghost" onclick={onClose}>
-          Cancelar
+          Cancel
         </button>
-        <button class="btn primary" onclick={submit}>Renomear</button>
+        <button class="btn primary" onclick={submit}>Rename</button>
       </footer>
     </div>
   </div>

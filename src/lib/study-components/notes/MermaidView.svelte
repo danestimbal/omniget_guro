@@ -130,7 +130,7 @@
       type="button"
       class="mermaid-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Voltar pro diagrama"}
+      title={mode === "render" ? "Editar source" : "Back to diagram"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -147,7 +147,7 @@
       aria-label="Source do diagrama mermaid"
     ></textarea>
   {:else if renderState.kind === "idle"}
-    <p class="mermaid-state">Sem source. Clique em ‹/› para editar.</p>
+    <p class="mermaid-state">No source. Click ‹/› to edit.</p>
   {:else if renderState.kind === "loading"}
     <p class="mermaid-state">renderizando…</p>
   {:else if renderState.kind === "rendered"}

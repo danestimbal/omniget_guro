@@ -38,8 +38,8 @@
     </div>
   {:else}
     <div class="placeholder">
-      <div class="ph-title">Sem tabs abertas</div>
-      <div class="ph-hint">Use o botão + acima ou Ctrl+T para abrir uma página.</div>
+      <div class="ph-title">No open tabs</div>
+      <div class="ph-hint">Use the + button above or Ctrl+T to open a page.</div>
     </div>
   {/if}
 </div>

@@ -338,7 +338,7 @@
   <aside class="filters">
     <h3>Filtros</h3>
     <label class="field">
-      <span>Include tags (vírgula)</span>
+      <span>Include tags (comma-separated)</span>
       <input
         type="text"
         bind:value={includeTagInput}
@@ -391,13 +391,13 @@
         class="btn ghost sm"
         class:active={layoutKind === "force"}
         onclick={() => changeLayout("force")}
-      >Força</button>
+      >Force</button>
       <button
         type="button"
         class="btn ghost sm"
         class:active={layoutKind === "circle"}
         onclick={() => changeLayout("circle")}
-      >Círculo</button>
+      >Circle</button>
       <button
         type="button"
         class="btn ghost sm"
@@ -409,7 +409,7 @@
         class="btn ghost sm"
         class:active={layoutKind === "concentric"}
         onclick={() => changeLayout("concentric")}
-      >Concêntrico</button>
+      >Concentric</button>
     </div>
 
     <p class="hint">
@@ -419,13 +419,13 @@
 
   <main class="canvas-host">
     {#if loading}
-      <div class="state">Carregando grafo…</div>
+      <div class="state">Loading graph…</div>
     {:else if error}
       <div class="state err">{error}</div>
     {:else if graphData.nodes.length === 0}
       <div class="state">
-        <p>Sem páginas pra plotar.</p>
-        <a class="btn primary sm" href="/study/notes">Criar primeira página</a>
+        <p>No pages to plot.</p>
+        <a class="btn primary sm" href="/study/notes">Create the first page</a>
       </div>
     {/if}
     <div bind:this={container} class="canvas"></div>

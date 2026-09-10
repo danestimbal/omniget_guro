@@ -132,7 +132,7 @@
       type="button"
       class="abc-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Voltar pra partitura"}
+      title={mode === "render" ? "Editar source" : "Back to score"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -146,10 +146,10 @@
       onblur={onSourceBlur}
       spellcheck="false"
       rows={Math.max(6, editingValue.split("\n").length)}
-      aria-label="Source da partitura (notação ABC)"
+      aria-label="Score source (ABC notation)"
     ></textarea>
   {:else if renderState.kind === "idle"}
-    <p class="abc-state">Sem source. Clique em ‹/› para editar.</p>
+    <p class="abc-state">No source. Click ‹/› to edit.</p>
   {:else if renderState.kind === "loading"}
     <p class="abc-state">renderizando…</p>
   {:else if renderState.kind === "error"}

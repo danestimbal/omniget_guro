@@ -60,8 +60,8 @@
     Fechar
     <span class="shortcut">Ctrl+W</span>
   </button>
-  <button class="item" role="menuitem" onclick={closeOthers}>Fechar outras</button>
-  <button class="item" role="menuitem" onclick={closeRight}>Fechar à direita</button>
+  <button class="item" role="menuitem" onclick={closeOthers}>Close others</button>
+  <button class="item" role="menuitem" onclick={closeRight}>Close to the right</button>
   <div class="sep"></div>
   <button class="item" role="menuitem" onclick={togglePin}>
     {tab.pinned ? "Desafixar" : "Fixar"}

@@ -135,7 +135,7 @@
             class="swatch none"
             class:active={color === null}
             aria-pressed={color === null}
-            title="Sem cor"
+            title="No color"
             onclick={() => (color = null)}
           >∅</button>
           {#each NOTEBOOK_COLOR_SWATCHES as sw (sw)}

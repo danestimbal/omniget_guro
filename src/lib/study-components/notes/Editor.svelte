@@ -239,8 +239,8 @@
           render: () => {
             const handle = document.createElement("div");
             handle.className = "drag-handle";
-            handle.setAttribute("aria-label", "Arraste o bloco");
-            handle.title = "Arraste pra reordenar";
+            handle.setAttribute("aria-label", "Drag the block");
+            handle.title = "Drag to reorder";
             handle.innerHTML = "<span aria-hidden=\"true\">⋮⋮</span>";
             return handle;
           },

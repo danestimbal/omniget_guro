@@ -71,7 +71,7 @@
     }}
   >
     <div class="modal" role="dialog" aria-label="Cover image">
-      <h3>Capa da página</h3>
+      <h3>Page cover</h3>
 
       <p class="hint">
         Cole uma URL externa (https://...). Upload local de arquivo entra em sessão futura.

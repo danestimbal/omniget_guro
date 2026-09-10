@@ -26,8 +26,8 @@
     return new Date(y, m - 1, day);
   }
 
-  function fmtDayBR(d: number): string {
-    return decodeDay(d).toLocaleDateString("pt-BR", {
+  function fmtDay(d: number): string {
+    return decodeDay(d).toLocaleDateString(undefined, {
       weekday: "long",
       day: "2-digit",
       month: "long",
@@ -105,7 +105,7 @@
       <span class="legend-label">mais</span>
     </span>
   </header>
-  <div class="heatmap" role="img" aria-label="Atividade nos últimos 90 dias">
+  <div class="heatmap" role="img" aria-label="Activity in the last 90 days">
     {#each grid as col, ci (ci)}
       <div class="col">
         {#each col as cell (cell.day)}
@@ -114,7 +114,7 @@
             class="cell lvl-{cell.level}"
             class:future={cell.isFuture}
             disabled={cell.isFuture}
-            aria-label="{cell.count} blocos em {fmtDayBR(cell.day)}"
+            aria-label="{cell.count} blocks on {fmtDay(cell.day)}"
             onmouseenter={(e) => {
               hoverCell = cell;
               const r = (e.target as HTMLElement).getBoundingClientRect();
@@ -134,7 +134,7 @@
       style:top={`${hoverPos.y}px`}
       role="status"
     >
-      {hoverCell.count} bloco{hoverCell.count === 1 ? "" : "s"} · {fmtDayBR(hoverCell.day)}
+      {hoverCell.count} block{hoverCell.count === 1 ? "" : "s"} · {fmtDay(hoverCell.day)}
     </div>
   {/if}
 </div>

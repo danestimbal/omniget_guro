@@ -71,7 +71,7 @@
   });
 </script>
 
-<div class="diff-view" role="region" aria-label="Comparação de versões">
+<div class="diff-view" role="region" aria-label="Version comparison">
   <header class="diff-head">
     <span class="stat added">+{stats.added}</span>
     <span class="stat removed">−{stats.removed}</span>
@@ -80,7 +80,7 @@
     {/if}
   </header>
   {#if diff.length === 0}
-    <p class="empty">Sem diferenças.</p>
+    <p class="empty">No differences.</p>
   {:else}
     <pre class="diff-body"><code>{#each diff as d (d.type + ":" + d.line)}<span
             class="line {d.type === '+' ? 'add' : d.type === '-' ? 'rem' : 'eq'}"
