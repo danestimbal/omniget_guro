@@ -147,7 +147,7 @@
     </header>
 
     <section class="section">
-      <h3>Como salvar?</h3>
+      <h3>How to save?</h3>
       <div class="mode-pills">
         <button
           type="button"
@@ -165,7 +165,7 @@
           onclick={() => setMode("flac")}
         >
           <span class="pill-title">FLAC</span>
-          <span class="pill-sub">Sem perda · arquivo grande</span>
+          <span class="pill-sub">Lossless · large file</span>
         </button>
         <button
           type="button"
@@ -173,7 +173,7 @@
           class:on={mode === "advanced"}
           onclick={() => setMode("advanced")}
         >
-          <span class="pill-title">⚙ Avançado…</span>
+          <span class="pill-title">⚙ Advanced…</span>
           <span class="pill-sub">Outros codecs</span>
         </button>
       </div>
@@ -198,7 +198,7 @@
           <div class="adv-row">
             <label class="adv-label" for="quality-select">Fonte</label>
             <select id="quality-select" class="quality-select" bind:value={quality}>
-              <option value="progressive">Progressivo MP3 128 (padrão)</option>
+              <option value="progressive">Progressive MP3 128 (default)</option>
               <option value="hq">HQ AAC ~256 (Go+)</option>
               <option value="original">Original do uploader (se permitido)</option>
             </select>
@@ -208,25 +208,25 @@
     </section>
 
     <section class="section">
-      <h3>Onde salvar?</h3>
+      <h3>Where to save?</h3>
       <div class="folder-row">
         <input
           type="text"
           bind:value={outputDir}
-          placeholder="Escolhe uma pasta…"
+          placeholder="Pick a folder…"
           readonly
         />
         <button type="button" class="ghost" onclick={pickFolder}>Procurar…</button>
       </div>
       <label class="remember">
         <input type="checkbox" bind:checked={remember} />
-        <span>Lembrar pasta e formato pra próxima</span>
+        <span>Remember folder and format for next time</span>
       </label>
     </section>
 
     <footer class="actions">
       <button type="button" class="ghost" onclick={onClose} disabled={downloading}>
-        Cancelar
+        Cancel
       </button>
       <button
         type="button"
@@ -234,7 +234,7 @@
         onclick={startDownload}
         disabled={downloading || !outputDir}
       >
-        {downloading ? "Iniciando…" : "Baixar"}
+        {downloading ? "Iniciando…" : "Download"}
       </button>
     </footer>
   </div>

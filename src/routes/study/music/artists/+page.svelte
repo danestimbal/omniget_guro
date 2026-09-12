@@ -178,7 +178,7 @@
           </div>
           <h3 class="artist-name">{a.name}</h3>
           <p class="artist-meta">
-            {a.album_count} álbum(ns) · {a.track_count} faixa(s)
+            {a.album_count} álbum(ns) · {a.track_count} track(s)
           </p>
         </div>
       {/each}
@@ -188,7 +188,7 @@
   {#if filteredScArtists.length > 0}
     <section class="spotify-block">
       <header class="block-head">
-        <h2><span style="color: #ff5500">●</span> Seguindo no SoundCloud ({filteredScArtists.length})</h2>
+        <h2><span style="color: #ff5500">●</span> Following on SoundCloud ({filteredScArtists.length})</h2>
       </header>
       <div class="artist-grid">
         {#each filteredScArtists as u (u.id)}
@@ -201,7 +201,7 @@
               {/if}
             </div>
             <h3 class="artist-name">{u.username}</h3>
-            {#if u.followers_count}<p class="artist-meta">{u.followers_count.toLocaleString("pt-BR")} seguidores</p>{/if}
+            {#if u.followers_count}<p class="artist-meta">{u.followers_count.toLocaleString()} followers</p>{/if}
           </a>
         {/each}
       </div>

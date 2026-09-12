@@ -87,7 +87,7 @@
     try {
       const mode = await spotifyStore.playTrack(track, queue);
       if (mode === "youtube") {
-        showToast("info", "Tocando via YouTube (modo Free)");
+        showToast("info", "Playing via YouTube (Free mode)");
       }
     } catch (e) {
       showToast("error", e instanceof Error ? e.message : String(e));
@@ -122,7 +122,7 @@
       bind:value={query}
       oninput={onInput}
       type="search"
-      placeholder="Buscar nas suas curtidas, recents e top tracks…"
+      placeholder="Search your likes, recents and top tracks…"
       autocomplete="off"
     />
     {#if loading}
@@ -140,7 +140,7 @@
         role="tab"
         aria-selected={tab === "track"}
       >
-        Faixas {tracks.length > 0 ? `(${tracks.length})` : ""}
+        Tracks {tracks.length > 0 ? `(${tracks.length})` : ""}
       </button>
       <button
         type="button"
@@ -231,7 +231,7 @@
             {/if}
           </div>
           <h3>{a.name}</h3>
-          <p>Artista</p>
+          <p>Artist</p>
         </button>
       {/each}
     </div>

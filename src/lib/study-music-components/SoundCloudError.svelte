@@ -44,10 +44,10 @@
   <div class="body">
     <p class="kicker">SoundCloud</p>
     <p class="msg">{humanized}</p>
-    <p class="hint">Tentamos outras qualidades antes de mostrar esse aviso.</p>
+    <p class="hint">We tried other qualities before showing this notice.</p>
     <div class="actions">
       {#if onRetry}
-        <button type="button" class="btn primary" onclick={onRetry}>Tentar de novo</button>
+        <button type="button" class="btn primary" onclick={onRetry}>Try again</button>
       {/if}
       {#if trackUrl}
         <button type="button" class="btn ghost" onclick={openInSoundcloud}>

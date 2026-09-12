@@ -149,7 +149,7 @@
             <span class="badge">{spotifyStore.profile.product}</span>
           {/if}
         </span>
-        <button type="button" class="ghost-btn" onclick={doLogout}>Sair</button>
+        <button type="button" class="ghost-btn" onclick={doLogout}>Log out</button>
       </div>
     {/if}
   </header>
@@ -167,16 +167,14 @@
           />
         </svg>
       </div>
-      <h2>Conectar sua conta Spotify</h2>
+      <h2>Connect your Spotify account</h2>
       <p class="login-body">
-        Veja sua biblioteca, playlists e histórico do Spotify dentro do GuroHub.
-        Você pode tocar em qualquer dispositivo Spotify ativo (celular, app
-        oficial). Em breve, tocar direto aqui também.
+        See your library, playlists and Spotify history inside GuroHub.
+        You can play on any active Spotify device (phone, official app). Playing directly here is coming soon.
       </p>
       {#if !spotifyStore.status.has_client_id}
         <p class="warn">
-          ⚠️ Client ID do Spotify não configurado. Reinstale ou rebuilde o plugin
-          study.
+          ⚠️ Spotify Client ID is not configured. Reinstall or rebuild the study plugin.
         </p>
       {/if}
       {#if spotifyStore.error}
@@ -185,8 +183,8 @@
       {#if spotifyStore.authInProgress}
         <div class="waiting">
           <span class="spinner"></span>
-          <span>Aguardando autorização no navegador…</span>
-          <button type="button" class="ghost-btn" onclick={doCancel}>Cancelar</button>
+          <span>Waiting for authorization in the browser…</span>
+          <button type="button" class="ghost-btn" onclick={doCancel}>Cancel</button>
         </div>
       {:else}
         <button
@@ -195,12 +193,12 @@
           onclick={doLogin}
           disabled={!spotifyStore.status.has_client_id}
         >
-          Conectar com Spotify
+          Connect with Spotify
         </button>
       {/if}
     </div>
   {:else if spotifyStore.loadingLibrary && spotifyStore.savedTracks.length === 0}
-    <p class="muted">Carregando biblioteca…</p>
+    <p class="muted">Loading library…</p>
   {:else}
     {#if spotifyStore.isPremium && spotifyStore.widevineSupported}
       <div class="status-banner sdk">
@@ -210,7 +208,7 @@
     {:else if !spotifyStore.isPremium}
       <div class="status-banner info">
         <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Modo Free: faixas tocam via YouTube em tempo real (match automático por título/artista).
+        Free mode: tracks play via YouTube in real time (automatic match by title/artist).
       </div>
     {:else if spotifyStore.widevineSupported === false}
       <div class="status-banner warn">
@@ -282,7 +280,7 @@
                 {/if}
               </div>
               <h3 class="album-card-title">{p.name}</h3>
-              <p class="album-card-sub">{p.tracks_total} faixa(s){p.owner_name ? ` · ${p.owner_name}` : ""}</p>
+              <p class="album-card-sub">{p.tracks_total} track(s){p.owner_name ? ` · ${p.owner_name}` : ""}</p>
             </div>
           {/each}
         </div>

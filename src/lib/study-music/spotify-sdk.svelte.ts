@@ -121,7 +121,7 @@ class SpotifySdkController {
         const widevine = await this.checkWidevine();
         if (!widevine) {
           this.unavailableReason =
-            "Widevine DRM não está disponível neste sistema. Spotify playback nativo não vai funcionar — use a Fase 1 (transfer pra outro device).";
+            "Widevine DRM is not available on this system. Native Spotify playback won't work — use Phase 1 (transfer to another device).";
           this.loading = false;
           reject(new Error(this.unavailableReason));
           return;
@@ -129,7 +129,7 @@ class SpotifySdkController {
 
         const onSdkReady = () => {
           if (!window.Spotify) {
-            this.unavailableReason = "SDK do Spotify carregou mas Spotify global não foi exposto";
+            this.unavailableReason = "The Spotify SDK loaded but the global Spotify object was not exposed";
             this.loading = false;
             reject(new Error(this.unavailableReason));
             return;
@@ -177,7 +177,7 @@ class SpotifySdkController {
           player.addListener(
             "account_error",
             ({ message }: { message: string }) => {
-              this.unavailableReason = `Spotify Premium é obrigatório (${message})`;
+              this.unavailableReason = `Spotify Premium is required (${message})`;
             },
           );
           player.addListener(

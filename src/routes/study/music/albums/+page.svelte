@@ -159,7 +159,7 @@
               type="button"
               class="album-card-play"
               onclick={(e) => { e.stopPropagation(); openAlbum(album); }}
-              aria-label="Abrir álbum"
+              aria-label="Open album"
             >
               <svg viewBox="0 0 24 24" width="11" height="11" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
             </button>
@@ -169,7 +169,7 @@
             <p class="album-card-sub">{album.artist}</p>
           {/if}
           <p class="album-card-meta">
-            {album.track_count} faixa(s){album.year ? ` · ${album.year}` : ""}
+            {album.track_count} track(s){album.year ? ` · ${album.year}` : ""}
           </p>
         </div>
       {/each}
@@ -208,7 +208,7 @@
               <p class="album-card-sub">{album.artists.map((a) => a.name).join(", ")}</p>
             {/if}
             <p class="album-card-meta">
-              {album.total_tracks} faixa(s){album.release_date ? ` · ${album.release_date.slice(0, 4)}` : ""}
+              {album.total_tracks} track(s){album.release_date ? ` · ${album.release_date.slice(0, 4)}` : ""}
             </p>
           </button>
         {/each}

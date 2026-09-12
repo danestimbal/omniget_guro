@@ -149,9 +149,9 @@
           <label class="field">
             <span>{$t("study.music.translation_settings_target_lang_label")}</span>
             <select bind:value={targetLangInput} disabled={busy}>
-              <option value="pt">Português (PT-BR)</option>
+              <option value="pt">Portuguese (PT-BR)</option>
               <option value="es">Español</option>
-              <option value="fr">Français</option>
+              <option value="fr">French</option>
               <option value="de">Deutsch</option>
               <option value="it">Italiano</option>
               <option value="ja">日本語</option>

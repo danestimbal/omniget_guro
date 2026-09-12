@@ -288,14 +288,14 @@
       <a href="/study/library" class="back">← Library</a>
       <h2>Playlists</h2>
       <button class="btn primary" onclick={() => (createOpen = true)}>
-        + Nova playlist
+        + New playlist
       </button>
     </header>
 
     {#if playlists.length === 0}
       <p class="empty">
-        Sem playlists. Crie uma para agrupar cursos por trilha, prioridade,
-        área de estudo, etc.
+        No playlists. Create one to group courses by track, priority,
+        study area, etc.
       </p>
     {:else}
       <ul class="pl-list">
@@ -329,7 +329,7 @@
     {:else if !selected}
       <div class="state empty-state">
         <h2>Selecione uma playlist</h2>
-        <p>Ou crie uma nova com o botão à esquerda.</p>
+        <p>Or create a new one with the button on the left.</p>
       </div>
     {:else}
       <header class="pl-head" style:--pl-color={selected.color ?? "var(--accent)"}>
@@ -360,27 +360,27 @@
               editMetaOpen = true;
             }}
           >
-            Editar
+            Edit
           </button>
           <button
             class="btn ghost sm danger"
             onclick={() => (confirmDeleteOpen = true)}
           >
-            Excluir
+            Delete
           </button>
         </div>
       </header>
 
       <section class="actions-bar">
         <button class="btn primary" onclick={() => (addCourseOpen = true)}>
-          + Adicionar curso
+          + Add course
         </button>
       </section>
 
       {#if entries.length === 0}
         <div class="empty-state">
-          <h3>Sem cursos nesta playlist</h3>
-          <p>Use o botão acima para adicionar.</p>
+          <h3>No courses in this playlist</h3>
+          <p>Use the button above to add.</p>
         </div>
       {:else}
         <ol class="entries">
@@ -402,7 +402,7 @@
                 class="btn ghost sm"
                 onclick={() => removeCourse(e.course_id)}
               >
-                Remover
+                Remove
               </button>
             </li>
           {/each}
@@ -424,7 +424,7 @@
     }}
   >
     <div class="modal">
-      <h3>Nova playlist</h3>
+      <h3>New playlist</h3>
       <label class="form-field">
         <span>Nome</span>
         <input
@@ -438,7 +438,7 @@
         />
       </label>
       <label class="form-field">
-        <span>Descrição (opcional)</span>
+        <span>Description (optional)</span>
         <input type="text" bind:value={createDesc} />
       </label>
       <div class="form-field">
@@ -458,9 +458,9 @@
       </div>
       <footer>
         <button class="btn ghost" onclick={() => (createOpen = false)}>
-          Cancelar
+          Cancel
         </button>
-        <button class="btn primary" onclick={createPlaylist}>Criar</button>
+        <button class="btn primary" onclick={createPlaylist}>Create</button>
       </footer>
     </div>
   </div>
@@ -475,7 +475,7 @@
     }}
   >
     <div class="modal">
-      <h3>Renomear playlist</h3>
+      <h3>Rename playlist</h3>
       <input
         type="text"
         bind:value={renameValue}
@@ -486,9 +486,9 @@
       />
       <footer>
         <button class="btn ghost" onclick={() => (renameOpen = false)}>
-          Cancelar
+          Cancel
         </button>
-        <button class="btn primary" onclick={renamePlaylist}>Renomear</button>
+        <button class="btn primary" onclick={renamePlaylist}>Rename</button>
       </footer>
     </div>
   </div>
@@ -503,9 +503,9 @@
     }}
   >
     <div class="modal">
-      <h3>Editar metadados</h3>
+      <h3>Edit metadata</h3>
       <label class="form-field">
-        <span>Descrição</span>
+        <span>Description</span>
         <input type="text" bind:value={metaDesc} />
       </label>
       <div class="form-field">
@@ -526,15 +526,15 @@
             class="color-swatch clear"
             class:active={metaColor === ""}
             onclick={() => (metaColor = "")}
-            aria-label="Sem cor"
+            aria-label="No color"
           >×</button>
         </div>
       </div>
       <footer>
         <button class="btn ghost" onclick={() => (editMetaOpen = false)}>
-          Cancelar
+          Cancel
         </button>
-        <button class="btn primary" onclick={saveMeta}>Salvar</button>
+        <button class="btn primary" onclick={saveMeta}>Save</button>
       </footer>
     </div>
   </div>
@@ -549,14 +549,14 @@
     }}
   >
     <div class="modal wide">
-      <h3>Adicionar cursos</h3>
+      <h3>Add courses</h3>
       <input
         type="text"
-        placeholder="Buscar curso…"
+        placeholder="Search courses…"
         bind:value={addCourseSearch}
       />
       {#if filteredAddCandidates.length === 0}
-        <p class="empty">Nenhum curso disponível.</p>
+        <p class="empty">No courses available.</p>
       {:else}
         <ul class="add-list">
           {#each filteredAddCandidates as c (c.id)}
@@ -571,7 +571,7 @@
       {/if}
       <footer>
         <button class="btn ghost" onclick={() => (addCourseOpen = false)}>
-          Fechar
+          Close
         </button>
       </footer>
     </div>
@@ -580,9 +580,9 @@
 
 <ConfirmDialog
   bind:open={confirmDeleteOpen}
-  title="Excluir playlist"
+  title="Delete playlist"
   message={selected
-    ? `"${selected.name}" será removida. Os cursos não serão deletados — apenas a playlist.`
+    ? `"${selected.name}" will be removed. The courses won't be deleted — only the playlist.`
     : ""}
   confirmLabel="Delete"
   variant="danger"

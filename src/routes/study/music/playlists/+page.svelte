@@ -125,7 +125,7 @@
             />
           </div>
           <span class="title">{p.name}</span>
-          <span class="sub">{p.track_count} faixa(s)</span>
+          <span class="sub">{p.track_count} track(s)</span>
         </a>
       {/each}
     </div>
@@ -155,7 +155,7 @@
               />
             </div>
             <span class="title">{p.name}</span>
-            <span class="sub">{p.tracks_total} faixa(s){p.owner_name ? ` · ${p.owner_name}` : ""}</span>
+            <span class="sub">{p.tracks_total} track(s){p.owner_name ? ` · ${p.owner_name}` : ""}</span>
           </a>
         {/each}
       </div>
@@ -182,7 +182,7 @@
               />
             </div>
             <span class="title">{p.name}</span>
-            <span class="sub">{p.tracks_total} faixa(s){p.owner_name ? ` · ${p.owner_name}` : ""}</span>
+            <span class="sub">{p.tracks_total} track(s){p.owner_name ? ` · ${p.owner_name}` : ""}</span>
           </a>
         {/each}
       </div>
@@ -207,7 +207,7 @@
               />
             </div>
             <span class="title">{p.title}</span>
-            <span class="sub">{p.track_count} faixa(s){p.user.username ? ` · ${p.user.username}` : ""}</span>
+            <span class="sub">{p.track_count} track(s){p.user.username ? ` · ${p.user.username}` : ""}</span>
           </a>
         {/each}
       </div>

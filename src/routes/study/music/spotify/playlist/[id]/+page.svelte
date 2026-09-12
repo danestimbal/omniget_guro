@@ -64,7 +64,7 @@
         reordered,
       );
       if (mode === "youtube") {
-        showToast("info", "Tocando via YouTube (modo Free)");
+        showToast("info", "Playing via YouTube (Free mode)");
       }
     } catch (e) {
       const msg = e instanceof Error ? e.message : String(e);
@@ -89,7 +89,7 @@
     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <polyline points="15 18 9 12 15 6"/>
     </svg>
-    Voltar
+    Back
   </button>
 
   {#if playlist}
@@ -114,20 +114,20 @@
           <p class="desc">{playlist.description}</p>
         {/if}
         <p class="meta">
-          {playlist.owner_name ?? ""} · {playlist.tracks_total} faixas
+          {playlist.owner_name ?? ""} · {playlist.tracks_total} tracks
         </p>
         <button type="button" class="play-btn" onclick={() => playFromIndex(0)}>
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
             <path d="M8 5v14l11-7z"/>
           </svg>
-          Tocar
+          Play
         </button>
       </div>
     </header>
   {/if}
 
   {#if loading}
-    <p class="muted">Carregando faixas…</p>
+    <p class="muted">Loading tracks…</p>
   {:else if error}
     <p class="error">{error}</p>
   {:else}

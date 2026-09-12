@@ -278,7 +278,7 @@
           <h1 onclick={startEditName} title={$t("study.music.click_to_rename") as string}>{detail.name}</h1>
         {/if}
         <div class="info">
-          <span>{detail.track_count} faixa(s)</span>
+          <span>{detail.track_count} track(s)</span>
           {#if detail.total_duration_ms}
             <span class="dot" aria-hidden="true">·</span>
             <span>{fmtDurationLong(detail.total_duration_ms)}</span>
