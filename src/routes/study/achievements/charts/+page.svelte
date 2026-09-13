@@ -256,7 +256,7 @@
 
 <section class="charts-page">
   <PageHero
-    title="Charts de progressão"
+    title="Progression charts"
     subtitle="XP, levels, streak, unlocks ao longo do tempo"
   />
 
@@ -264,20 +264,20 @@
     <SegmentedControl
       options={periodOptions}
       bind:value={period}
-      ariaLabel="Período"
+      ariaLabel="Period"
     />
     <button class="back-btn" onclick={() => history.back()}>
-      ← Voltar
+      ← Back
     </button>
   </div>
 
   {#if loading}
-    <div class="state">Carregando…</div>
+    <div class="state">Loading…</div>
   {:else if error}
     <div class="state err">{error}</div>
   {:else if entries.length === 0}
     <div class="empty">
-      <p>Sem histórico de XP no período selecionado.</p>
+      <p>No XP history in the selected period.</p>
       <p class="muted">Estude um pouco e volte aqui pra ver charts.</p>
     </div>
   {:else}
@@ -340,7 +340,7 @@
         <header class="card-head">
           <h3>Level ao longo do tempo</h3>
           <span class="meta">
-            {levelPlot.count} level-up{levelPlot.count === 1 ? "" : "s"} no período
+            {levelPlot.count} level-up{levelPlot.count === 1 ? "" : "s"} in this period
           </span>
         </header>
         {#if levelPlot.points.length > 0}
@@ -383,7 +383,7 @@
             </p>
           {/if}
         {:else}
-          <p class="muted small">Nenhum level-up no período</p>
+          <p class="muted small">No level-ups in this period</p>
         {/if}
       </article>
 
@@ -432,7 +432,7 @@
         <header class="card-head">
           <h3>Unlocks por dia</h3>
           <span class="meta">
-            {filteredAchievements.length} unlock{filteredAchievements.length === 1 ? "" : "s"} no período
+            {filteredAchievements.length} unlock{filteredAchievements.length === 1 ? "" : "s"} in this period
           </span>
         </header>
         {#if unlocksPlot.points.length > 0}
@@ -479,7 +479,7 @@
             </p>
           {/if}
         {:else}
-          <p class="muted small">Nenhum unlock no período</p>
+          <p class="muted small">No unlocks in this period</p>
         {/if}
       </article>
     </div>
