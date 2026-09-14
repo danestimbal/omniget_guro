@@ -136,7 +136,7 @@
       );
       okMsg =
         r.removed === 0
-          ? "Cache já estava vazio"
+          ? "Cache was already empty"
           : r.removed === 1
             ? "1 entrada de cache removida"
             : `${r.removed} entradas de cache removidas`;
@@ -304,7 +304,7 @@
         onclick={clearCache}
         disabled={clearingCache}
       >
-        {clearingCache ? "Limpando…" : "Limpar cache"}
+        {clearingCache ? "Clearing…" : "Limpar cache"}
       </button>
     </section>
 
@@ -337,7 +337,7 @@
         disabled={browserBusy}
       >
         {browserBusy
-          ? "Aplicando…"
+          ? "Applying…"
           : browserStatus?.enabled
             ? "Desabilitar"
             : "Habilitar"}

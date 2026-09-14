@@ -698,7 +698,7 @@
 
   async function createOrphanNote() {
     if (!textRects) return;
-    const note = window.prompt("Nota da página:", "");
+    const note = window.prompt("Page note:", "");
     if (note === null) return;
     const trimmed = note.trim();
     if (trimmed === "") return;
@@ -1425,10 +1425,10 @@
       format === "json" ? "json" : format === "pdf_burn_in" ? "pdf" : "md";
     const suffix =
       format === "md_v2"
-        ? " — anotações.v2"
+        ? " — annotations.v2"
         : format === "pdf_burn_in"
-          ? " — anotado"
-          : " — anotações";
+          ? " — annotated"
+          : " — annotations";
     const filterName =
       format === "json"
         ? "JSON"
@@ -1755,7 +1755,7 @@
       <button
         type="button"
         class="title-btn"
-        title="Editar metadados"
+        title="Edit metadata"
         onclick={openMetadataEditor}
       >
         <h1 class="title">{book.title ?? book.file_path.split(/[\\/]/).pop()}</h1>
@@ -1826,7 +1826,7 @@
                 title={c.key}
               ></button>
             {/each}
-            <label class="ink-stroke" title="Espessura">
+            <label class="ink-stroke" title="Thickness">
               <input
                 type="range"
                 min={INK_STROKE_MIN}
@@ -1845,7 +1845,7 @@
               class="tool-btn"
               class:active={inkEraser}
               onclick={() => (inkEraser = !inkEraser)}
-              title="Borracha"
+              title="Eraser"
               aria-pressed={inkEraser}
             >
               <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2056,8 +2056,8 @@
           {:else if sidebarTab === "notes"}
             {#if annotationsWithNotes.length === 0}
               <p class="muted small">
-                Nenhuma nota ainda. Selecione um trecho e tecle N pra anexar
-                uma nota, ou tecle N sem seleção pra criar uma nota solta.
+                No notes yet. Select a passage and press N to attach
+                a note, or press N with no selection to create a standalone note.
               </p>
             {:else}
               <ul class="outline-tree">
@@ -2213,7 +2213,7 @@
                       data-drawer={h.drawer ?? "lighten"}
                       style:left="{s.left}px" style:top="{s.top}px" style:width="{s.width}px" style:height="{s.height}px" style:--hl-color="{colorCss(h.color)}"
                       onclick={(e) => openHighlightEditor(h, e)}
-                      title={h.note ? `nota: ${h.note}` : "editar"}
+                      title={h.note ? `note: ${h.note}` : "edit"}
                     >
                       {#if h.note}
                         <span class="hl-note-pin" aria-hidden="true">●</span>
@@ -2299,7 +2299,7 @@
                 class="hl-edit-popup"
                 role="dialog"
                 tabindex="-1"
-                aria-label="Editar highlight"
+                aria-label="Edit highlight"
                 style:left="{editPopupPos.x}px" style:top="{editPopupPos.y}px"
                 onmousedown={(e) => e.stopPropagation()}
                 onkeydown={onEditorKey}
@@ -2355,7 +2355,7 @@
                   <textarea
                     id="ep-note"
                     class="ep-note"
-                    placeholder="adicionar nota…"
+                    placeholder="add a note…"
                     bind:value={editingNote}
                     onblur={saveNote}
                   ></textarea>
@@ -2371,7 +2371,7 @@
                     onclick={sendHighlightToNotes}
                     disabled={sendingToNotes}
                   >
-                    {sendingToNotes ? "Enviando…" : "→ Notas"}
+                    {sendingToNotes ? "Sending…" : "→ Notas"}
                   </button>
                   <button
                     type="button"
@@ -2379,14 +2379,14 @@
                     onclick={createFlashcardFromHighlight}
                     disabled={creatingFlashcard}
                   >
-                    {creatingFlashcard ? "Criando…" : "→ Flashcard"}
+                    {creatingFlashcard ? "Creating…" : "→ Flashcard"}
                   </button>
                   <button
                     type="button"
                     class="ep-btn danger"
                     onclick={deleteFromEditor}
                   >
-                    Excluir
+                    Delete
                   </button>
                 </footer>
               </div>
@@ -2419,19 +2419,19 @@
     }}
   >
     <div class="meta-modal" role="dialog" aria-modal="true" aria-labelledby="meta-title">
-      <h3 id="meta-title">Editar metadados</h3>
+      <h3 id="meta-title">Edit metadata</h3>
       <p class="meta-hint">
-        Atualiza apenas o registro local da biblioteca. O arquivo no disco
-        não é modificado.
+        Updates only the local library record. The file on disk
+        is not modified.
       </p>
 
       <label class="meta-field">
-        <span>Título</span>
+        <span>Title</span>
         <input
           type="text"
           bind:value={metadataDraft.title}
           disabled={savingMetadata}
-          placeholder="(sem título)"
+          placeholder="(untitled)"
         />
       </label>
 
@@ -2441,7 +2441,7 @@
           type="text"
           bind:value={metadataDraft.author}
           disabled={savingMetadata}
-          placeholder="(desconhecido)"
+          placeholder="(unknown)"
         />
       </label>
 
@@ -2461,7 +2461,7 @@
           type="text"
           bind:value={metadataDraft.language}
           disabled={savingMetadata}
-          placeholder="ex.: pt, en, fr"
+          placeholder="e.g. pt, en, fr"
         />
       </label>
 
@@ -2476,7 +2476,7 @@
           onclick={() => (metadataOpen = false)}
           disabled={savingMetadata}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
