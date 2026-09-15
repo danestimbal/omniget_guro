@@ -405,7 +405,7 @@
   {/if}
 
   {#if paused && !isLoading}
-    <button type="button" class="big-play" onclick={togglePlay} aria-label="Reproduzir">
+    <button type="button" class="big-play" onclick={togglePlay} aria-label="Play">
       <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor" aria-hidden="true">
         <polygon points="6,4 20,12 6,20" />
       </svg>

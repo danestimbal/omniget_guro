@@ -352,7 +352,7 @@
       />
       <footer>
         <button type="button" class="btn ghost" onclick={() => (showJumpDialog = false)}>
-          Cancelar
+          Cancel
         </button>
         <button type="button" class="btn primary" onclick={jumpToDate}>Open</button>
       </footer>
@@ -410,7 +410,7 @@
 
       <footer>
         <button type="button" class="btn ghost" onclick={() => (applyTemplateOpen = false)}>
-          Cancelar
+          Cancel
         </button>
       </footer>
     </div>

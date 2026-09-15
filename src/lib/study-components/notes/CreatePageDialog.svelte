@@ -42,9 +42,9 @@
       />
       <footer>
         <button class="btn ghost" onclick={onClose}>
-          Cancelar
+          Cancel
         </button>
-        <button class="btn primary" onclick={submit}>Criar</button>
+        <button class="btn primary" onclick={submit}>Create</button>
       </footer>
     </div>
   </div>

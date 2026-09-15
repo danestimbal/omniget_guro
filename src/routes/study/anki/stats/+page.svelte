@@ -284,7 +284,7 @@
   })()}
   {@const max = filled.reduce((m, r) => (r.count > m ? r.count : m), 0)}
   {#if max === 0}
-    <p class="muted small">Nenhum card programado.</p>
+    <p class="muted small">No cards scheduled.</p>
   {:else}
     <div class="vbar" role="img" aria-label="Card distribution per day">
       {#each filled as f (f.day)}

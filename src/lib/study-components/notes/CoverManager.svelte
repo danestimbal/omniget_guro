@@ -113,12 +113,12 @@
             onclick={removeCover}
             disabled={busy}
           >
-            Remover capa
+            Remove cover
           </button>
         {/if}
         <span class="footer-spacer"></span>
         <button type="button" class="btn ghost" onclick={onClose} disabled={busy}>
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"

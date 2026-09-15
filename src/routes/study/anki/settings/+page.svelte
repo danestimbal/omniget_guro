@@ -356,7 +356,7 @@
       } else {
         showToast(
           "ok",
-          r.removed === 1 ? "1 backup removido" : `${r.removed} backups removidos`,
+          r.removed === 1 ? "1 backup removed" : `${r.removed} backups removed`,
         );
         await loadBackups();
       }

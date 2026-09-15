@@ -21,8 +21,8 @@
   const options: Option[] = [
     { sort: "last_watched", direction: "desc", label: "Recentemente assistidos" },
     { sort: "times_watched", direction: "desc", label: "Mais assistidos" },
-    { sort: "name", direction: "asc", label: "Nome (A → Z)" },
-    { sort: "name", direction: "desc", label: "Nome (Z → A)" },
+    { sort: "name", direction: "asc", label: "Name (A → Z)" },
+    { sort: "name", direction: "desc", label: "Name (Z → A)" },
     { sort: "progress", direction: "desc", label: "Maior progresso" },
     { sort: "progress", direction: "asc", label: "Menor progresso" },
     { sort: "added", direction: "desc", label: "Adicionado recentemente" },

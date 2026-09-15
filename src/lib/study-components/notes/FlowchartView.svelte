@@ -154,7 +154,7 @@
       type="button"
       class="flowchart-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Back to diagram"}
+      title={mode === "render" ? "Edit source" : "Back to diagram"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -178,7 +178,7 @@
     <div class="flowchart-error">
       <p class="flowchart-error-msg">erro: {renderState.message}</p>
       <button type="button" class="flowchart-edit-btn" onclick={toggleMode}
-        >Editar source</button>
+        >Edit source</button>
     </div>
   {/if}
 

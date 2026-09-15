@@ -1038,7 +1038,7 @@
         book_id: book.id,
         annot_id: editingHighlight.id,
       });
-      flashcardToast = "Flashcard criado no Anki";
+      flashcardToast = "Flashcard created in Anki";
       setTimeout(() => (flashcardToast = ""), 2800);
       closeHighlightEditor();
     } catch (e) {

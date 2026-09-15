@@ -309,7 +309,7 @@
   }
 
   async function actionCreatePage() {
-    const name = window.prompt("Nome da nova página:");
+    const name = window.prompt("Name of the new page:");
     if (!name || !name.trim()) return;
     try {
       const r = await (

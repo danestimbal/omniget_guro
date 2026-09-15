@@ -127,8 +127,8 @@
         <div class="state err">{error}</div>
       {:else if snapshots.length === 0}
         <div class="state muted">
-          Nenhum snapshot ainda. O backend grava snapshots automaticamente
-          em edições; abra esta página em sessões diferentes para acumular versões.
+          No snapshots yet. The backend records snapshots automatically
+          on edits; open this page in different sessions to build up versions.
         </div>
       {:else}
         <div class="layout">
@@ -177,7 +177,7 @@
         {/if}
         <span class="spacer"></span>
         <button type="button" class="btn ghost" onclick={onClose} disabled={restoring}>
-          Fechar
+          Close
         </button>
         <button
           type="button"
@@ -215,7 +215,7 @@
           onclick={() => (confirmClearOpen = false)}
           disabled={clearing}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"

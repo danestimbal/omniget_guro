@@ -132,7 +132,7 @@
       type="button"
       class="abc-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Back to score"}
+      title={mode === "render" ? "Edit source" : "Back to score"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -156,7 +156,7 @@
     <div class="abc-error">
       <p class="abc-error-msg">erro: {renderState.message}</p>
       <button type="button" class="abc-edit-btn" onclick={toggleMode}
-        >Editar source</button>
+        >Edit source</button>
     </div>
   {/if}
 

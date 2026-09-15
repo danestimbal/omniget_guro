@@ -313,7 +313,7 @@
   {#if loading}
     <p class="muted">Loading…</p>
   {:else if entries.length === 0 && !error}
-    <p class="muted center">Nenhuma entrada nesse filtro.</p>
+    <p class="muted center">No entries in this filter.</p>
   {:else if entries.length > 0}
     <div class="table-wrap">
       <table class="revlog-table">

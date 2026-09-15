@@ -778,7 +778,7 @@
           class="btn-secondary"
           onclick={() => (bulkDeckPickerOpen = false)}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -786,7 +786,7 @@
           onclick={bulkSetDeck}
           disabled={busy || bulkDeckTarget == null}
         >
-          Mover
+          Move
         </button>
       </div>
     </div>
@@ -801,7 +801,7 @@
   >
     <div class="modal" role="dialog" aria-modal="true">
       <h3>
-        {bulkTagMode === "add" ? "Adicionar tag" : "Remover tag"}
+        {bulkTagMode === "add" ? "Add tag" : "Remove tag"}
         em {selectedNoteIds().length}
         {selectedNoteIds().length === 1 ? "note" : "notes"}
       </h3>
@@ -821,7 +821,7 @@
           onclick={() => (bulkTagOpen = false)}
           disabled={busy}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -905,7 +905,7 @@
           onclick={() => (editNoteOpen = false)}
           disabled={editNoteBusy}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"

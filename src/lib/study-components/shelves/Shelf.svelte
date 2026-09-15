@@ -84,7 +84,7 @@
       {#if empty}
         {@render empty()}
       {:else}
-        <div class="empty">Nenhum item</div>
+        <div class="empty">No items</div>
       {/if}
     {:else}
       {@render children?.()}

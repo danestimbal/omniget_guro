@@ -218,7 +218,7 @@
                 onclick={() =>
                   changeSort(sort === "updated-desc" ? "updated-asc" : "updated-desc")}
               >
-                atualizado
+                updated
                 {sort === "updated-desc" ? "↓" : sort === "updated-asc" ? "↑" : ""}
               </button>
             </th>

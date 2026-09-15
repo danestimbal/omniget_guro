@@ -502,7 +502,7 @@
 
       <footer>
         <button class="btn ghost" onclick={() => (applyOpen = false)}>
-          Cancelar
+          Cancel
         </button>
         <button class="btn primary" onclick={applyNow} disabled={applying}>
           {applying ? "Applying…" : "Apply"}
@@ -545,7 +545,7 @@
       </ul>
       <footer>
         <button class="btn ghost" onclick={() => (markPageOpen = false)}>
-          Fechar
+          Close
         </button>
       </footer>
     </div>

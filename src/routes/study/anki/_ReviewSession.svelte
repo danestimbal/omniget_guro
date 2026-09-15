@@ -280,10 +280,10 @@
         <p>You answered {answered} cards. Good work!</p>
       {/if}
       <div class="complete-actions">
-        <a class="btn-primary" href="/study/anki">Voltar ao painel</a>
+        <a class="btn-primary" href="/study/anki">Back to dashboard</a>
         {#if initialTotal > 0}
           <button type="button" class="btn-secondary" onclick={loadQueue}>
-            Tentar mais cards
+            Try more cards
           </button>
         {/if}
       </div>

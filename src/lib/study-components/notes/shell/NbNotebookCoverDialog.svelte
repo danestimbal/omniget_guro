@@ -92,9 +92,9 @@
       </header>
 
       <p class="hint">
-        Use o ID de um asset já registrado em <code>note_assets</code>.
-        Para fazer upload de uma nova imagem, use o gerenciador de capas
-        de uma página primeiro e depois aponte o ID aqui.
+        Use the ID of an asset already registered in <code>note_assets</code>.
+        To upload a new image, use the cover manager
+        on a page first and then point the ID here.
       </p>
 
       <label class="field">
@@ -118,11 +118,11 @@
           onclick={clear}
           disabled={busy || current?.cover_asset_id == null}
         >
-          Remover capa
+          Remove cover
         </button>
         <span class="spacer"></span>
         <button type="button" class="btn ghost" onclick={onClose} disabled={busy}>
-          Cancelar
+          Cancel
         </button>
         <button type="button" class="btn primary" onclick={apply} disabled={busy}>
           Aplicar

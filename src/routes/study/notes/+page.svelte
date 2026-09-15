@@ -405,7 +405,7 @@
             class="btn ghost sm danger"
             onclick={() => (confirmDeletePageOpen = true)}
           >
-            Excluir página
+            Delete page
           </button>
         </div>
       </header>

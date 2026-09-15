@@ -107,7 +107,7 @@
       showToast(
         "ok",
         r.updated === 0
-          ? "Tag renomeada"
+          ? "Tag renamed"
           : r.updated === 1
             ? "Tag renamed · 1 note updated"
             : `Tag renamed · ${r.updated} notes updated`,
@@ -143,7 +143,7 @@
       showToast(
         "ok",
         r.updated === 0
-          ? "Tag movida"
+          ? "Tag moved"
           : r.updated === 1
             ? "Tag moved · 1 note updated"
             : `Tag moved · ${r.updated} notes updated`,
@@ -169,8 +169,8 @@
         r.removed === 0
           ? "No unused tags"
           : r.removed === 1
-            ? "1 tag removida"
-            : `${r.removed} tags removidas`,
+            ? "1 tag removed"
+            : `${r.removed} tags removed`,
       );
       if (r.removed > 0) await load();
     } catch (e) {
@@ -240,15 +240,15 @@
     <div class="state">Loading tags…</div>
   {:else if error}
     <div class="state err">{error}</div>
-    <button class="btn ghost" onclick={load}>Tentar de novo</button>
+    <button class="btn ghost" onclick={load}>Try again</button>
   {:else if tree.length === 0}
     <div class="empty">
-      <p>Nenhuma tag ainda.</p>
+      <p>No tags yet.</p>
       <p class="hint">Tags are created when you add one to a note.</p>
     </div>
   {:else if visibleTree.length === 0}
     <div class="empty">
-      <p>Nenhuma tag combina com "{filter}".</p>
+      <p>No tag matches "{filter}".</p>
     </div>
   {:else}
     <ul class="tree">
@@ -267,7 +267,7 @@
           type="button"
           class="caret"
           aria-expanded={!node.collapsed}
-          aria-label={node.collapsed ? "Expandir" : "Recolher"}
+          aria-label={node.collapsed ? "Expand" : "Collapse"}
           onclick={() => toggleCollapse(node)}
         >
           <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -292,14 +292,14 @@
           class="btn ghost xs"
           onclick={() => askRename(node)}
         >
-          Renomear
+          Rename
         </button>
         <button
           type="button"
           class="btn ghost xs"
           onclick={() => askReparent(node)}
         >
-          Mover
+          Move
         </button>
       </div>
     </div>
@@ -330,9 +330,9 @@
       onclick={(e) => e.stopPropagation()}
       onkeydown={(e) => { if (e.key === "Escape") { e.stopPropagation(); renameTarget = null; } }}
     >
-      <h3 id="rename-title">Renomear tag</h3>
+      <h3 id="rename-title">Rename tag</h3>
       <p class="modal-hint">
-        Use <code>::</code> para hierarquia (ex: <code>livro::cap1</code>).
+        Use <code>::</code> for hierarchy (e.g. <code>book::ch1</code>).
       </p>
       <input
         class="modal-input"
@@ -348,7 +348,7 @@
           onclick={() => (renameTarget = null)}
           disabled={renameBusy}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -379,16 +379,16 @@
       onclick={(e) => e.stopPropagation()}
       onkeydown={(e) => { if (e.key === "Escape") { e.stopPropagation(); reparentTarget = null; } }}
     >
-      <h3 id="reparent-title">Mover <code>{reparentTarget.full_name}</code></h3>
+      <h3 id="reparent-title">Move <code>{reparentTarget.full_name}</code></h3>
       <p class="modal-hint">
-        Novo parent (deixe vazio para mover pra raiz). Use <code>::</code> para
-        encadear níveis.
+        New parent (leave empty to move to the root). Use <code>::</code> to
+        chain levels.
       </p>
       <input
         class="modal-input"
         type="text"
         bind:value={reparentNewParent}
-        placeholder="(raiz)"
+        placeholder="(root)"
         onkeydown={(e) => { if (e.key === "Enter") confirmReparent(); }}
       />
       <footer class="modal-foot">
@@ -398,7 +398,7 @@
           onclick={() => (reparentTarget = null)}
           disabled={reparentBusy}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"
@@ -406,7 +406,7 @@
           onclick={confirmReparent}
           disabled={reparentBusy}
         >
-          {reparentBusy ? "Moving…" : "Mover"}
+          {reparentBusy ? "Moving…" : "Move"}
         </button>
       </footer>
     </div>

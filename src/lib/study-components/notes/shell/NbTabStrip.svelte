@@ -244,7 +244,7 @@
     class="add"
     type="button"
     onclick={openPicker}
-    aria-label="Nova tab"
+    aria-label="New tab"
     title="New tab (Ctrl+T)"
   >
     +
@@ -282,7 +282,7 @@
             onclick={createNewPage}
             disabled={!pickerQuery.trim()}
           >
-            <span class="prefix">+ Criar:</span>
+            <span class="prefix">+ Create:</span>
             <span class="value">{pickerQuery || "(digite um nome)"}</span>
           </button>
         {:else}
@@ -302,7 +302,7 @@
               type="button"
               onclick={createNewPage}
             >
-              <span class="prefix">+ Criar:</span>
+              <span class="prefix">+ Create:</span>
               <span class="value">{pickerQuery}</span>
             </button>
           {/if}

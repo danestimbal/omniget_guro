@@ -816,7 +816,7 @@
   async function captureScreenshot() {
     if (!videoRef || !lesson) return;
     if (!videoRef.videoWidth || !videoRef.videoHeight) {
-      screenshotToast = "Vídeo ainda não carregou";
+      screenshotToast = "Video hasn't loaded yet";
       setTimeout(() => (screenshotToast = ""), 2400);
       return;
     }
@@ -1167,7 +1167,7 @@
             type="button"
             class="btn icon-btn"
             onclick={captureScreenshot}
-            title="Capturar frame atual como PNG"
+            title="Capture current frame as PNG"
             aria-label="Screenshot do frame atual"
           >
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1195,7 +1195,7 @@
             type="button"
             class="btn icon-btn"
             onclick={() => (annotateOpen = !annotateOpen)}
-            title="Anotar este momento da aula"
+            title="Annotate this moment of the lesson"
             aria-label="Anotar momento"
           >
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -1228,7 +1228,7 @@
         </div>
       </div>
 
-      <nav class="panel-tabs" aria-label="painéis da aula">
+      <nav class="panel-tabs" aria-label="lesson panels">
         <SegmentedControl
           bind:value={activePanel}
           options={panelOptions}
@@ -1265,10 +1265,10 @@
             <dl class="info-grid">
               <dt>Aula</dt>
               <dd>{lesson.title}</dd>
-              <dt>Posição</dt>
+              <dt>Position</dt>
               <dd>#{lesson.position}</dd>
               {#if lesson.duration_ms}
-                <dt>Duração</dt>
+                <dt>Duration</dt>
                 <dd>{formatTime(lesson.duration_ms / 1000)}</dd>
               {/if}
               <dt>Status</dt>

@@ -623,7 +623,7 @@
                     {
                       path: currentSubtitle,
                       lang: "default",
-                      label: "Padrão",
+                      label: "Default",
                       format: "vtt",
                       default: true,
                     },

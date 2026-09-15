@@ -88,7 +88,7 @@
     class="backdrop"
     role="dialog"
     aria-modal="true"
-    aria-label="Editar matérias"
+    aria-label="Edit subjects"
     tabindex="-1"
     onkeydown={onBackdropKey}
   >
@@ -100,20 +100,20 @@
     ></button>
     <div class="modal" role="document">
       <header class="head">
-        <h2>Matérias do curso</h2>
+        <h2>Course subjects</h2>
         <button type="button" class="close" onclick={onClose} aria-label="Close">×</button>
       </header>
       <div class="body">
         {#if loading}
-          <p class="muted">Carregando…</p>
+          <p class="muted">Loading…</p>
         {:else if error}
           <p class="error">{error}</p>
         {:else if allSubjects.length === 0}
           <p class="muted">
-            Nenhuma matéria criada. Vá para a aba Foco e crie uma primeiro.
+            No subjects created yet. Go to the Focus tab and create one first.
           </p>
         {:else}
-          <ul class="list" aria-label="Lista de matérias">
+          <ul class="list" aria-label="List of subjects">
             {#each allSubjects as s (s.id)}
               {@const isSelected = selected.has(s.id)}
               <li>
@@ -134,7 +134,7 @@
         {/if}
       </div>
       <footer class="foot">
-        <button type="button" class="btn ghost" onclick={onClose}>Cancelar</button>
+        <button type="button" class="btn ghost" onclick={onClose}>Cancel</button>
         <button
           type="button"
           class="btn primary"

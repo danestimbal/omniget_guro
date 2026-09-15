@@ -10,7 +10,7 @@
   let {
     value,
     onChange,
-    placeholder = "Buscar cursos…",
+    placeholder = "Search courses…",
     debounceMs = 250,
     globalShortcut = true,
   }: Props = $props();

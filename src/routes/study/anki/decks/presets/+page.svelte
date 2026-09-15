@@ -105,7 +105,7 @@
         "study:anki:deckconfig:create",
         { name },
       );
-      showToast("ok", `Preset "${name}" criado`);
+      showToast("ok", `Preset "${name}" created`);
       createName = "";
       await load();
     } catch (e) {
@@ -178,7 +178,7 @@
       await pluginInvoke("study", "study:anki:deckconfig:delete", {
         id: deleteTarget.id,
       });
-      showToast("ok", `Preset "${deleteTarget.name}" removido`);
+      showToast("ok", `Preset "${deleteTarget.name}" removed`);
       confirmDeleteOpen = false;
       deleteTarget = null;
       await load();
@@ -251,8 +251,8 @@
               {/if}
             </div>
             <div class="preset-meta">
-              {p.use_count === 1 ? "1 deck usa" : `${p.use_count} decks usam`}
-              · atualizado {fmtTime(p.mtime_secs)}
+              {p.use_count === 1 ? "1 deck uses it" : `${p.use_count} decks use it`}
+              · updated {fmtTime(p.mtime_secs)}
             </div>
           </div>
           <div class="preset-actions">
@@ -372,7 +372,7 @@
           onclick={() => { editing = null; editForm = null; }}
           disabled={editBusy}
         >
-          Cancelar
+          Cancel
         </button>
         <button
           type="button"

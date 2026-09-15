@@ -112,7 +112,7 @@
     savingToggle = true;
     try {
       isSaved = await spotifyStore.toggleSaveAlbum(albumId);
-      showToast("success", isSaved ? "Álbum salvo" : "Álbum removido");
+      showToast("success", isSaved ? "Album saved" : "Album removed");
     } catch (e) {
       showToast("error", e instanceof Error ? e.message : String(e));
     } finally {

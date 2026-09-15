@@ -164,7 +164,7 @@
       type="button"
       class="mindmap-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Back to mind map"}
+      title={mode === "render" ? "Edit source" : "Back to mind map"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -188,7 +188,7 @@
     <div class="mindmap-error">
       <p class="mindmap-error-msg">erro: {renderState.message}</p>
       <button type="button" class="mindmap-edit-btn" onclick={toggleMode}
-        >Editar source</button>
+        >Edit source</button>
     </div>
   {/if}
 

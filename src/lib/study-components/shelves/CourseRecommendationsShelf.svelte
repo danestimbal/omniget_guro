@@ -34,9 +34,9 @@
 </script>
 
 {#if loading}
-  <Shelf title="Você pode gostar" eyebrow="Sugestões" isLoading={true} />
+  <Shelf title="You might like" eyebrow="Suggestions" isLoading={true} />
 {:else if items.length > 0}
-  <Shelf title="Você pode gostar" eyebrow="Sugestões">
+  <Shelf title="You might like" eyebrow="Suggestions">
     {#each items as it (it.id)}
       <CourseCard
         courseId={it.id}

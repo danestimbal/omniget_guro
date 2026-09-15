@@ -253,7 +253,7 @@
           aria-selected={view === "new"}
           onclick={() => (view = "new")}
         >
-          Nova
+          New
         </button>
       </nav>
 

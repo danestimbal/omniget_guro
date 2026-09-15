@@ -210,7 +210,7 @@
       type="button"
       class="puml-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Back to diagram"}
+      title={mode === "render" ? "Edit source" : "Back to diagram"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -239,7 +239,7 @@
         <button
           type="button"
           class="puml-edit-btn"
-          onclick={toggleMode}>Editar source</button>
+          onclick={toggleMode}>Edit source</button>
         <button
           type="button"
           class="puml-remote-btn"

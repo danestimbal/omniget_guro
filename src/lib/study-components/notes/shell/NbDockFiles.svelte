@@ -384,7 +384,7 @@
       title="New notebook (Ctrl+Shift+N)"
     >
       <span aria-hidden="true">＋</span>
-      <span>Novo notebook</span>
+      <span>New notebook</span>
     </button>
   </footer>
 </div>
@@ -405,7 +405,7 @@
         Tornar ativo
       </button>
       <button class="ctx-item" onclick={() => startRename(nb.id)}>
-        Renomear
+        Rename
       </button>
       <button class="ctx-item" onclick={() => openCover(nb.id)}>
         Capa…
@@ -423,7 +423,7 @@
         </button>
       {:else}
         <button class="ctx-item" onclick={() => void doClose(nb.id)}>
-          Fechar
+          Close
         </button>
       {/if}
       <button class="ctx-item danger" onclick={() => void doDelete(nb.id)}>
@@ -463,10 +463,10 @@
       </label>
       <div class="rename-actions">
         <button type="button" class="btn ghost" onclick={() => (renameTarget = null)}>
-          Cancelar
+          Cancel
         </button>
         <button type="button" class="btn primary" onclick={() => void commitRename()}>
-          Salvar
+          Save
         </button>
       </div>
     </div>

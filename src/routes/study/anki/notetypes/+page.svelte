@@ -409,7 +409,7 @@
         id: target.id,
       });
       if (selected?.id === target.id) deselect();
-      showToast("ok", `"${target.name}" removido`);
+      showToast("ok", `"${target.name}" removed`);
       await loadList();
     } catch (e) {
       showToast("err", e instanceof Error ? e.message : String(e));
@@ -456,7 +456,7 @@
         Create a note type from a stock type to start adding notes.
       </p>
       <button class="btn primary" onclick={openCreate}>
-        Criar primeiro modelo
+        Create first note type
       </button>
     </div>
   {:else}
@@ -509,7 +509,7 @@
                 {selected.config.kind === "cloze" ? "Cloze" : "Normal"}
                 · {selected.fields.length} fields
                 · {selected.templates.length} templates
-                · atualizado em {formatDate(selected.mtime_secs)}
+                · updated on {formatDate(selected.mtime_secs)}
               </p>
             </div>
             <div class="detail-actions">
@@ -519,7 +519,7 @@
                   onclick={cancelEdit}
                   disabled={saving}
                 >
-                  Cancelar
+                  Cancel
                 </button>
                 <button
                   class="btn primary"
@@ -543,7 +543,7 @@
                       mtime_secs: selected!.mtime_secs,
                     })}
                 >
-                  Excluir
+                  Delete
                 </button>
               {/if}
             </div>
@@ -603,7 +603,7 @@
                   onclick={addField}
                   disabled={saving}
                 >
-                  + Adicionar field
+                  + Add field
                 </button>
               </header>
               <label class="lbl inline">
@@ -693,7 +693,7 @@
                     onclick={addTemplate}
                     disabled={saving}
                   >
-                    + Adicionar template
+                    + Add template
                   </button>
                 {/if}
               </header>
@@ -748,7 +748,7 @@
                         onclick={() => removeTemplate(t.ord)}
                         disabled={saving}
                       >
-                        Remover este template
+                        Remove this template
                       </button>
                     {/if}
                   </div>
@@ -897,10 +897,10 @@
           onclick={() => (createOpen = false)}
           disabled={creating}
         >
-          Cancelar
+          Cancel
         </button>
         <button class="btn primary" onclick={doCreate} disabled={creating}>
-          {creating ? "Creating…" : "Criar modelo"}
+          {creating ? "Creating…" : "Create note type"}
         </button>
       </footer>
     </div>
@@ -942,7 +942,7 @@
           onclick={() => (cloneOpen = false)}
           disabled={cloning}
         >
-          Cancelar
+          Cancel
         </button>
         <button class="btn primary" onclick={doClone} disabled={cloning}>
           {cloning ? "Cloning…" : "Clonar"}

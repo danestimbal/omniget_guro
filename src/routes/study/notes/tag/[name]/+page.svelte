@@ -148,7 +148,7 @@
           onclick={createDescription}
           disabled={creatingDescription}
         >
-          {creatingDescription ? "Criando…" : `Criar página #${tagName}`}
+          {creatingDescription ? "Creating…" : `Create page #${tagName}`}
         </button>
       </section>
     {/if}
@@ -163,7 +163,7 @@
                 <span class="title">{p.title ?? p.name}</span>
                 <span class="path">{p.name}</span>
                 <span class="meta-line">
-                  {p.block_count} bloco{p.block_count === 1 ? "" : "s"} · atualizado {fmtDay(p.updated_at)}
+                  {p.block_count} block{p.block_count === 1 ? "" : "s"} · updated {fmtDay(p.updated_at)}
                 </span>
               </a>
             </li>

@@ -130,7 +130,7 @@
       type="button"
       class="mermaid-toggle"
       onclick={toggleMode}
-      title={mode === "render" ? "Editar source" : "Back to diagram"}
+      title={mode === "render" ? "Edit source" : "Back to diagram"}
     >
       {mode === "render" ? "‹/›" : "▶"}
     </button>
@@ -158,7 +158,7 @@
     <div class="mermaid-error">
       <p class="mermaid-error-msg">erro: {renderState.message}</p>
       <button type="button" class="mermaid-edit-btn" onclick={toggleMode}
-        >Editar source</button>
+        >Edit source</button>
     </div>
   {/if}
 </div>

@@ -44,7 +44,7 @@
     bind:this={buttonEl}
     aria-haspopup="menu"
     aria-expanded={open}
-    title="Novo split"
+    title="New split"
   >
     <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
       <rect x="1" y="1" width="14" height="14" rx="1" />

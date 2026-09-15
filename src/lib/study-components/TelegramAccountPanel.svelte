@@ -129,7 +129,7 @@
     actionBusy = true;
     try {
       await telegramAccountsRemove({ id: confirmDeleteId });
-      showToast("info", "Perfil removido");
+      showToast("info", "Profile removed");
       confirmDeleteId = null;
       await load();
     } catch (e: any) {
@@ -143,7 +143,7 @@
     actionBusy = true;
     try {
       const r = await telegramAccountsBackupNow();
-      showToast("info", `Backup criado: ${r.name}`);
+      showToast("info", `Backup created: ${r.name}`);
       await load();
     } catch (e: any) {
       showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));

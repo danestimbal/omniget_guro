@@ -40,23 +40,23 @@
   let deleteBusy = $state(false);
 
   const ORDER_OPTIONS = [
-    { value: "oldest_seen_first", label: "Mais antigo primeiro" },
+    { value: "oldest_seen_first", label: "Oldest first" },
     { value: "random", label: "Random" },
-    { value: "interval_descending", label: "Maior intervalo" },
-    { value: "interval_ascending", label: "Menor intervalo" },
-    { value: "lapses_descending", label: "Mais lapsos" },
-    { value: "added_descending", label: "Adicionados recentemente" },
+    { value: "interval_descending", label: "Largest interval" },
+    { value: "interval_ascending", label: "Smallest interval" },
+    { value: "lapses_descending", label: "Most lapses" },
+    { value: "added_descending", label: "Recently added" },
     { value: "added_ascending", label: "Added longest ago" },
-    { value: "due_first", label: "Vencidos primeiro" },
+    { value: "due_first", label: "Due first" },
   ];
 
   const PRESETS = [
-    { label: "Vencidos hoje", search: "is:due" },
-    { label: "Aprendendo", search: "is:learn" },
-    { label: "Suspensos", search: "is:suspended" },
-    { label: "Marcados (flag)", search: "flag:1 OR flag:2 OR flag:3 OR flag:4" },
+    { label: "Due today", search: "is:due" },
+    { label: "Learning", search: "is:learn" },
+    { label: "Suspended", search: "is:suspended" },
+    { label: "Flagged", search: "flag:1 OR flag:2 OR flag:3 OR flag:4" },
     { label: "Tagged 'hard'", search: 'tag:hard' },
-    { label: "Lapsos > 5", search: "prop:lapses>5" },
+    { label: "Lapses > 5", search: "prop:lapses>5" },
   ];
 
   function showToast(kind: "ok" | "err", msg: string) {
@@ -100,7 +100,7 @@
           reschedule: newReschedule,
         },
       );
-      showToast("ok", `Deck "${name}" criado`);
+      showToast("ok", `Deck "${name}" created`);
       createOpen = false;
       newName = "";
       newSearch = "is:due";
@@ -124,8 +124,8 @@
       showToast(
         "ok",
         r.cards === 1
-          ? "1 card no deck filtrado"
-          : `${r.cards} cards no deck filtrado`,
+          ? "1 card in the filtered deck"
+          : `${r.cards} cards in the filtered deck`,
       );
       await load();
     } catch (e) {
@@ -148,8 +148,8 @@
         r.returned === 0
           ? "Deck was already empty"
           : r.returned === 1
-            ? "1 card devolvido pro deck original"
-            : `${r.returned} cards devolvidos`,
+            ? "1 card returned to the original deck"
+            : `${r.returned} cards returned`,
       );
       await load();
     } catch (e) {
@@ -171,7 +171,7 @@
       await pluginInvoke("study", "study:anki:decks:delete_filtered", {
         id: deleteTarget.id,
       });
-      showToast("ok", "Deck filtrado removido");
+      showToast("ok", "Filtered deck removed");
       confirmDeleteOpen = false;
       deleteTarget = null;
       await load();
@@ -187,7 +187,7 @@
 
 <section class="study-page">
   <PageHero
-    title="Decks filtrados"
+    title="Filtered decks"
     subtitle="Cards selected by a query — good for targeted review"
   />
 
@@ -204,7 +204,7 @@
       class="btn primary"
       onclick={() => (createOpen = true)}
     >
-      + Novo deck filtrado
+      + New filtered deck
     </button>
   </div>
 
