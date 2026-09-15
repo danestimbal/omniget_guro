@@ -62,6 +62,31 @@ git checkout --ours src-tauri/icons static/favicon.png static/guro_ai.gif
 git rm -r --ignore-unmatch static/mascot static/loop.png
 ```
 
+### 4. Study area — translated Portuguese, not a rebrand edit
+
+Separately from the rebrand, upstream ships the whole **Study** feature
+(`src/routes/study/**`, `src/lib/study-components/**`, `src/lib/study-music*/**`)
+with large amounts of **hardcoded Portuguese** in the UI (not routed through
+`$t()`). That has been translated to English across ~150 files, as its own
+stack of `i18n(study): ...` commits on top of the rebrand commit.
+
+This is **not** part of the GuroHub identity — it's a straight PT→EN string
+swap of upstream's own text, done in place (button labels, toasts, dialog
+titles, placeholders). It rebases cleanly most of the time since it doesn't
+touch logic, but any Study file upstream edits will conflict here too. When
+that happens: take upstream's version, then re-translate any hardcoded PT
+strings it (re)introduced the same way — plain English replacement of the
+literal, no `$t()` plumbing added. A repo-wide sanity check for stragglers:
+
+```bash
+grep -rnoE '"[A-Za-zÀ-ÿ][^"]{2,90}"|>[A-Za-zÀ-ÿ][^<>{}]{2,90}<' \
+  src/routes/study/ src/lib/study-components/ src/lib/study-music/ src/lib/study-music-components/ \
+  | grep -E 'ç|ã|õ|á[a-z]|é[a-z]|í[a-z]|ó[a-z]|ú[a-z]|ê|â' \
+  | grep -viE 'pt-BR|Français|PT-BR|Español|Português'
+```
+
+Any output is a leftover hardcoded Portuguese string to translate.
+
 ## After the rebase
 
 ```bash
