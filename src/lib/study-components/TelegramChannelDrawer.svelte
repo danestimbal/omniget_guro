@@ -87,7 +87,7 @@
         chatType,
       });
     } catch (e: any) {
-      infoError = typeof e === "string" ? e : (e?.message ?? "Erro ao carregar info");
+      infoError = typeof e === "string" ? e : (e?.message ?? "Failed to load info");
     } finally {
       infoLoading = false;
     }
@@ -108,7 +108,7 @@
       participants = page.users;
       participantsCount = page.count;
     } catch (e: any) {
-      participantsError = typeof e === "string" ? e : (e?.message ?? "Erro ao carregar membros");
+      participantsError = typeof e === "string" ? e : (e?.message ?? "Failed to load members");
     } finally {
       participantsLoading = false;
     }
@@ -149,7 +149,7 @@
       muted = next;
       showToast("info", next ? "Silenciado" : "Reativado");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -161,7 +161,7 @@
       pinned = next;
       showToast("info", next ? "Fixado" : "Desfixado");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -173,7 +173,7 @@
       archived = next;
       showToast("info", next ? "Arquivado" : "Desarquivado");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -185,7 +185,7 @@
       blocked = next;
       showToast("info", next ? "Bloqueado" : "Desbloqueado");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -196,7 +196,7 @@
     try {
       if (confirm.kind === "leave") {
         await telegramLeaveChannel({ chatId: id, chatType });
-        showToast("info", "Você saiu do canal");
+        showToast("info", "You left the channel");
         confirm.kind = null;
         open = false;
         onChatRemoved?.(id);
@@ -209,7 +209,7 @@
       } else if (confirm.kind === "clear-history") {
         if (clearMode === "leave") {
           await telegramLeaveChannel({ chatId: id, chatType });
-          showToast("info", "Você saiu do chat");
+          showToast("info", "You left the chat");
           onChatRemoved?.(id);
           open = false;
         } else {
@@ -219,7 +219,7 @@
             justClear: true,
             revoke: clearMode === "delete-all",
           });
-          showToast("info", clearMode === "delete-all" ? "Histórico apagado pra todos" : "Histórico limpo");
+          showToast("info", clearMode === "delete-all" ? "History deleted for everyone" : "History cleared");
         }
         confirm.kind = null;
       } else if (confirm.kind === "report") {
@@ -230,12 +230,12 @@
           option: [0],
           message: reportMessage.trim(),
         });
-        showToast("info", "Denúncia enviada");
+        showToast("info", "Report sent");
         reportMessage = "";
         confirm.kind = null;
       }
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       confirm.busy = false;
     }
@@ -254,7 +254,7 @@
       case "member": return "Membro";
       case "banned": return "Banido";
       case "left": return "Saiu";
-      case "self": return "Você";
+      case "self": return "You";
       default: return role;
     }
   }
@@ -263,7 +263,7 @@
     const name = `${u.first_name} ${u.last_name}`.trim();
     if (name) return name;
     if (u.username) return `@${u.username}`;
-    return `Usuário ${u.user_id}`;
+    return `User ${u.user_id}`;
   }
 </script>
 
@@ -283,7 +283,7 @@
             <span class="header-meta">
               {isChannel ? "Canal" : isGroup ? "Grupo" : "Privado"}
               {#if info?.participants_count}
-                · {info.participants_count.toLocaleString()} membros
+                · {info.participants_count.toLocaleString()} members
               {/if}
               {#if info?.username}
                 · @{info.username}
@@ -331,12 +331,12 @@
           {:else if infoError}
             <div class="error-section">
               <p class="error-msg">{infoError}</p>
-              <button type="button" class="button" onclick={loadInfo}>Tentar novamente</button>
+              <button type="button" class="button" onclick={loadInfo}>Try again</button>
             </div>
           {:else if info}
             {#if info.about}
               <section class="info-block">
-                <span class="info-label">Sobre</span>
+                <span class="info-label">About</span>
                 <p class="info-text">{info.about}</p>
               </section>
             {/if}
@@ -344,7 +344,7 @@
             <section class="actions-grid">
               <button type="button" class="action-row" onclick={toggleMute}>
                 <span class="action-icon">{muted ? "🔔" : "🔕"}</span>
-                <span class="action-label">{muted ? "Reativar notificações" : "Silenciar"}</span>
+                <span class="action-label">{muted ? "Re-enable notifications" : "Silenciar"}</span>
               </button>
               <button type="button" class="action-row" onclick={togglePin}>
                 <span class="action-icon">{pinned ? "📌" : "📍"}</span>
@@ -363,14 +363,14 @@
             </section>
 
             <section class="danger-zone">
-              <span class="info-label">Ações</span>
+              <span class="info-label">Actions</span>
               <button
                 type="button"
                 class="action-row danger"
                 onclick={() => { clearMode = "clear-me"; confirm.kind = "clear-history"; }}
               >
                 <span class="action-icon">🧹</span>
-                <span class="action-label">Limpar histórico</span>
+                <span class="action-label">Clear history</span>
               </button>
               <button
                 type="button"
@@ -387,7 +387,7 @@
                   onclick={() => { confirm.kind = "leave"; }}
                 >
                   <span class="action-icon">🚪</span>
-                  <span class="action-label">Sair {isChannel ? "do canal" : "do grupo"}</span>
+                  <span class="action-label">Leave {isChannel ? "channel" : "group"}</span>
                 </button>
                 <button
                   type="button"
@@ -422,7 +422,7 @@
             <input
               type="text"
               class="input"
-              placeholder="Buscar membro..."
+              placeholder="Search member..."
               bind:value={participantsSearch}
               oninput={onSearchInput}
             />
@@ -431,13 +431,13 @@
             {:else if participantsError}
               <div class="error-section">
                 <p class="error-msg">{participantsError}</p>
-                <button type="button" class="button" onclick={loadParticipants}>Tentar novamente</button>
+                <button type="button" class="button" onclick={loadParticipants}>Try again</button>
               </div>
             {:else if participants.length === 0}
-              <p class="empty-text">Nenhum membro encontrado.</p>
+              <p class="empty-text">No members found.</p>
             {:else}
               <div class="members-meta">
-                {participantsCount.toLocaleString()} no total
+                {participantsCount.toLocaleString()} total
               </div>
               <ul class="members-list">
                 {#each participants as p (p.user_id)}
@@ -469,12 +469,12 @@
 {#if confirm.kind === "leave"}
   <div class="dialog-overlay" role="presentation" onclick={(e) => { if (e.target === e.currentTarget && !confirm.busy) confirm.kind = null; }} onkeydown={() => {}}>
     <div class="dialog" role="dialog" aria-modal="true">
-      <h3>Sair {isChannel ? "do canal" : "do grupo"}?</h3>
-      <p>Você não receberá mais mensagens de <strong>{chat?.title}</strong>.</p>
+      <h3>Leave {isChannel ? "channel" : "group"}?</h3>
+      <p>You will no longer receive messages from <strong>{chat?.title}</strong>.</p>
       <div class="dialog-actions">
-        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancelar</button>
+        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancel</button>
         <button type="button" class="button danger-btn" onclick={commitConfirm} disabled={confirm.busy}>
-          {confirm.busy ? "Saindo..." : "Sair"}
+          {confirm.busy ? "Leaving..." : "Leave"}
         </button>
       </div>
     </div>
@@ -484,13 +484,13 @@
 {#if confirm.kind === "delete-channel"}
   <div class="dialog-overlay" role="presentation" onclick={(e) => { if (e.target === e.currentTarget && !confirm.busy) confirm.kind = null; }} onkeydown={() => {}}>
     <div class="dialog" role="dialog" aria-modal="true">
-      <h3>Deletar {isChannel ? "canal" : "grupo"}?</h3>
-      <p class="warn">⚠️ Irreversível. Todos os membros perdem acesso ao conteúdo.</p>
-      <p>Confirme deletando <strong>{chat?.title}</strong>.</p>
+      <h3>Delete {isChannel ? "channel" : "group"}?</h3>
+      <p class="warn">⚠️ Irreversible. All members lose access to the content.</p>
+      <p>Confirm by deleting <strong>{chat?.title}</strong>.</p>
       <div class="dialog-actions">
-        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancelar</button>
+        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancel</button>
         <button type="button" class="button danger-btn" onclick={commitConfirm} disabled={confirm.busy}>
-          {confirm.busy ? "Deletando..." : "Deletar"}
+          {confirm.busy ? "Deleting..." : "Delete"}
         </button>
       </div>
     </div>
@@ -500,22 +500,22 @@
 {#if confirm.kind === "clear-history"}
   <div class="dialog-overlay" role="presentation" onclick={(e) => { if (e.target === e.currentTarget && !confirm.busy) confirm.kind = null; }} onkeydown={() => {}}>
     <div class="dialog" role="dialog" aria-modal="true">
-      <h3>Limpar conversa</h3>
-      <p>Como você quer limpar <strong>{chat?.title}</strong>?</p>
+      <h3>Clear conversation</h3>
+      <p>How do you want to clear <strong>{chat?.title}</strong>?</p>
       <div class="radio-group">
         <label class="radio-row">
           <input type="radio" bind:group={clearMode} value="clear-me" />
           <div>
-            <span class="radio-title">Limpar pra mim</span>
-            <span class="radio-desc">Some do seu lado. Outros continuam vendo.</span>
+            <span class="radio-title">Clear for me</span>
+            <span class="radio-desc">Disappears on your side. Others keep seeing it.</span>
           </div>
         </label>
         {#if isPrivate || isGroup}
           <label class="radio-row">
             <input type="radio" bind:group={clearMode} value="delete-all" />
             <div>
-              <span class="radio-title">Apagar pra todos</span>
-              <span class="radio-desc">Remove a conversa de todos os participantes.</span>
+              <span class="radio-title">Delete for everyone</span>
+              <span class="radio-desc">Removes the conversation for all participants.</span>
             </div>
           </label>
         {/if}
@@ -523,16 +523,16 @@
           <label class="radio-row">
             <input type="radio" bind:group={clearMode} value="leave" />
             <div>
-              <span class="radio-title">Sair {isChannel ? "do canal" : "do grupo"}</span>
-              <span class="radio-desc">Deixa o {isChannel ? "canal" : "grupo"} e remove da lista.</span>
+              <span class="radio-title">Leave {isChannel ? "channel" : "group"}</span>
+              <span class="radio-desc">Leaves the {isChannel ? "channel" : "group"} and removes it from the list.</span>
             </div>
           </label>
         {/if}
       </div>
       <div class="dialog-actions">
-        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancelar</button>
+        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancel</button>
         <button type="button" class="button danger-btn" onclick={commitConfirm} disabled={confirm.busy}>
-          {confirm.busy ? "Aplicando..." : "Confirm"}
+          {confirm.busy ? "Applying..." : "Confirm"}
         </button>
       </div>
     </div>
@@ -543,17 +543,17 @@
   <div class="dialog-overlay" role="presentation" onclick={(e) => { if (e.target === e.currentTarget && !confirm.busy) confirm.kind = null; }} onkeydown={() => {}}>
     <div class="dialog" role="dialog" aria-modal="true">
       <h3>Denunciar {chat?.title}</h3>
-      <p>Telegram revisará a denúncia.</p>
+      <p>Telegram will review the report.</p>
       <textarea
         class="input textarea"
-        placeholder="Detalhes (opcional)"
+        placeholder="Details (optional)"
         bind:value={reportMessage}
         rows="3"
       ></textarea>
       <div class="dialog-actions">
-        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancelar</button>
+        <button type="button" class="button" onclick={() => (confirm.kind = null)} disabled={confirm.busy}>Cancel</button>
         <button type="button" class="button danger-btn" onclick={commitConfirm} disabled={confirm.busy}>
-          {confirm.busy ? "Enviando..." : "Enviar denúncia"}
+          {confirm.busy ? "Sending..." : "Send report"}
         </button>
       </div>
     </div>

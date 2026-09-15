@@ -60,7 +60,7 @@
       await loadSync();
       showToast("info", draftSyncEnabled ? `Sync a cada ${draftSyncIntervalMin} min` : "Sync desativada");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       syncSaving = false;
     }
@@ -74,7 +74,7 @@
       draftMax = perf.max_threads;
       await Promise.all([loadBandwidth(), loadSync()]);
     } catch (e: any) {
-      error = typeof e === "string" ? e : (e?.message ?? "Erro");
+      error = typeof e === "string" ? e : (e?.message ?? "Error");
     } finally {
       loading = false;
     }
@@ -95,7 +95,7 @@
       await loadBandwidth();
       showToast("info", `Quota: ${draftQuotaGb} GB/dia`);
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       bwSaving = false;
     }
@@ -109,7 +109,7 @@
       await loadBandwidth();
       showToast("info", "Uso de hoje zerado");
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       bwSaving = false;
     }
@@ -120,10 +120,10 @@
     try {
       const r = await telegramPerfSet({ maxThreads: draftMax });
       if (perf) perf = { ...perf, max_threads: r.max_threads };
-      showToast("info", `Máximo de threads: ${r.max_threads}`);
+      showToast("info", `Max threads: ${r.max_threads}`);
       await load();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       saving = false;
     }
@@ -170,13 +170,13 @@
       {:else if error}
         <div class="error-section">
           <p class="error-msg">{error}</p>
-          <button type="button" class="button" onclick={load}>Tentar novamente</button>
+          <button type="button" class="button" onclick={load}>Try again</button>
         </div>
       {:else if perf}
         <section class="setting-section">
           <label class="field">
             <div class="field-row">
-              <span class="field-label">Máximo de threads</span>
+              <span class="field-label">Maximum threads</span>
               <span class="field-value">{draftMax}</span>
             </div>
             <input
@@ -188,8 +188,8 @@
               class="slider"
             />
             <span class="field-hint">
-              Telegram cobra 1 MiB por chunk. Mais threads = downloads mais rápidos em arquivos grandes,
-              mas pode disparar FLOOD_WAIT em conexões lentas. Padrão: 8.
+              Telegram charges 1 MiB per chunk. More threads = faster downloads on large files,
+              but can trigger FLOOD_WAIT on slow connections. Default: 8.
             </span>
           </label>
         </section>
@@ -237,7 +237,7 @@
             </div>
             <div class="quota-row">
               <label class="quota-field">
-                <span class="field-label">Quota diária</span>
+                <span class="field-label">Daily quota</span>
                 <div class="quota-input-row">
                   <input
                     type="number"
@@ -268,9 +268,9 @@
 
         {#if sync}
           <section class="sync-section">
-            <span class="section-label">Sincronização automática</span>
+            <span class="section-label">Automatic sync</span>
             <p class="info-msg">
-              A cada N minutos o plugin atualiza o cache de canais em background — evita erros CHANNEL_INVALID quando você abre chats antigos.
+              Every N minutes the plugin refreshes the channel cache in the background — this avoids CHANNEL_INVALID errors when you open old chats.
             </p>
             <label class="toggle-row">
               <input type="checkbox" bind:checked={draftSyncEnabled} />
@@ -295,11 +295,11 @@
             <div class="sync-status-row">
               <span class="sync-meta">
                 {#if sync.last_success_at > 0}
-                  Última: {new Date(sync.last_success_at * 1000).toLocaleTimeString()}
-                  · {sync.last_updated_count} atualizados
+                  Last: {new Date(sync.last_success_at * 1000).toLocaleTimeString()}
+                  · {sync.last_updated_count} updated
                   · {sync.last_duration_ms}ms
                 {:else}
-                  Ainda não sincronizou.
+                  Not synced yet.
                 {/if}
               </span>
               <button
@@ -308,14 +308,14 @@
                 onclick={saveSync}
                 disabled={syncSaving || (draftSyncEnabled === sync.enabled && draftSyncIntervalMin === sync.interval_min)}
               >
-                {syncSaving ? "Salvando..." : "Save"}
+                {syncSaving ? "Saving..." : "Save"}
               </button>
             </div>
           </section>
         {/if}
 
         <footer class="panel-footer">
-          <button type="button" class="button" onclick={close} disabled={saving}>Cancelar</button>
+          <button type="button" class="button" onclick={close} disabled={saving}>Cancel</button>
           <button
             type="button"
             class="button primary"

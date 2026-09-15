@@ -48,7 +48,7 @@
       showToast("info", `${r.updated} canais atualizados`);
       await refresh();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro ao sincronizar"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Sync error"));
     } finally {
       busy = false;
     }
@@ -67,7 +67,7 @@
 
   let label = $derived(
     syncSnap?.is_syncing
-      ? "Sincronizando…"
+      ? "Syncing…"
       : syncSnap?.last_success_at
       ? `Sync ${ago(syncSnap.last_success_at, now)}`
       : syncSnap?.enabled
@@ -96,8 +96,8 @@
   disabled={busy}
   title={syncSnap?.enabled
     ? `Sincronização automática a cada ${syncSnap.interval_min ?? 30} min — clique para forçar agora`
-    : "Sincronização desativada — clique para forçar agora"}
-  aria-label="Status de sincronização"
+    : "Sync disabled — click to force it now"}
+  aria-label="Sync status"
 >
   <span class="status-dot {dotClass}"></span>
   <span class="sync-label">{label}</span>

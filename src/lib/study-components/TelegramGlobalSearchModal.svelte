@@ -47,7 +47,7 @@
     try {
       results = await telegramSearchGlobalHits({ query: q, limit: 50 });
     } catch (e: any) {
-      error = typeof e === "string" ? e : (e?.message ?? "Erro");
+      error = typeof e === "string" ? e : (e?.message ?? "Error");
       results = [];
     } finally {
       loading = false;
@@ -95,7 +95,7 @@
         <input
           type="text"
           class="search-input"
-          placeholder="Buscar arquivos em todos os chats..."
+          placeholder="Search files across all chats..."
           bind:value={query}
           bind:this={inputRef}
           oninput={onInput}
@@ -109,9 +109,9 @@
         {:else if error}
           <div class="status status-error">{error}</div>
         {:else if !query.trim()}
-          <div class="status">Digite para buscar arquivos.</div>
+          <div class="status">Type to search files.</div>
         {:else if results.length === 0}
-          <div class="status">Nenhum resultado para <strong>{query}</strong></div>
+          <div class="status">No results for <strong>{query}</strong></div>
         {:else}
           <ul class="results-list">
             {#each results as hit (hit.chat_id + ":" + hit.message_id)}
@@ -135,7 +135,7 @@
           </ul>
           <div class="results-footer">
             <span>{results.length} resultado{results.length === 1 ? "" : "s"}</span>
-            <span class="kbd-hint">↑↓ navegar · Enter abrir</span>
+            <span class="kbd-hint">↑↓ navigate · Enter open</span>
           </div>
         {/if}
       </div>

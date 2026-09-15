@@ -89,7 +89,7 @@
     try {
       sessions = await telegramCloneList();
     } catch (e: any) {
-      error = typeof e === "string" ? e : (e?.message ?? "Erro");
+      error = typeof e === "string" ? e : (e?.message ?? "Error");
     } finally {
       loading = false;
     }
@@ -139,7 +139,7 @@
       view = "list";
       await refreshSessions();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     } finally {
       starting = false;
     }
@@ -150,7 +150,7 @@
       await telegramClonePause({ sessionId: s.id });
       await refreshSessions();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -174,7 +174,7 @@
       });
       await refreshSessions();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -183,7 +183,7 @@
       await telegramCloneCancel({ sessionId: s.id });
       await refreshSessions();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -192,7 +192,7 @@
       await telegramCloneDelete({ sessionId: s.id });
       await refreshSessions();
     } catch (e: any) {
-      showToast("error", typeof e === "string" ? e : (e?.message ?? "Erro"));
+      showToast("error", typeof e === "string" ? e : (e?.message ?? "Error"));
     }
   }
 
@@ -203,11 +203,11 @@
 
   function statusLabel(status: string): string {
     switch (status) {
-      case "running": return "Em andamento";
-      case "paused": return "Pausado";
-      case "completed": return "Concluído";
-      case "error": return "Erro";
-      case "cancelled": return "Cancelado";
+      case "running": return "In progress";
+      case "paused": return "Paused";
+      case "completed": return "Done";
+      case "error": return "Error";
+      case "cancelled": return "Cancelled";
       default: return status;
     }
   }
@@ -243,7 +243,7 @@
           aria-selected={view === "list"}
           onclick={() => (view = "list")}
         >
-          Sessões {sessions.length > 0 ? `(${sessions.length})` : ""}
+          Sessions {sessions.length > 0 ? `(${sessions.length})` : ""}
         </button>
         <button
           type="button"
@@ -263,7 +263,7 @@
             <label class="field">
               <span class="field-label">Origem</span>
               <select class="input" bind:value={sourceId}>
-                <option value={null}>— Selecione um canal —</option>
+                <option value={null}>— Select a channel —</option>
                 {#each selectableChats() as c (c.id)}
                   <option value={c.id}>{c.title}</option>
                 {/each}
@@ -271,32 +271,32 @@
             </label>
 
             <fieldset class="dest-fieldset">
-              <legend class="field-label">Destino</legend>
+              <legend class="field-label">Destination</legend>
               <label class="radio-row">
                 <input type="radio" bind:group={destMode} value="auto" />
                 <div>
-                  <span class="radio-title">Criar novo canal</span>
-                  <span class="radio-desc">Cria automaticamente. Você fica como dono.</span>
+                  <span class="radio-title">Create new channel</span>
+                  <span class="radio-desc">Creates it automatically. You become the owner.</span>
                 </div>
               </label>
               {#if destMode === "auto"}
                 <input
                   type="text"
                   class="input dest-title"
-                  placeholder="Nome do novo canal (opcional)"
+                  placeholder="New channel name (optional)"
                   bind:value={destTitle}
                 />
               {/if}
               <label class="radio-row">
                 <input type="radio" bind:group={destMode} value="existing" />
                 <div>
-                  <span class="radio-title">Canal existente</span>
-                  <span class="radio-desc">Use um canal/grupo seu.</span>
+                  <span class="radio-title">Existing channel</span>
+                  <span class="radio-desc">Use one of your channels/groups.</span>
                 </div>
               </label>
               {#if destMode === "existing"}
                 <select class="input dest-title" bind:value={destId}>
-                  <option value={null}>— Selecione —</option>
+                  <option value={null}>— Select —</option>
                   {#each selectableChats().filter((c) => c.id !== sourceId) as c (c.id)}
                     <option value={c.id}>{c.title}</option>
                   {/each}
@@ -305,39 +305,39 @@
             </fieldset>
 
             <details class="advanced">
-              <summary>Opções avançadas</summary>
+              <summary>Advanced options</summary>
               <div class="advanced-grid">
                 <label class="field">
-                  <span class="field-label">Delay entre lotes (ms)</span>
+                  <span class="field-label">Delay between batches (ms)</span>
                   <input type="number" class="input" min="0" max="60000" bind:value={delayMs} />
                 </label>
                 <label class="field">
-                  <span class="field-label">Tamanho do lote</span>
+                  <span class="field-label">Batch size</span>
                   <input type="number" class="input" min="1" max="100" bind:value={batchSize} />
                 </label>
                 <label class="checkbox-row">
                   <input type="checkbox" bind:checked={limitEnabled} />
-                  <span>Limitar quantidade</span>
+                  <span>Limit quantity</span>
                 </label>
                 {#if limitEnabled}
                   <label class="field">
-                    <span class="field-label">Máximo de mensagens</span>
+                    <span class="field-label">Maximum messages</span>
                     <input type="number" class="input" min="1" bind:value={limit} />
                   </label>
                 {/if}
                 <label class="checkbox-row">
                   <input type="checkbox" bind:checked={dropAuthor} />
-                  <span>Remover autor original</span>
+                  <span>Remove original author</span>
                 </label>
                 <label class="checkbox-row">
                   <input type="checkbox" bind:checked={dropCaptions} />
-                  <span>Remover legendas</span>
+                  <span>Remove captions</span>
                 </label>
               </div>
             </details>
 
             <div class="actions">
-              <button type="button" class="button" onclick={close} disabled={starting}>Cancelar</button>
+              <button type="button" class="button" onclick={close} disabled={starting}>Cancel</button>
               <button
                 type="button"
                 class="button primary"
@@ -356,8 +356,8 @@
               <div class="status status-error">{error}</div>
             {:else if sessions.length === 0}
               <div class="status">
-                <p>Nenhuma sessão de clone ainda.</p>
-                <button type="button" class="button primary" onclick={() => (view = "new")}>Criar nova</button>
+                <p>No clone session yet.</p>
+                <button type="button" class="button primary" onclick={() => (view = "new")}>Create new</button>
               </div>
             {:else}
               <ul class="session-list">
@@ -382,8 +382,8 @@
                       ></div>
                     </div>
                     <div class="session-meta">
-                      <span>{s.cloned_count} / {s.total_collected || "?"} mensagens</span>
-                      {#if s.failed_count > 0}<span class="failed">· {s.failed_count} falhas</span>{/if}
+                      <span>{s.cloned_count} / {s.total_collected || "?"} messages</span>
+                      {#if s.failed_count > 0}<span class="failed">· {s.failed_count} failures</span>{/if}
                       <span>· delay {s.options.delay_ms}ms</span>
                     </div>
                     {#if s.error}
@@ -391,15 +391,15 @@
                     {/if}
                     <div class="session-actions">
                       {#if s.status === "running"}
-                        <button type="button" class="button" onclick={() => pauseSession(s)}>Pausar</button>
+                        <button type="button" class="button" onclick={() => pauseSession(s)}>Pause</button>
                       {:else if s.status === "paused" || s.status === "error"}
-                        <button type="button" class="button primary" onclick={() => resumeSession(s)}>Retomar</button>
+                        <button type="button" class="button primary" onclick={() => resumeSession(s)}>Resume</button>
                       {/if}
                       {#if s.status === "running" || s.status === "paused"}
-                        <button type="button" class="button danger" onclick={() => cancelSession(s)}>Cancelar</button>
+                        <button type="button" class="button danger" onclick={() => cancelSession(s)}>Cancel</button>
                       {/if}
                       {#if s.status !== "running"}
-                        <button type="button" class="button ghost" onclick={() => deleteSession(s)}>Remover</button>
+                        <button type="button" class="button ghost" onclick={() => deleteSession(s)}>Remove</button>
                       {/if}
                     </div>
                   </li>

@@ -1459,13 +1459,13 @@
         });
         console.warn("[TG] diag_list_media:", diag);
         if (diag.get_history_error) {
-          mediaError = `Telegram negou acesso: ${diag.get_history_error}`;
+          mediaError = `Telegram denied access: ${diag.get_history_error}`;
         } else if (diag.search_errors.length > 0) {
-          mediaError = `Telegram retornou erros nos filtros: ${diag.search_errors.join("; ")}. Possivelmente este channel é protegido (saving disabled) ou access_hash expirou. Tente sair e entrar novamente no chat pelo Telegram oficial.`;
+          mediaError = `Telegram returned filter errors: ${diag.search_errors.join("; ")}. This channel may be protected (saving disabled) or the access_hash may have expired. Try leaving and rejoining the chat via the official Telegram app.`;
         } else if (diag.get_history_count === 0 && diag.search_photo_count === 0 && diag.search_video_count === 0 && diag.search_document_count === 0) {
-          mediaError = "Channel parece não ter mídia acessível via API (broadcast protegido ou content sem media). Verifique no Telegram oficial se vê os videos.";
+          mediaError = "The channel doesn't seem to have media accessible via the API (protected broadcast or content with no media). Check the official Telegram app to see if the videos are visible there.";
         } else if (diag.get_history_with_media === 0) {
-          mediaError = `Channel tem ${diag.get_history_count} mensagens mas nenhuma com mídia detectável. Verifique se as mensagens têm videos anexados (não apenas links).`;
+          mediaError = `Channel has ${diag.get_history_count} messages but none with detectable media. Check whether the messages have attached videos (not just links).`;
         }
       } catch (e) {
         console.warn("[TG] diag_list_media failed:", e);
@@ -2114,7 +2114,7 @@
     // If already in an INPUT, let browser default Find behavior take over.
     if ((ev.ctrlKey || ev.metaKey) && ev.key.toLowerCase() === "f" && !inEditableField) {
       const sel = selectedChat
-        ? '.tg-browser input.search-input[placeholder*="mídia" i], .tg-browser input.search-input[placeholder*="media" i]'
+        ? '.tg-browser input.search-input[placeholder*="media" i], .tg-browser input.search-input[placeholder*="media" i]'
         : '.tg-browser input.search-input[placeholder*="chat" i]';
       const input = document.querySelector(sel) as HTMLInputElement | null
         ?? document.querySelector(".tg-browser input.search-input") as HTMLInputElement | null;
