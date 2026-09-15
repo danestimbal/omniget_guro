@@ -60,7 +60,7 @@
         url: authUrl,
         title,
         cookieDomains: [],
-        successUrlContains: "/__/auth/handler",
+        successUrlContains: `${import.meta.env.VITE_FIREBASE_AUTH_DOMAIN}/__/auth/handler`,
         captureUrlOnly: true,
         width: 520,
         height: 660,
